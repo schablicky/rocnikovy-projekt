@@ -3,7 +3,7 @@
 1. Kde získat realtime training data? (zdarma) (MetaAPI?)
 2. Jak je uchovat a zpracovat?
 
-## AI model o_o
+## AI model
 1. Výběr frameworku (favorit: OpenAI gym)
 2. Využití enviromentu AnyTrading nebo vytvoření zcela vlastního (možno pouze u OpenAI gym)
 1. Výběr frameworku (favorit: TensorFlow)
