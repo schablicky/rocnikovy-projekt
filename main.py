@@ -1,45 +1,47 @@
 import os
 import asyncio
-import numpy as np
+import metaapi_cloud_sdk
 import pandas as pd
 import tensorflow as tf
 from metaapi_cloud_sdk import MetaApi
 from datetime import datetime
-import matplotlib.pyplot as plt
 
-# definovani metaapi token, login, heslo, server a symbol
-TOKEN = os.getenv('TOKEN') or 'token'
-LOGIN = os.getenv('LOGIN') or 'login'  # MT login
-PASSWORD = os.getenv('PASSWORD') or 'password'  # MT heslo
-SERVER = os.getenv('SERVER') or 'server'
+
+
+
+# Define your MetaAPI token, MT login, password, and server name
+TOKEN = os.getenv('TOKEN')
+LOGIN = os.getenv('LOGIN')   # MT login
+PASSWORD = os.getenv('PASSWORD')  # MT heslo
+SERVER = os.getenv('SERVER') 
 SYMBOL = 'EURUSD'
 
 
 async def main():
-    # MetaAPI client
+    # Initialize MetaAPI client
     meta_api = MetaApi(TOKEN)
-    # definovani historickych dat
+    # Define time range for historical data
     end_time = datetime.now()
     start_time = end_time - pd.Timedelta(days=7)
 
-  
+    # Fetch historical data
     data = await fetch_historical_data(meta_api, SYMBOL, start_time, end_time)
     if data is None:
         print("Failed to fetch data")
         return
 
-    # pripraveni dat na trenovani
+    # Prepare data for training
     data['time'] = pd.to_datetime(data['time'])
     data.set_index('time', inplace=True)
     data['volume'] = pd.to_numeric(data['volume'])
     data['price'] = pd.to_numeric(data['price'])
 
-    # vytvoreni a trenovani tensorflow agenta
+    # Create and train TensorFlow model
     agent = TensorFlowAgent((data.shape[1], 1))
     data_to_train = data[['volume', 'price']].values.reshape(-1, data.shape[1], 1)
     agent.fit(data_to_train, data['price'].values, epochs=15)
 
-  
+    # Use the trained model for predictions
     predictions = agent.predict(data_to_train)
     print(predictions)
 
@@ -55,9 +57,14 @@ async def main():
 
 
 async def fetch_historical_data(meta_api, symbol, start_time, end_time):
-    try:
-        # pridani testovaciho meta account
-        accounts = await meta_api.metatrader_account_api.get_accounts_with_infinite_scroll_pagination()
+        try:
+            accounts = await meta_api.metatrader_account_api.get_accounts_with_infinite_scroll_pagination()
+        except metaapi_cloud_sdk.clients.method_access_exception.MethodAccessException as e:
+            print(f"Chyba přístupu k metodě: {str(e)}")
+            return None  # nebo raise e
+        except Exception as err:
+            print(meta_api.format_error(err))
+            return None
         account = None
         for item in accounts:
             if item.login == LOGIN and item.type.startswith('cloud'):
@@ -71,7 +78,7 @@ async def fetch_historical_data(meta_api, symbol, start_time, end_time):
                     'type': 'cloud',
                     'login': LOGIN,
                     'password': PASSWORD,
-                    'erver': SERVER,
+                    'server': SERVER,
                     'platform': 't4',
                     'agic': 1000,
                 }
@@ -79,7 +86,7 @@ async def fetch_historical_data(meta_api, symbol, start_time, end_time):
         else:
             print('MT4 account already added to MetaApi')
 
-        # cekani na pripojeni k brokerovi
+        # Wait until account is deployed and connected to broker
         print('Deploying account')
         await account.deploy()
         print('Waiting for API server to connect to broker (may take couple of minutes)')
@@ -119,9 +126,7 @@ async def fetch_historical_data(meta_api, symbol, start_time, end_time):
             return pd.DataFrame()
 
         return data
-    except Exception as err:
-        print(meta_api.format_error(err))
-        return None
+
 
 
 class TensorFlowAgent:
