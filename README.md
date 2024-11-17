@@ -1,4 +1,4 @@
-# Ročníkový projekt - Trading bot
+# Ročníkový projekt - Trading bot(Sigma Trader)
 ## Popis
 Naše webová aplikace slouží k podpoře nebo plně automatizovanému obchodování na forexových trzích, využívajíc metody posilovaného učení (reinforcement learning). Systém se učí na základě svých vlastních akcí a jejich následného úspěchu či neúspěchu, čímž postupně zlepšuje svá rozhodnutí.
 
