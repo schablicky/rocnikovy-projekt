@@ -21,4 +21,4 @@ Model bude buď poskytovat doporučení, kdy vstoupit do obchodu a kdy ho ukonč
 ## Využití výsledků v praxi
 1. Zobrazení na webové stránce (doporučení obchodu? + statistiky)
 2. Automatické provedení akcí podle rozhodnutí modelu? (je možné pomocí MetaAPI)
-![image](https://github.com/user-attachments/assets/926f4b7f-1f79-4ff8-8242-18b28fed8c04)
+
