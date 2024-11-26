@@ -1,0 +1,36 @@
+<!-- trading/templates/trading/home.html -->
+{% extends 'trading/base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-8">Welcome to Forex Trading AI</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">AI Trading Features</h2>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Automated trading decisions</li>
+                <li>Real-time market analysis</li>
+                <li>Performance tracking</li>
+                <li>Risk management</li>
+            </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Trading Options</h2>
+            <ul class="list-disc list-inside space-y-2">
+                <li>AI-powered trading</li>
+                <li>Manual trading</li>
+                <li>Copy trading</li>
+                <li>Demo account available</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-8 text-center">
+        <a href="{% url 'trading:dashboard' %}" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition duration-300">
+            Get Started
+        </a>
+    </div>
+</div>
+{% endblock %}

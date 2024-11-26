@@ -1,0 +1,169 @@
+<!-- trading/templates/trading/dashboard.html -->
+{% extends 'trading/base.html' %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <!-- Account Overview -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-gray-500 text-sm">Account Balance</h3>
+            <p class="text-2xl font-bold">${{ account.balance|floatformat:2 }}</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-gray-500 text-sm">Account Type</h3>
+            <p class="text-2xl font-bold">{% if account.is_demo %}Demo{% else %}Live{% endif %}</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-gray-500 text-sm">Open Positions</h3>
+            <p class="text-2xl font-bold">{{ trades|length }}</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-gray-500 text-sm">Today's P/L</h3>
+            <p class="text-2xl font-bold" id="dailyPL">Calculating...</p>
+        </div>
+    </div>
+
+    <!-- Trading Interface -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Chart and AI Predictions -->
+        <div class="md:col-span-2">
+            <div class="bg-white p-6 rounded-lg shadow mb-6">
+                <h2 class="text-xl font-semibold mb-4">Market Analysis</h2>
+                <div id="tradingChart" class="h-96">
+                    <!-- TradingView Widget will be inserted here -->
+                </div>
+            </div>
+            
+            <!-- AI Recommendations -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">AI Trading Signals</h2>
+                <div id="aiSignals" class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span>Signal Strength:</span>
+                        <div class="w-48 bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-green-600 h-2.5 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="executeTrade('BUY')" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                            Buy Signal
+                        </button>
+                        <button onclick="executeTrade('SELL')" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                            Sell Signal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Trades and Performance -->
+        <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">Recent Trades</h2>
+                <div class="space-y-4">
+                    {% for trade in trades %}
+                    <div class="border-b pb-2">
+                        <div class="flex justify-between">
+                            <span class="font-medium">{{ trade.symbol }}</span>
+                            <span class="{% if trade.trade_type == 'BUY' %}text-green-500{% else %}text-red-500{% endif %}">
+                                {{ trade.trade_type }}
+                            </span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>Entry: ${{ trade.entry_price }}</span>
+                            <span>{{ trade.created_at|date:"M d, H:i" }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- AI Performance Metrics -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">AI Performance</h2>
+                <div class="space-y-4">
+                    <div class="flex justify-between">
+                        <span>Win Rate</span>
+                        <span class="font-medium">76%</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Profit Factor</span>
+                        <span class="font-medium">2.1</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Average Trade</span>
+                        <span class="font-medium">$127.50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// TradingView Widget
+new TradingView.widget({
+    "width": "100%",
+    "height": "100%",
+    "symbol": "EURUSD",
+    "interval": "1",
+    "timezone": "Etc/UTC",
+    "theme": "light",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "container_id": "tradingChart"
+});
+
+// WebSocket connection for real-time updates
+const ws = new WebSocket('ws://' + window.location.host + '/ws/trading/');
+
+ws.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    if (data.type === 'trading_update') {
+        updateDashboard(data);
+    }
+};
+
+function updateDashboard(data) {
+    // Update account metrics
+    document.getElementById('dailyPL').textContent = '$' + data.daily_pl.toFixed(2);
+    // Update other real-time elements
+}
+
+async function executeTrade(action) {
+    try {
+        const response = await fetch('/api/execute-trade/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({
+                action: action,
+                symbol: 'EURUSD',
+                amount: 0.1
+            })
+        });
+        const result = await response.json();
+        if (result.success) {
+            location.reload();
+        }
+    } catch (error) {
+        console.error('Error executing trade:', error);
+    }
+}
+
+function getCookie(name) {
+    // CSRF token helper
+    let value = `; ${document.cookie}`;
+    let parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+</script>
+{% endblock %}
