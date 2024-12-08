@@ -5,5 +5,4 @@ app_name = 'trading'
 
 urlpatterns = [
     path('', views.home, name='home'),
-    
 ]

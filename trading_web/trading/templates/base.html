@@ -3,49 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forex Trading AI - {% block title %}{% endblock %}</title>
-    <!-- Tailwind CSS -->
+    <title>{% block title %}Forex Trading AI{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-gray-800 text-white">
+<body class="bg-gray-50">
+
+    <nav class="bg-gray-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
-                <!-- Logo and main nav -->
                 <div class="flex">
-                    <a href="#" class="flex items-center px-3 py-2">
-                        <span class="text-xl font-bold">Forex AI</span>
+        
+                    <a href="/" class="flex items-center px-2">
+                        <span class="text-white text-xl font-bold">ForexAI</span>
                     </a>
-                    <!-- Main Navigation -->
-                    <div class="hidden md:flex items-center space-x-4 ml-10">
-                        <a href="#" class="px-3 py-2 hover:bg-gray-700 rounded">Trading</a>
-                        <a href="#" class="px-3 py-2 hover:bg-gray-700 rounded">AI Models</a>
-                        <a href="#" class="px-3 py-2 hover:bg-gray-700 rounded">Copy Trading</a>
+                   
+                    <div class="hidden md:flex items-center space-x-8 ml-10">
+                        <a href="#" class="text-gray-300 hover:text-white">Trading</a>
+                        <a href="#" class="text-gray-300 hover:text-white">AI Models</a>
+                        <a href="#" class="text-gray-300 hover:text-white">Statistics</a>
                     </div>
                 </div>
 
-                <!-- User section -->
+            
                 <div class="flex items-center">
-                    <a href="#" class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-600">Login</a>
-                    <a href="#" class="ml-4 px-4 py-2 bg-green-500 rounded hover:bg-green-600">Register</a>
+                    <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Start Trading
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto py-6 px-4">
+    <main>
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
+   
     <footer class="bg-gray-800 text-white mt-12">
-        <div class="max-w-7xl mx-auto py-6 px-4">
-            <div class="flex justify-between">
+        <div class="max-w-7xl mx-auto py-12 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                
+
+                
                 <div>
-                    <h3 class="text-lg font-bold">Forex Trading AI</h3>
-                    <p class="text-sm mt-2">Automated trading with artificial intelligence</p>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Trading</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">AI Models</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Statistics</a></li>
+                    </ul>
+                </div>
+
+            
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Email: x</li>
+                        <li class="text-gray-400">GitHub: x</li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -1,0 +1,86 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Forex Trading AI{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Forex Trading AI Platform</h1>
+        <p class="text-xl text-gray-600">Advanced trading with artificial intelligence</p>
+    </div>
+
+
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-lg mb-2">Platform Statistics</h3>
+            <div class="space-y-2">
+                <p>Total Trades: {{ total_trades }}</p>
+                <p>Success Rate: x%</p>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-lg mb-2">Active Trading Pairs</h3>
+            <div class="space-y-2">
+                {% for pair in trading_pairs %}
+                <p>{{ pair.symbol }} - {{ pair.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-lg mb-2">AI Models Performance</h3>
+            <div class="space-y-2">
+                {% for model in ai_models %}
+                <p>{{ model.name }}: {{ model.accuracy|floatformat:1 }}% accuracy</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-lg mb-2">AI Trading</h3>
+            <p class="text-gray-600 mb-4">Automated trading powered by machine learning</p>
+            <a href="#" class="block text-center bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Learn More
+            </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-lg mb-2">Demo Account</h3>
+            <p class="text-gray-600 mb-4">Practice with virtual money risk-free</p>
+            <a href="#" class="block text-center bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+                Try Demo
+            </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-lg mb-2">Copy Trading</h3>
+            <p class="text-gray-600 mb-4">Follow successful traders automatically</p>
+            <a href="#" class="block text-center bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">
+                Explore
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="font-bold text-lg mb-4">Recent Trading Activity</h3>
+        <div class="space-y-3">
+            {% for trade in recent_trades %}
+            <div class="flex justify-between items-center border-b pb-2">
+                <div>
+                    <span class="font-medium">{{ trade.pair.symbol }}</span>
+                    <span class="text-sm text-gray-500">{{ trade.type }}</span>
+                </div>
+                <span class="{% if trade.profit_loss > 0 %}text-green-500{% else %}text-red-500{% endif %}">
+                    {% if trade.profit_loss %}${{ trade.profit_loss|floatformat:2 }}{% else %}Open{% endif %}
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
