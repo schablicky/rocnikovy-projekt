@@ -1,13 +1,12 @@
-# trading/views.py
 from django.shortcuts import render
-from .models import TradingPair, Trade, AIModel
+from .models import User, Trade, News, MarketData
 
 def home(request):
     context = {
-        'trading_pairs': TradingPair.objects.filter(is_active=True)[:5],
-        'recent_trades': Trade.objects.select_related('pair').order_by('-opened_at')[:5],
-        'ai_models': AIModel.objects.select_related('pair').all()[:3],
+        'users': User.objects.all()[:5],
+        'recent_trades': Trade.objects.select_related('user').order_by('-time')[:5],
+        'market_data': MarketData.objects.all()[:5],
         'total_trades': Trade.objects.count(),
-        'successful_trades': Trade.objects.filter(profit_loss__gt=0).count()
+        'latest_news': News.objects.order_by('-publishdate')[:3]
     }
     return render(request, 'home.html', context)
