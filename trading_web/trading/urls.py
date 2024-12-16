@@ -4,5 +4,5 @@ from . import views
 app_name = 'trading'
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.home, name='home'),  # Root URL pattern
 ]

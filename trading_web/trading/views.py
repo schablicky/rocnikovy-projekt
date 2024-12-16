@@ -1,5 +1,15 @@
 from django.shortcuts import render
 from .models import User, Trade, News, MarketData
+from oauth2_provider.views.generic import ProtectedResourceView
+from django.http import JsonResponse
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from oauth2_provider.decorators import protected_resource
+from rest_framework import viewsets
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 def home(request):
     context = {
@@ -10,3 +20,22 @@ def home(request):
         'latest_news': News.objects.order_by('-publishdate')[:3]
     }
     return render(request, 'home.html', context)
+
+class ApiEndpoint(ProtectedResourceView):
+    def get(self, request, *args, **kwargs):
+        return JsonResponse({'message': 'Hello, OAuth2!'})
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+@protected_resource()
+def protected_api(request):
+    return JsonResponse({'data': 'This is protected data'})
+
+class ProtectedViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated, TokenHasReadWriteScope]
+    # ... rest of your viewset code
+
+class RegisterView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('login')
