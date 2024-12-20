@@ -1,111 +1,90 @@
-{% extends "base.html" %}
-
-{% block title %}Forex Trading AI{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-8">
-    <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Forex Trading AI Platform</h1>
-        <p class="text-xl text-gray-600">Advanced trading with artificial intelligence</p>
-        
-        <!-- User Authentication Section -->
-        <div class="mt-6">
-            {% if user.is_authenticated %}
-                <div class="bg-blue-50 p-4 rounded-lg inline-block">
-                    <p class="text-lg">Welcome, {{ user.username }}!</p>
-                    <p class="text-gray-600">Balance: ${{ user.profile.balance|default:"0.00"|floatformat:2 }}</p>
-                    <form method="post" action="{% url 'logout' %}" class="inline">
-                        {% csrf_token %}
-                        <button type="submit" class="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-                            Logout
-                        </button>
-                    </form>
-                </div>
-            {% else %}
-                <div class="space-x-4">
-                    <a href="{% url 'login' %}" class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Login</a>
-                    <a href="{% url 'register' %}" class="px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600">Register</a>
-                </div>
-            {% endif %}
-        </div>
+<!-- Hero Section -->
+<header class="bg-cover bg-center h-screen relative text-white" style="background-image: url('static/img/obrazek.jpg');">
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <div class="relative max-w-7xl mx-auto px-4 flex flex-col items-center justify-center h-full text-center">
+    <h1 class="text-5xl font-bold mb-4">Automatizované obchodování na Forexu</h1>
+    <p class="text-xl mb-8">Vyzkoušejte naši platformu, která využívá AI k optimalizaci obchodních rozhodnutí a zisků.</p>
+    <a href="#register" class="bg-indigo-600 hover:bg-indigo-500 text-white py-3 px-8 rounded-full text-lg font-semibold transition duration-300 transform hover:scale-105">
+      Začněte právě teď
+    </a>
+  </div>
+</header>
+
+
+
+<!-- Features Section -->
+<section id="features" class="py-16 bg-white text-center">
+  <h2 class="text-4xl font-semibold mb-8">Hlavní funkce naší platformy</h2>
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 px-4">
+    <div class="bg-gray-100 p-6 rounded-lg shadow-lg transition transform hover:scale-105">
+      <h3 class="text-2xl font-semibold mb-4">Automatizované obchodování</h3>
+      <p>Naše AI modely automaticky analyzují trhy a provádějí obchody bez zásahu uživatele.</p>
     </div>
-
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
-
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-bold text-lg mb-2">Platform Statistics</h3>
-            <div class="space-y-2">
-                <p>Total Trades: {{ total_trades }}</p>
-                <p>Active Traders: {{ users_length }}</p>
-            </div>
-        </div>
-        
-
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-bold text-lg mb-2">Market Data</h3>
-            <div class="space-y-2">
-                {% for data in market_data %}
-                <p>{{ data.symbol }}: ${{ data.price|floatformat:2 }}</p>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-bold text-lg mb-2">Latest News</h3>
-            <div class="space-y-2">
-                {% for news in latest_news %}
-                <p class="text-sm">{{ news.title }}</p>
-                {% endfor %}
-            </div>
-        </div>
+    <div class="bg-gray-100 p-6 rounded-lg shadow-lg transition transform hover:scale-105">
+      <h3 class="text-2xl font-semibold mb-4">Manuální obchodování</h3>
+      <p>Pokud preferujete kontrolu, můžete spravovat své obchody ručně přímo z webového rozhraní.</p>
     </div>
-
-
-    <div class="bg-white p-6 rounded-lg shadow mb-12">
-        <h3 class="font-bold text-lg mb-4">Recent Trading Activity</h3>
-        <div class="space-y-3">
-            {% for trade in recent_trades %}
-            <div class="flex justify-between items-center border-b pb-2">
-                <div>
-                    <span class="font-medium">{{ trade.symbol }}</span>
-                    <span class="text-sm text-gray-500">{{ trade.trade_type }}</span>
-                </div>
-                <div class="text-right">
-                    <span>${{ trade.price|floatformat:2 }}</span>
-                    <span class="text-sm text-gray-500">{{ trade.time|date:"M d, H:i" }}</span>
-                </div>
-            </div>
-            {% empty %}
-            <p class="text-gray-500 text-center">No recent trades</p>
-            {% endfor %}
-        </div>
+    <div class="bg-gray-100 p-6 rounded-lg shadow-lg transition transform hover:scale-105">
+      <h3 class="text-2xl font-semibold mb-4">Copy Trading</h3>
+      <p>Automaticky kopírujte obchody ústěšných obchodníků na platformě.</p>
     </div>
+  </div>
+</section>
 
-
-    <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-bold text-lg mb-2">AI Trading</h3>
-            <p class="text-gray-600 mb-4">Automated trading with machine learning</p>
-            <a href="#" class="block text-center bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-                Learn More
-            </a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-bold text-lg mb-2">Manual Trading</h3>
-            <p class="text-gray-600 mb-4">Take control of your trades</p>
-            <a href="#" class="block text-center bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
-                Start Trading
-            </a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-bold text-lg mb-2">Copy Trading</h3>
-            <p class="text-gray-600 mb-4">Follow successful traders</p>
-            <a href="#" class="block text-center bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">
-                View Traders
-            </a>
-        </div>
+<!-- How It Works Section -->
+<section id="how-it-works" class="bg-indigo-50 py-16">
+  <div class="max-w-7xl mx-auto text-center px-4">
+    <h2 class="text-4xl font-semibold mb-8">Jak to funguje</h2>
+    <p class="text-xl mb-8">Naše platforma využívá pokročilé algoritmy a posilované učení (reinforcement learning) k tomu, aby zajistila maximální efektivitu vašich obchodů na forexových trzích.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div class="bg-white p-6 rounded-lg shadow-md transition transform hover:scale-105">
+        <h3 class="text-2xl font-semibold mb-4">AI Model</h3>
+        <p>Využíváme TensorFlow pro trénink modelu, který analyzuje tržní data a rozhoduje o obchodech.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md transition transform hover:scale-105">
+        <h3 class="text-2xl font-semibold mb-4">Vizualizace dat</h3>
+        <p>Interaktivní grafy vám umožní detailní analýzu tržních dat a výkonnosti AI modelu.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md transition transform hover:scale-105">
+        <h3 class="text-2xl font-semibold mb-4">API Integrace</h3>
+        <p>Naše platforma pravidelně sbírá data z trhů pomocí API a přizpůsobuje obchodní strategie v reálném čase.</p>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
+<!-- Demo Account Section -->
+<section id="demo" class="py-16 bg-white text-center">
+  <h2 class="text-4xl font-semibold mb-8">Vyzkoušejte Demo účet zdarma</h2>
+  <p class="text-xl mb-8">Obchodujte s virtuálními penězi bez rizika a zjistěte, jak naše platforma funguje v reálném čase.</p>
+  <a href="#register" class="bg-indigo-600 hover:bg-indigo-500 text-white py-3 px-8 rounded-full text-lg font-semibold transition duration-300 transform hover:scale-105">
+    Začněte právě teď
+  </a>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="bg-indigo-600 text-white py-16">
+  <div class="max-w-7xl mx-auto text-center px-4">
+    <h2 class="text-4xl font-semibold mb-8">Kontaktujte nás</h2>
+    <p class="text-xl mb-8">Pokud máte jakékoliv dotazy, neváhejte nás kontaktovat. Jsme tu, abychom vám pomohli začít s obchodováním.</p>
+    <a href="mailto:info@forextrade.com" class="bg-indigo-800 hover:bg-indigo-700 text-white py-3 px-8 rounded-full text-lg font-semibold transition duration-300 transform hover:scale-105">
+      Kontaktujte nás
+    </a>
+  </div>
+</section>
+
+<!-- Register Section -->
+<section id="register" class="bg-gray-100 py-16 text-center">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-semibold mb-8">Vytvořte si účet a začněte obchodovat</h2>
+    <p class="text-xl mb-8">Registrace je snadná a rychlá. Začněte svou cestu k ústěšnému obchodování ještě dnes!</p>
+    <a href="{% url 'register' %}" class="bg-green-600 hover:bg-green-500 text-white py-3 px-8 rounded-full text-lg font-semibold transition duration-300 transform hover:scale-105">
+      Registrace
+    </a>
+  </div>
+</section>
 {% endblock %}

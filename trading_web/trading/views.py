@@ -10,6 +10,8 @@ from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.shortcuts import render, get_object_or_404
+from .models import News
 
 def home(request):
     context = {
@@ -33,9 +35,22 @@ def protected_api(request):
 
 class ProtectedViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, TokenHasReadWriteScope]
-    # ... rest of your viewset code
+   
 
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
+
+def news_detail(request, pk):
+    news_item = get_object_or_404(News, pk=pk)
+    return render(request, 'news_detail.html', {'news': news_item})
+def dashboard(request):
+    context = {
+        'users': User.objects.all()[:5],
+        'recent_trades': Trade.objects.select_related('user').order_by('-time')[:5],
+        'market_data': MarketData.objects.all()[:5],
+        'total_trades': Trade.objects.count(),
+        'latest_news': News.objects.order_by('-publishdate')[:3]
+    }
+    return render(request, 'dashboard.html', context)

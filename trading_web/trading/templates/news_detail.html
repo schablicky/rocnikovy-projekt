@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+    
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ news.title }}</h1>
+        
+    
+        {% if news.image %}
+        <div class="mb-6">
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+        {% endif %}
+        
+    
+        <p class="text-gray-600 text-sm mb-4">
+            Published on: {{ news.publishdate|date:"M d, Y H:i" }} by 
+            <span class="font-semibold">{{ news.user.username }}</span>
+        </p>
+        
+
+        <div class="text-gray-700 leading-relaxed mb-6">
+            {{ news.content }}
+        </div>
+        
+        {% if news.source %}
+        <p class="text-gray-500 text-sm italic">
+            Source: {{ news.source }}
+        </p>
+        {% endif %}
+    </div>
+    
+    <div class="mt-6">
+        <a href="{% url 'trading:home' %}" class="text-blue-500 hover:underline">← Back to Home</a>
+    </div>
+</div>
+{% endblock %}
