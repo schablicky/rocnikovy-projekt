@@ -17,5 +17,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', RegisterView.as_view(), name='register'),
     path('trading/', include('trading.urls', namespace='trading')),
+    path('accounts/', include('allauth.urls')),
 
 ]
