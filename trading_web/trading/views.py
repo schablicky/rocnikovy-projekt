@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import User, Trade, News, MarketData
+from .models import CustomUser, Trade, News, MarketData
 from oauth2_provider.views.generic import ProtectedResourceView
 from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
@@ -12,10 +12,11 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.shortcuts import render, get_object_or_404
 from .models import News
+from .forms import CustomUserCreationForm
 
 def home(request):
     context = {
-        'users': User.objects.all()[:5],
+        'users': CustomUser.objects.all()[:5],
         'recent_trades': Trade.objects.select_related('user').order_by('-time')[:5],
         'market_data': MarketData.objects.all()[:5],
         'total_trades': Trade.objects.count(),
@@ -38,7 +39,7 @@ class ProtectedViewSet(viewsets.ModelViewSet):
    
 
 class RegisterView(CreateView):
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 
@@ -47,7 +48,7 @@ def news_detail(request, pk):
     return render(request, 'news_detail.html', {'news': news_item})
 def dashboard(request):
     context = {
-        'users': User.objects.all()[:5],
+        'users': CustomUser.objects.all()[:5],
         'recent_trades': Trade.objects.select_related('user').order_by('-time')[:5],
         'market_data': MarketData.objects.all()[:5],
         'total_trades': Trade.objects.count(),
