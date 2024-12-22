@@ -13,6 +13,12 @@ from django.views.generic import CreateView
 from django.shortcuts import render, get_object_or_404
 from .models import News
 from .forms import CustomUserCreationForm
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from .services.trade_service import execute_trade
+import asyncio
+from django.shortcuts import redirect
+from .forms import UserSettingsForm
 
 def home(request):
     context = {
@@ -55,3 +61,37 @@ def dashboard(request):
         'latest_news': News.objects.order_by('-publishdate')[:3]
     }
     return render(request, 'dashboard.html', context)
+
+@login_required
+@require_POST
+def execute_trade_view(request):
+    user = request.user
+    symbol = request.POST.get('symbol')
+    trade_type = request.POST.get('trade_type')
+    volume = float(request.POST.get('volume'))
+    
+    if not user.apikey or not user.metaid:
+        return JsonResponse({'error': 'MetaAPI credentials not provided'}, status=400)
+    
+    async def run_trade():
+        try:
+            result = await execute_trade(user, symbol, trade_type, volume)
+            return JsonResponse({'result': result})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    return asyncio.run(run_trade())
+    
+
+@login_required
+def user_settings(request):
+    if request.method == 'POST':
+        form = UserSettingsForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = UserSettingsForm(instance=request.user)
+    
+    return render(request, 'user_settings.html', {'form': form})
+
