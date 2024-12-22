@@ -77,6 +77,29 @@
         </div>
     </div>
 
+    <div class="bg-white p-6 rounded-lg shadow-md mb-12">
+        <h3 class="font-bold text-2xl text-gray-800 mb-4">Execute Trade</h3>
+        <form id="trade-form" method="post" action="{% url 'execute_trade' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="symbol" class="block text-gray-700">Symbol</label>
+                <input type="text" id="symbol" name="symbol" class="mt-1 block w-full" required>
+            </div>
+            <div class="mb-4">
+                <label for="trade_type" class="block text-gray-700">Trade Type</label>
+                <select id="trade_type" name="trade_type" class="mt-1 block w-full" required>
+                    <option value="buy">Buy</option>
+                    <option value="sell">Sell</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="volume" class="block text-gray-700">Volume</label>
+                <input type="number" id="volume" name="volume" step="0.01" class="mt-1 block w-full" required>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Execute Trade</button>
+        </form>
+    </div>
+
     <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300 text-center">
             <h3 class="font-bold text-xl text-gray-700 mb-2">AI Trading</h3>

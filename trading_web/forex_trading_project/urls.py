@@ -4,6 +4,8 @@ from oauth2_provider import urls as oauth2_urls
 from django.contrib.auth import views as auth_views
 from trading.views import RegisterView
 from trading.views import home, dashboard
+from trading.views import execute_trade_view
+from trading.views import user_settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,5 +19,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', RegisterView.as_view(), name='register'),
     path('trading/', include('trading.urls', namespace='trading')),
-
+    path('accounts/', include('allauth.urls')),
+    path('execute-trade/', execute_trade_view, name='execute_trade'),
+    path('settings/', user_settings, name='user_settings'),
 ]
