@@ -19,6 +19,9 @@ from .services.trade_service import execute_trade
 import asyncio
 from django.shortcuts import redirect
 from .forms import UserSettingsForm
+from rest_framework import status
+from rest_framework.response import Response
+from .models import CustomUser, Trade, News, MarketData
 
 def home(request):
     context = {
@@ -63,24 +66,22 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 @login_required
-@require_POST
+@api_view(['POST'])
 def execute_trade_view(request):
     user = request.user
-    symbol = request.POST.get('symbol')
-    trade_type = request.POST.get('trade_type')
-    volume = float(request.POST.get('volume'))
+    symbol = request.data.get('symbol')
+    trade_type = request.data.get('trade_type')
+    volume = float(request.data.get('volume'))
+    take_profit = request.data.get('takeProfit')
     
     if not user.apikey or not user.metaid:
-        return JsonResponse({'error': 'MetaAPI credentials not provided'}, status=400)
+        return Response({'error': 'MetaAPI credentials not provided'}, status=status.HTTP_400_BAD_REQUEST)
     
-    async def run_trade():
-        try:
-            result = await execute_trade(user, symbol, trade_type, volume)
-            return JsonResponse({'result': result})
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-    
-    return asyncio.run(run_trade())
+    try:
+        result = execute_trade(user, symbol, trade_type, volume, take_profit)
+        return Response({'result': result}, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
 @login_required
