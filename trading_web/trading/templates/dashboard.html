@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Forex Trading AI{% endblock %}
+{% block title %}Forex Trading AI Dashboard{% endblock %}
 
 {% block content %}
 <div class="container mx-auto px-4 py-12">
-
+ 
     <div class="text-center mb-12">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-4">Forex Trading AI Platform</h1>
         <p class="text-lg text-gray-500">Advanced trading with artificial intelligence</p>
     </div>
 
-
+   
     <div class="flex justify-center mb-12">
         {% if user.is_authenticated %}
         <div class="bg-blue-100 border border-blue-200 p-6 rounded-lg shadow-lg text-center">
@@ -31,17 +31,20 @@
         {% endif %}
     </div>
 
-
+    
     <div class="grid md:grid-cols-3 gap-8 mb-12">
+       
         <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
             <h3 class="font-bold text-xl text-gray-700 mb-2">Platform Statistics</h3>
             <p class="text-gray-600">Total Trades: <span class="font-semibold">{{ total_trades }}</span></p>
-            <p class="text-gray-600">Active Traders: <span class="font-semibold">{{ users_length }}</span></p>
+            <div class="border-t mt-4 pt-4">
+                
+                <p class="text-gray-600">Active Users: <span class="font-semibold">{{ active_users|default:"N/A" }}</span></p>
+                
+            </div>
         </div>
 
-        
-
-        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300 md:col-span-2">
             <h3 class="font-bold text-xl text-gray-700 mb-2">Latest News</h3>
             <ul class="space-y-2">
                 {% for news in latest_news %}
@@ -53,9 +56,7 @@
                 {% endfor %}
             </ul>
         </div>
-        
     </div>
-
 
     <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-12">
         <h3 class="font-bold text-2xl text-gray-800 mb-4">Recent Trading Activity</h3>
@@ -83,22 +84,31 @@
             {% csrf_token %}
             <div class="mb-4">
                 <label for="symbol" class="block text-gray-700">Symbol</label>
-                <input type="text" id="symbol" name="symbol" class="mt-1 block w-full" required>
+                <input type="text" id="symbol" name="symbol" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
             </div>
             <div class="mb-4">
                 <label for="trade_type" class="block text-gray-700">Trade Type</label>
-                <select id="trade_type" name="trade_type" class="mt-1 block w-full" required>
+                <select id="trade_type" name="trade_type" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
                     <option value="buy">Buy</option>
                     <option value="sell">Sell</option>
                 </select>
             </div>
             <div class="mb-4">
                 <label for="volume" class="block text-gray-700">Volume</label>
-                <input type="number" id="volume" name="volume" step="0.01" class="mt-1 block w-full" required>
+                <input type="number" id="volume" name="volume" step="0.01" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
             </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Execute Trade</button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                Execute Trade
+            </button>
         </form>
     </div>
+
+ 
+    <div class="bg-white p-6 rounded-lg shadow-md mb-12">
+        <h3 class="font-bold text-2xl text-gray-800 mb-4">Trades in the Last 7 Days</h3>
+        <svg id="tradeChart" width="100%" height="300"></svg>
+    </div>
+
 
     <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300 text-center">
@@ -126,4 +136,6 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}
