@@ -90,15 +90,16 @@ def execute_trade_view(request):
     symbol = request.data.get('symbol')
     trade_type = request.data.get('trade_type')
     volume = float(request.data.get('volume'))
-    take_profit = request.data.get('takeProfit')
     
     if not user.apikey or not user.metaid:
         return Response({'error': 'MetaAPI credentials not provided'}, status=400)
     
     try:
-        result = execute_trade(user, symbol, trade_type, volume, take_profit)
+        result = execute_trade(user, symbol, trade_type, volume)
         return Response({'success': True, 'result': result}, status=200)
     except Exception as e:
+        if 'UnauthorizedError' in str(e):
+            return Response({'error': 'Invalid API Key. Please update your API Key in the user settings.'}, status=401)
         return Response({'error': str(e)}, status=500)
 
 @login_required

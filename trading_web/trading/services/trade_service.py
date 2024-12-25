@@ -11,22 +11,20 @@ def execute_trade(user, symbol, trade_type, volume, take_profit=None):
         if not user.metaid:
             raise ValueError("MetaID is missing or invalid")
         
-        url = f"https://mt-client-api-v1.new-york.agiliumtrade.ai/users/current/accounts/{user.metaid}/trade"
+        url = f"https://mt-client-api-v1.london.agiliumtrade.ai/users/current/accounts/{user.metaid}/trade"
         logger.debug(f"Trade URL: {url}")
         
         headers = {
-            'auth-token': user.apikey,
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "auth-token": user.apikey,
         }
         
         payload = {
             "actionType": trade_type,
             "symbol": symbol,
-            "volume": volume
+            "volume": volume,
         }
-        
-        if take_profit:
-            payload["takeProfit"] = take_profit
         
         logger.debug(f"Headers: {headers}")
         logger.debug(f"Payload: {payload}")
