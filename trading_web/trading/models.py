@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     ]
     
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='trader')
-    apikey = models.CharField(max_length=500, blank=True, null=True)
+    apikey = models.CharField(max_length=5000, blank=True, null=True)
     metaid = models.CharField(max_length=45, blank=True, null=True)
     balance = models.DecimalField(max_digits=15, decimal_places=2, default=0)
 

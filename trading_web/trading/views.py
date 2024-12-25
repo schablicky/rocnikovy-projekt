@@ -31,6 +31,7 @@ from .forms import UserSettingsForm
 from rest_framework import status
 from rest_framework.response import Response
 from .models import CustomUser, Trade, News, MarketData
+import logging
 
 def home(request):
     return render(request, 'home.html')
@@ -83,12 +84,15 @@ def dashboard(request):
     }
     return render(request, 'dashboard.html', context)
 
+logger = logging.getLogger(__name__)
+
 @login_required
 @api_view(['POST'])
 def execute_trade_view(request):
     user = request.user
     symbol = request.data.get('symbol')
     trade_type = request.data.get('trade_type')
+    logger.info(request.data.get('trade_type'))
     volume = float(request.data.get('volume'))
     
     if not user.apikey or not user.metaid:

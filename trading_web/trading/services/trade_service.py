@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 def execute_trade(user, symbol, trade_type, volume, take_profit=None):
     try:
         logger.info(f"Executing trade for user: {user.username}, API Key: {user.apikey}, MetaID: {user.metaid}")
+        print(f"Trade type is: {trade_type}")
         
         # Verify metaid
         if not user.metaid:
