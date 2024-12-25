@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'trading',
+    'background_task',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -200,3 +201,10 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'  # Redirects to home view after login
 LOGOUT_REDIRECT_URL = 'login'  # Redirects to login page after logout
+
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+CELERY_RESULT_BACKEND = 'rpc://'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'

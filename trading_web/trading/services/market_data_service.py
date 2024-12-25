@@ -7,6 +7,7 @@ from trading.models import MarketData
 from django.conf import settings
 import logging
 import random
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -92,40 +93,32 @@ async def fetch_historical_eurusd():
             logger.error(f"Error details: {e.details}")
         raise
 
-async def update_market_data():
+def update_market_data():
     try:
         api = MetaApi(settings.META_API_TOKEN)
-        account = await api.metatrader_account_api.get_account(settings.ACCOUNT_ID)
-        await account.wait_connected()
-        
+        account = api.metatrader_account_api.get_account(settings.ACCOUNT_ID)
+        account.wait_connected()
+
         connection = account.get_rpc_connection()
-        await connection.connect()
-        
-        while True:
-            try:
-                timestamp = int(datetime.now().timestamp())
-                candle = await connection.get_candle(
-                    'EURUSD',  # symbol
-                    '1m',      # timeframe
-                    timestamp  # time
-                )
-                
-                if candle:
-                    MarketData.objects.create(
-                        symbol='EURUSD',
-                        price=candle['close'],
-                        openprice=candle['open'],
-                        closeprice=candle['close'],
-                        volume=candle['volume'],
-                        timestamp=timezone.make_aware(datetime.fromtimestamp(candle['time']))
-                    )
-                
-                await asyncio.sleep(60)  # Wait 1 minute before next update
-                
-            except Exception as e:
-                logger.error(f"Error updating market data: {e}")
-                await asyncio.sleep(60)  # Wait before retry
-                
+        connection.connect()
+
+        timestamp = int(datetime.now().timestamp())
+        candle = connection.get_candle(
+            'EURUSD',  # symbol
+            '1m',      # timeframe
+            timestamp  # time
+        )
+
+        if candle:
+            MarketData.objects.create(
+                symbol='EURUSD',
+                price=candle['close'],
+                openprice=candle['open'],
+                closeprice=candle['close'],
+                volume=candle['volume'],
+                timestamp=timezone.make_aware(datetime.fromtimestamp(candle['time']))
+            )
+
     except Exception as e:
-        logger.error(f"Connection error: {e}")
-        raise
+        logger.error(f"Error updating market data: {e}")
+
