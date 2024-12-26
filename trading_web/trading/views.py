@@ -77,8 +77,7 @@ def dashboard(request):
     
     context = {
         'recent_trades': recent_trades,
-        'chart_labels': json.dumps(chart_labels),
-        'chart_data': json.dumps(chart_data),
+        
         'total_trades': Trade.objects.count(),
         'latest_news': News.objects.order_by('-publishdate')[:3],
     }

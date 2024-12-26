@@ -14,7 +14,11 @@ class CustomUser(AbstractUser):
     apikey = models.CharField(max_length=5000, blank=True, null=True)
     metaid = models.CharField(max_length=45, blank=True, null=True)
     balance = models.DecimalField(max_digits=15, decimal_places=2, default=0)
-
+    THEME_CHOICES = (
+        ('light', 'Light'),
+        ('dark', 'Dark'),
+    )
+    theme = models.CharField(max_length=5, choices=THEME_CHOICES, default='light')
     class Meta:
         app_label = 'trading'
 
