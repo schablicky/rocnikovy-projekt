@@ -32,6 +32,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from .models import CustomUser, Trade, News, MarketData
 import logging
+from .services.market_data_service import fetch_and_save_market_data
 
 def home(request):
     return render(request, 'home.html')
@@ -117,3 +118,20 @@ def user_settings(request):
     
     return render(request, 'user_settings.html', {'form': form})
 
+
+@login_required
+@api_view(['GET'])
+def fetch_and_save_market_view(request):
+    user = request.user
+    logger.info(request.data.get('trade_type'))
+    
+    if not user.apikey or not user.metaid:
+        return Response({'error': 'MetaAPI credentials not provided'}, status=400)
+    
+    try:
+        result = fetch_and_save_market_data(user)
+        return Response({'success': True, 'result': result}, status=200)
+    except Exception as e:
+        if 'UnauthorizedError' in str(e):
+            return Response({'error': 'Invalid API Key. Please update your API Key in the user settings.'}, status=401)
+        return Response({'error': str(e)}, status=500)

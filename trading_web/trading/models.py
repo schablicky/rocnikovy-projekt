@@ -55,14 +55,18 @@ class News(models.Model):
 # MarketData model
 class MarketData(models.Model):
     symbol = models.CharField(max_length=10)
-    price = models.FloatField(null=True, blank=True)
-    openprice = models.FloatField(null=True, blank=True)
-    closeprice = models.FloatField(null=True, blank=True)
-    volume = models.FloatField(null=True, blank=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timeframe = models.CharField(max_length=10)
+    time = models.DateTimeField()
+    brokerTime = models.DateTimeField()
+    open = models.FloatField()
+    high = models.FloatField()
+    low = models.FloatField()
+    close = models.FloatField()
+    tickVolume = models.IntegerField()
+    spread = models.IntegerField()
 
     class Meta:
-        ordering = ['-timestamp']
+        ordering = ['-time']
 
     def __str__(self):
         return f"{self.symbol}: ${self.price}"
