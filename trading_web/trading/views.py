@@ -33,6 +33,7 @@ from rest_framework.response import Response
 from .models import CustomUser, Trade, News, MarketData
 import logging
 from .services.market_data_service import fetch_and_save_market_data
+from django.utils import timezone
 
 def home(request):
     return render(request, 'home.html')
@@ -72,9 +73,17 @@ def dashboard(request):
     
     trade_dict = {trade['time__date']: trade['count'] for trade in trade_counts}
     
-   
-    chart_labels = [date.strftime('%a') for date in dates] 
-    chart_data = [trade_dict.get(date, 0) for date in dates]
+    now = timezone.now()
+    last_100_minutes = now - timedelta(minutes=100)
+    market_data = MarketData.objects.filter(time__gte=last_100_minutes).order_by('time')
+    
+    # Convert datetime objects to strings
+    market_data_list = list(market_data.values('time', 'close'))
+    for data in market_data_list:
+        data['time'] = data['time'].isoformat()
+    
+    market_data_json = json.dumps(market_data_list)
+    return render(request, 'dashboard.html', {'market_data_json': market_data_json})
     
     context = {
         'recent_trades': recent_trades,
