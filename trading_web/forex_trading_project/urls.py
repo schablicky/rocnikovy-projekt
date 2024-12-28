@@ -6,6 +6,7 @@ from trading.views import RegisterView
 from trading.views import home, dashboard
 from trading.views import execute_trade_view
 from trading.views import user_settings
+from trading.views import close_trade_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +23,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('execute-trade/', execute_trade_view, name='execute_trade'),
     path('settings/', user_settings, name='user_settings'),
+    path('close-trade/', close_trade_view, name='close_trade'),
 ]

@@ -147,6 +147,42 @@
         </form>
     </div>
 
+
+    <div class="bg-white p-6 rounded-lg shadow-md mb-12">
+        <h3 class="font-bold text-2xl text-gray-800 mb-4">Open Trades</h3>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2">Symbol</th>
+                    <th class="py-2">Volume</th>
+                    <th class="py-2">Open Price</th>
+                    <th class="py-2">Current Price</th>
+                    <th class="py-2">Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trade in open_trades %}
+                <tr>
+                    <td class="py-2">{{ trade.symbol }}</td>
+                    <td class="py-2">{{ trade.volume }}</td>
+                    <td class="py-2">{{ trade.openPrice }}</td>
+                    <td class="py-2">{{ trade.currentPrice }}</td>
+                    <td class="py-2">{{ trade.profit }}</td>
+                    <td class="py-2">
+                        <button onclick="closeTrade('{{ trade.id }}')" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300">
+                            Close Trade
+                        </button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="py-2 text-center text-gray-500">No open trades</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
  
     <div class="bg-white p-6 rounded-lg shadow-md mb-12">
         <h3 class="font-bold text-2xl text-gray-800 mb-4">Trades in the Last 7 Days</h3>

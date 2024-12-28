@@ -24,7 +24,7 @@ from .models import News
 from .forms import CustomUserCreationForm
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
-from .services.trade_service import execute_trade
+from .services.trade_service import execute_trade, close_trade
 import asyncio
 from django.shortcuts import redirect
 from .forms import UserSettingsForm
@@ -34,6 +34,7 @@ from .models import CustomUser, Trade, News, MarketData
 import logging
 from .services.market_data_service import fetch_and_save_market_data
 from django.utils import timezone
+import requests
 
 def home(request):
     return render(request, 'home.html')
@@ -78,6 +79,18 @@ def dashboard(request):
         market_data_list = list(market_data.values('time', 'close'))
         for data in market_data_list:
             data['time'] = data['time'].isoformat()
+
+        user = request.user
+        if user.is_authenticated:
+            url = f"https://mt-client-api-v1.london.agiliumtrade.ai/users/current/accounts/{user.metaid}/positions"
+            headers = {
+                "Accept": "application/json",
+                "auth-token": user.apikey,
+            }
+            response = requests.get(url, headers=headers)
+            open_trades = response.json() if response.status_code == 200 else []
+        else:
+            open_trades = []
         
         market_data_json = json.dumps(market_data_list)
         latest_news = News.objects.order_by('-publishdate')[:5]
@@ -87,10 +100,29 @@ def dashboard(request):
             'recent_trades': recent_trades,
             'latest_news': latest_news,
             'total_trades': total_user_trades,
+            'open_trades': open_trades,
     })
         
 
 logger = logging.getLogger(__name__)
+
+
+@login_required
+@api_view(['POST'])
+def close_trade_view(request):
+    user = request.user
+    position_id = request.data.get('positionId')
+    
+    if not user.apikey or not user.metaid:
+        return Response({'error': 'MetaAPI credentials not provided'}, status=400)
+    
+    try:
+        result = close_trade(user, position_id)
+        return Response({'success': True, 'result': result}, status=200)
+    except Exception as e:
+        if 'UnauthorizedError' in str(e):
+            return Response({'error': 'Invalid API Key. Please update your API Key in the user settings.'}, status=401)
+        return Response({'error': str(e)}, status=500)
 
 @login_required
 @api_view(['POST'])
