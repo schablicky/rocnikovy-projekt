@@ -52,3 +52,16 @@ Hlavní rysy aplikace:
 - **AI Frameworky**: TensorFlow
 - **Databáze**: ?
 - **API**: Integrace s MetaAPI nebo jinými poskytovateli tržních dat.
+
+## TO-DO list
+- [x] Možnost provést obchod
+- [x] Vidět své otevřené obchody
+- [x] Uzavřít své otevřené obchody
+- [x] Zprávy
+- [ ] Chat mezi uživateli
+- [ ] CopyTrading
+- [ ] AI
+- [x] Uživatelské nastavení
+- [ ] Graf s vývojem ceny
+- [ ] Social login
+- [ ] Žebříček
