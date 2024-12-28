@@ -62,36 +62,33 @@ def news_detail(request, pk):
     return render(request, 'news_detail.html', {'news': news_item})
 
 def dashboard(request):
-
-    recent_trades = Trade.objects.select_related('user').order_by('-time')[:5]
-    
-    
-    today = datetime.today().date()
-    dates = [today - timedelta(days=i) for i in range(6, -1, -1)]
-    trade_counts = Trade.objects.filter(time__date__gte=today - timedelta(days=6)).values('time__date').annotate(count=Count('id')).order_by('time__date')
-    
-    
-    trade_dict = {trade['time__date']: trade['count'] for trade in trade_counts}
-    
-    now = timezone.now()
-    last_100_minutes = now - timedelta(minutes=100)
-    market_data = MarketData.objects.filter(time__gte=last_100_minutes).order_by('time')
-    
-    # Convert datetime objects to strings
-    market_data_list = list(market_data.values('time', 'close'))
-    for data in market_data_list:
-        data['time'] = data['time'].isoformat()
-    
-    market_data_json = json.dumps(market_data_list)
-    return render(request, 'dashboard.html', {'market_data_json': market_data_json})
-    
-    context = {
-        'recent_trades': recent_trades,
+        recent_trades = Trade.objects.filter(user=request.user).select_related('user').order_by('-time')[:5]
         
-        'total_trades': Trade.objects.count(),
-        'latest_news': News.objects.order_by('-publishdate')[:3],
-    }
-    return render(request, 'dashboard.html', context)
+        today = datetime.today().date()
+        dates = [today - timedelta(days=i) for i in range(6, -1, -1)]
+        trade_counts = Trade.objects.filter(time__date__gte=today - timedelta(days=6)).values('time__date').annotate(count=Count('id')).order_by('time__date')
+        
+        trade_dict = {trade['time__date']: trade['count'] for trade in trade_counts}
+        
+        now = timezone.now()
+        last_100_minutes = now - timedelta(minutes=100)
+        market_data = MarketData.objects.filter(time__gte=last_100_minutes).order_by('time')
+        
+        # Convert datetime objects to strings
+        market_data_list = list(market_data.values('time', 'close'))
+        for data in market_data_list:
+            data['time'] = data['time'].isoformat()
+        
+        market_data_json = json.dumps(market_data_list)
+        latest_news = News.objects.order_by('-publishdate')[:5]
+        total_user_trades = Trade.objects.filter(user=request.user).count()
+        return render(request, 'dashboard.html', {
+            'market_data_json': market_data_json,
+            'recent_trades': recent_trades,
+            'latest_news': latest_news,
+            'total_trades': total_user_trades,
+    })
+        
 
 logger = logging.getLogger(__name__)
 
