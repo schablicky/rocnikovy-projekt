@@ -7,6 +7,10 @@ from trading.views import home, dashboard
 from trading.views import execute_trade_view
 from trading.views import user_settings
 from trading.views import close_trade_view
+from trading.views import message_list
+from trading.views import send_message
+from trading.views import chat_list
+from trading.views import chat_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +28,8 @@ urlpatterns = [
     path('execute-trade/', execute_trade_view, name='execute_trade'),
     path('settings/', user_settings, name='user_settings'),
     path('close-trade/', close_trade_view, name='close_trade'),
+    path('messages/', message_list, name='message_list'),
+    path('messages/send/', send_message, name='send_message'),
+    path('chats/', chat_list, name='chat_list'),
+    path('chats/<int:user_id>/', chat_detail, name='chat_detail'),
 ]

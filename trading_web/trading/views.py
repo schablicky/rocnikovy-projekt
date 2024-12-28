@@ -30,11 +30,14 @@ from django.shortcuts import redirect
 from .forms import UserSettingsForm
 from rest_framework import status
 from rest_framework.response import Response
-from .models import CustomUser, Trade, News, MarketData
+from .models import CustomUser, Trade, News, MarketData, Message
 import logging
 from .services.market_data_service import fetch_and_save_market_data
 from django.utils import timezone
 import requests
+from .forms import MessageForm, NewChatForm
+from django.db.models import Q
+
 
 def home(request):
     return render(request, 'home.html')
@@ -173,3 +176,73 @@ def fetch_and_save_market_view(request):
         if 'UnauthorizedError' in str(e):
             return Response({'error': 'Invalid API Key. Please update your API Key in the user settings.'}, status=401)
         return Response({'error': str(e)}, status=500)
+
+
+@login_required
+def message_list(request):
+    received_messages = Message.objects.filter(receiver=request.user).order_by('-timestamp')
+    sent_messages = Message.objects.filter(sender=request.user).order_by('-timestamp')
+    return render(request, 'message_list.html', {'received_messages': received_messages, 'sent_messages': sent_messages})
+
+@login_required
+def send_message(request):
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user
+            message.save()
+            return redirect('message_list')
+    else:
+        form = MessageForm()
+    return render(request, 'send_message.html', {'form': form})
+
+@login_required
+def chat_list(request):
+    existing_chats = Message.objects.filter(
+        Q(sender=request.user) | Q(receiver=request.user)
+    ).values('sender', 'receiver').distinct()
+    
+    chat_users = set()
+    for chat in existing_chats:
+        if chat['sender'] != request.user.id:
+            chat_users.add(chat['sender'])
+        if chat['receiver'] != request.user.id:
+            chat_users.add(chat['receiver'])
+    
+    chat_users = CustomUser.objects.filter(id__in=chat_users)
+    
+    if request.method == 'POST':
+        form = NewChatForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            try:
+                other_user = CustomUser.objects.get(username=username)
+                return redirect('trading:chat_detail', user_id=other_user.id)
+            except CustomUser.DoesNotExist:
+                form.add_error('username', 'User does not exist')
+    else:
+        form = NewChatForm()
+    
+    return render(request, 'chat_list.html', {'users': chat_users, 'form': form})
+
+@login_required
+def chat_detail(request, user_id):
+    other_user = get_object_or_404(CustomUser, id=user_id)
+    messages = Message.objects.filter(
+        Q(sender=request.user) & Q(receiver=other_user) |
+        Q(sender=other_user) & Q(receiver=request.user)
+    ).order_by('timestamp')
+    
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user
+            message.receiver = other_user
+            message.save()
+            return redirect('trading:chat_detail', user_id=user_id)
+    else:
+        form = MessageForm()
+
+    return render(request, 'chat_detail.html', {'other_user': other_user, 'messages': messages, 'form': form})
