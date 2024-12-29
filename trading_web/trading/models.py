@@ -39,8 +39,8 @@ class Message(models.Model):
 
 # News model
 class News(models.Model):
-    title = models.CharField(max_length=45)
-    content = models.TextField(max_length=500)
+    title = models.CharField(max_length=100)
+    content = models.TextField(max_length=5000)
     source = models.CharField(max_length=45)
     publishdate = models.DateTimeField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="news")
