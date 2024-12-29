@@ -42,6 +42,10 @@ from django.db.models import Q
 def home(request):
     return render(request, 'home.html')
 
+def leaderboards(request):
+    users = CustomUser.objects.all().order_by('-balance')
+    return render(request, 'leaderboards.html', {'users': users})
+
 class ApiEndpoint(ProtectedResourceView):
     def get(self, request, *args, **kwargs):
         return JsonResponse({'message': 'Hello, OAuth2!'})
@@ -182,7 +186,7 @@ def fetch_and_save_market_view(request):
 def message_list(request):
     received_messages = Message.objects.filter(receiver=request.user).order_by('-timestamp')
     sent_messages = Message.objects.filter(sender=request.user).order_by('-timestamp')
-    return render(request, 'message_list.html', {'received_messages': received_messages, 'sent_messages': sent_messages})
+    return render(request, 'chats/message_list.html', {'received_messages': received_messages, 'sent_messages': sent_messages})
 
 @login_required
 def send_message(request):
@@ -195,7 +199,7 @@ def send_message(request):
             return redirect('message_list')
     else:
         form = MessageForm()
-    return render(request, 'send_message.html', {'form': form})
+    return render(request, 'chats/send_message.html', {'form': form})
 
 @login_required
 def chat_list(request):
@@ -224,7 +228,7 @@ def chat_list(request):
     else:
         form = NewChatForm()
     
-    return render(request, 'chat_list.html', {'users': chat_users, 'form': form})
+    return render(request, 'chats/chat_list.html', {'users': chat_users, 'form': form})
 
 @login_required
 def chat_detail(request, user_id):
@@ -245,4 +249,4 @@ def chat_detail(request, user_id):
     else:
         form = MessageForm()
 
-    return render(request, 'chat_detail.html', {'other_user': other_user, 'messages': messages, 'form': form})
+    return render(request, 'chats/chat_detail.html', {'other_user': other_user, 'messages': messages, 'form': form})

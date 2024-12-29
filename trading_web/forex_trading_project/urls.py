@@ -11,6 +11,7 @@ from trading.views import message_list
 from trading.views import send_message
 from trading.views import chat_list
 from trading.views import chat_detail
+from trading.views import leaderboards
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +33,5 @@ urlpatterns = [
     path('messages/send/', send_message, name='send_message'),
     path('chats/', chat_list, name='chat_list'),
     path('chats/<int:user_id>/', chat_detail, name='chat_detail'),
+    path('leaderboards/', leaderboards, name='leaderboards'),
 ]
