@@ -146,6 +146,34 @@
             </button>
         </form>
     </div>
+    <script>
+        document.getElementById('trade-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+    
+            fetch("{% url 'execute_trade' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload(); // Reload the page to reflect changes
+                } else {
+                    alert("Error executing trade: " + data.error);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred while executing the trade.");
+            });
+        });
+    </script>
 
 
     <div class="bg-white p-6 rounded-lg shadow-md mb-12">
@@ -163,6 +191,30 @@
             <tbody>
                 {% for trade in open_trades %}
                 <tr>
+                    <script>
+                        function closeTrade(tradeId) {
+                            fetch("{% url 'close_trade' %}", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-CSRFToken": "{{ csrf_token }}",
+                                },
+                                body: JSON.stringify({ positionId: tradeId }),
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    location.reload(); // Reload the page to reflect changes
+                                } else {
+                                    alert("Error closing trade: " + data.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                                alert("An error occurred while closing the trade.");
+                            });
+                        }
+                    </script>
                     <td class="py-2">{{ trade.symbol }}</td>
                     <td class="py-2">{{ trade.volume }}</td>
                     <td class="py-2">{{ trade.openPrice }}</td>
