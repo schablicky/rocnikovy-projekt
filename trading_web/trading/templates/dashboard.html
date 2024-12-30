@@ -121,8 +121,8 @@
         {% endfor %}
         </div>
     </div>
-
-    <div class="bg-white p-6 rounded-lg shadow-md mb-12">
+<div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+    <div class="bg-white p-24 rounded-lg shadow-md ">
         <h3 class="font-bold text-2xl text-gray-800 mb-4">Execute Trade</h3>
         <form id="trade-form" method="post" action="{% url 'execute_trade' %}">
             {% csrf_token %}
@@ -176,16 +176,16 @@
     </script>
 
 
-    <div class="bg-white p-6 rounded-lg shadow-md mb-12">
-        <h3 class="font-bold text-2xl text-gray-800 mb-4">Open Trades</h3>
+    <div class="bg-white justify-center rounded-lg shadow hover:shadow-lg transition duration-300 text-center flex-1">
+        <h3 class="font-bold text-2xl text-gray-800 mb-6">Open Trades</h3>
         <table class="min-w-full bg-white">
             <thead>
-                <tr>
-                    <th class="py-2">Symbol</th>
-                    <th class="py-2">Volume</th>
-                    <th class="py-2">Open Price</th>
-                    <th class="py-2">Current Price</th>
-                    <th class="py-2">Profit</th>
+                <tr >
+                    <th class="m-5">Symbol</th>
+                    <th class="m-5">Volume</th>
+                    <th class="m-5">Open Price</th>
+                    <th class="m-5">Current Price</th>
+                    <th class="m-5">Profit</th>
                 </tr>
             </thead>
             <tbody>
@@ -234,7 +234,7 @@
             </tbody>
         </table>
     </div>
-
+</div>
  
     <div class="bg-white p-6 rounded-lg shadow-md mb-12">
         <h3 class="font-bold text-2xl text-gray-800 mb-4">Trades in the Last 7 Days</h3>
