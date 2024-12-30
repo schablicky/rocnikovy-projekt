@@ -64,4 +64,4 @@ Hlavní rysy aplikace:
 - [x] Uživatelské nastavení
 - [ ] Graf s vývojem ceny
 - [ ] Social login
-- [ ] Žebříček
+- [x] Žebříček
