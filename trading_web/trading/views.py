@@ -250,3 +250,31 @@ def chat_detail(request, user_id):
         form = MessageForm()
 
     return render(request, 'chats/chat_detail.html', {'other_user': other_user, 'messages': messages, 'form': form})
+
+
+@login_required
+@api_view(['GET'])
+def update_balance_view(request):
+    user = request.user
+    
+    if not user.apikey or not user.metaid:
+        return Response({'error': 'MetaAPI credentials not provided'}, status=400)
+    
+    url = f"https://mt-client-api-v1.london.agiliumtrade.ai/users/current/accounts/{user.metaid}/account-information"
+    headers = {
+        "Accept": "application/json",
+        "auth-token": user.apikey,
+    }
+    
+    try:
+        response = requests.get(url, headers=headers)
+        
+        if response.status_code == 200:
+            account_info = response.json()
+            user.balance = account_info['balance']
+            user.save()
+            return Response({'success': True, 'balance': user.balance}, status=200)
+        else:
+            return Response({'error': 'Failed to fetch account information'}, status=response.status_code)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)

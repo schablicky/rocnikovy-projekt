@@ -85,6 +85,8 @@ class Trade(models.Model):
     trade_type = models.CharField(max_length=4, choices=TRADE_TYPE_CHOICES)
     time = models.DateTimeField(auto_now_add=True)
     price = models.FloatField()
+    volume = models.FloatField(blank=True, null=True)
+    position_id = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
         ordering = ['-time']
