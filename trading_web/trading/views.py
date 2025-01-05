@@ -278,3 +278,16 @@ def update_balance_view(request):
             return Response({'error': 'Failed to fetch account information'}, status=response.status_code)
     except Exception as e:
         return Response({'error': str(e)}, status=500)
+    
+def chart_view(request):
+    # Načítání dat EURUSD z databáze
+    market_data = MarketData.objects.filter(symbol="EURUSD").order_by('time')
+    
+    labels = [data.time.strftime('%Y-%m-%d %H:%M:%S') for data in market_data]
+    dataset = [[data.open, data.close] for data in market_data]
+
+    context = {
+        'labels': labels,
+        'dataset': dataset,
+    }
+    return render(request, 'chart.html', context)
