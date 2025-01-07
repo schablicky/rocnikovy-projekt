@@ -1,8 +1,17 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import numpy as np
 import pandas as pd
 import logging
 from datetime import datetime
 from technical_indicators import *
+from django.contrib.auth import get_user_model
+from trading_web.trading.models import Trade
+from django.utils import timezone
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +31,7 @@ class TradingEnv:
         self.min_trade_interval = 1  # Minimum minutes between trades
         self.save_threshold = 5  # Save every 5 trades
         self.logger = logging.getLogger(__name__)
+        self.ai_user = get_user_model().objects.get(username='AI')
 
     def calculate_features(self, data):
         df = data.copy()
@@ -138,10 +148,20 @@ class TradingEnv:
             if not current_position and not self.position:
                 if action in [0, 1]:  # BUY or SELL
                     action_type = "ORDER_TYPE_BUY" if action == 0 else "ORDER_TYPE_SELL"
+                    trade_type = 'buy' if action == 0 else 'sell'
                     logger.info(f"Attempting to execute {action_type}")
                     
                     result = await data_fetcher.execute_trade(action_type, symbol)
                     if result and 'orderId' in result:
+                        Trade.objects.create(
+                            user=self.ai_user,
+                            symbol=symbol,
+                            trade_type=trade_type,
+                            price=current_price,
+                            volume=1.0,
+                            position_id=result['orderId']
+                        )
+
                         self.position = 'long' if action == 0 else 'short'
                         self.position_id = result['orderId']
                         self.entry_price = current_price
@@ -156,6 +176,15 @@ class TradingEnv:
                 
                 result = await data_fetcher.close_position(current_position['id'])
                 if result:
+                    Trade.objects.create(
+                        user=self.ai_user,
+                        symbol=symbol,
+                        trade_type='sell' if self.position == 'long' else 'buy',
+                        price=current_price,
+                        volume=1.0,
+                        position_id=self.position_id
+                    )
+
                     reward = profit
                     self.total_profit += reward
                     self.position = None
