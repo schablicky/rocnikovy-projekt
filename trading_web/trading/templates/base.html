@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{% if user.theme == 'dark' %}dark{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Forex Trading AI{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
-
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 </head>
-<body class="{% if user.is_authenticated and user.theme == 'dark' %}dark bg-gray-900 text-white{% else %}bg-white- text-gray-900{% endif %}">
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
 
     <nav class="bg-gray-800">
         <div class="max-w-7xl mx-auto px-4">

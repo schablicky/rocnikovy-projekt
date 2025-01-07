@@ -4,20 +4,20 @@
 
 {% block content %}
 <div class="container mx-auto px-4 py-12">
-    <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-2xl text-gray-800 mb-4">User Settings</h3>
+    <div class="bg-white p-6 dark:bg-gray-800 rounded-lg shadow-md">
+        <h3 class="font-bold text-2xl text-gray-400 mb-4">User Settings</h3>
         <form method="post">
             {% csrf_token %}
-            <div class="mb-4">
-                <label for="apikey" class="block text-gray-700">MetaAPI Key</label>
+            <div class="mb-4 text-gray-500">
+                <label for="apikey" class="block text-gray-500">MetaAPI Key</label>
                 {{ form.apikey }}
             </div>
-            <div class="mb-4">
-                <label for="metaid" class="block text-gray-700">MetaAPI Login</label>
+            <div class="mb-4 text-gray-500">
+                <label for="metaid" class="block text-gray-500">MetaAPI Login</label>
                 {{ form.metaid }}
             </div>
-            <div class="mb-4">
-                <label for="theme" class="block text-gray-700">Theme</label>
+            <div class="mb-4 text-gray-500">
+                <label for="theme" class="block text-gray-500">Theme</label>
                 {{ form.theme }}
             </div>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save Settings</button>

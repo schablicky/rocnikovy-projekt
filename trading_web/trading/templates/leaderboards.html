@@ -4,24 +4,24 @@
 
 {% block content %}
 <div class="text-center mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold mb-4">Leaderboards</h1>
-    <h2 class="mb-6 text-gray-600">Top users by balance:</h2>
-    <table class="w-full border-collapse">
+    <h1 class="text-4xl font-bold mb-4 dark:text-white">Leaderboards</h1>
+    <h2 class="mb-6 text-gray-600 dark:text-gray-400">Top users by balance:</h2>
+    <table class="w-full border-collapse bg-white dark:bg-gray-800">
         <thead>
-            <tr class="bg-gray-100">
-                <th class="border py-2 px-4">#</th>
-                <th class="border py-2 px-4">Username</th>
-                <th class="border py-2 px-4">Role</th>
-                <th class="border py-2 px-4">Balance</th>
+            <tr class="bg-gray-100 dark:bg-gray-700">
+                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">#</th>
+                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">Username</th>
+                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">Role</th>
+                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">Balance</th>
             </tr>
         </thead>
         <tbody>
             {% for user in users %}
-            <tr>
-                <td class="border py-2 px-4">{{ forloop.counter }}</td>
-                <td class="border py-2 px-4">{{ user.username }}</td>
-                <td class="border py-2 px-4">{{ user.role }}</td>
-                <td class="border py-2 px-4">{{ user.balance }}</td>
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ forloop.counter }}</td>
+                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ user.username }}</td>
+                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ user.role }}</td>
+                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ user.balance }}</td>
             </tr>
             {% endfor %}
         </tbody>
