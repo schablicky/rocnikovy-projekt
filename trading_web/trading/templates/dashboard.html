@@ -139,6 +139,36 @@
         {% endfor %}
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch("http://localhost:8001/state")
+                .then(response => response.json())
+                .then(data => {
+                    const currentPosition = data.trading_stats.current_position;
+                    if (currentPosition) {
+                        if (JSON.stringify(currentPosition, null, 2) == "long") {
+                            document.getElementById('current-position').style.color = "blue";
+                            document.getElementById('current-position').style.innerText = "BUY";
+                        } else if (JSON.stringify(currentPosition, null, 2) == "short") {
+                            document.getElementById('current-position').style.color = "red";
+                            document.getElementById('current-position').style.innerText = "SELL";
+                        }
+                        document.getElementById('current-position').innerText = JSON.stringify(currentPosition, null, 2);
+                    } else {
+                        document.getElementById('current-position').innerText = "No current position";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching current position:", error);
+                });
+                setInterval(fetchCurrentPosition, 1000);
+        });
+    </script>
+    
+    <div class="bg-white p-6 dark:bg-gray-700 rounded-lg shadow-md mb-12">
+        <h3 class="font-bold text-2xl text-gray-500 mb-4">Current AI Opinion</h3>
+        <pre id="current-position" class="text-gray-600 dark:text-gray-300">Loading...</pre>
+    </div>
 <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
     <div class="bg-white p-24 dark:bg-gray-700  rounded-lg shadow-md ">
         <h3 class="font-bold text-2xl text-gray-500 dark:text-white mb-4">Execute Trade</h3>
