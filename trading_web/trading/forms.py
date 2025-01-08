@@ -4,9 +4,9 @@ from django import forms
 from .models import CustomUser, Message
 
 class CustomUserCreationForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = get_user_model()
-        fields = UserCreationForm.Meta.fields + ('email', 'role')
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email', 'password1', 'password2') 
 
 class UserSettingsForm(forms.ModelForm):
     class Meta:

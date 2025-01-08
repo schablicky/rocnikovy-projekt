@@ -3,28 +3,73 @@
 {% block title %}Leaderboards{% endblock %}
 
 {% block content %}
-<div class="text-center mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold mb-4 dark:text-white">Leaderboards</h1>
-    <h2 class="mb-6 text-gray-600 dark:text-gray-400">Top users by balance:</h2>
-    <table class="w-full border-collapse bg-white dark:bg-gray-800">
-        <thead>
-            <tr class="bg-gray-100 dark:bg-gray-700">
-                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">#</th>
-                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">Username</th>
-                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">Role</th>
-                <th class="border dark:border-gray-600 py-2 px-4 dark:text-gray-200">Balance</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ forloop.counter }}</td>
-                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ user.username }}</td>
-                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ user.role }}</td>
-                <td class="border dark:border-gray-600 py-2 px-4 dark:text-gray-300">{{ user.balance }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4 dark:text-white">Trading Leaderboards</h1>
+        <p class="text-gray-600 dark:text-gray-400">Top performing traders on our platform</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Top Traders</h2>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-50 dark:bg-gray-700">
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-gray-300">Rank</th>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-gray-300">Trader</th>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-gray-300">Role</th>
+                        <th class="px-6 py-4 text-right text-sm font-medium text-gray-500 dark:text-gray-300">Balance</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                    {% for user in users %}
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                {% if forloop.counter == 1 %}
+                                <span class="text-2xl mr-2">🥇</span>
+                                {% elif forloop.counter == 2 %}
+                                <span class="text-2xl mr-2">🥈</span>
+                                {% elif forloop.counter == 3 %}
+                                <span class="text-2xl mr-2">🥉</span>
+                                {% else %}
+                                <span class="text-gray-500 dark:text-gray-400 font-medium">{{ forloop.counter }}</span>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="h-10 w-10 flex-shrink-0">
+                                    <div class="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                                        <span class="text-gray-600 dark:text-gray-300 font-medium">{{ user.username|make_list|first|upper }}</span>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                        {{ user.username }}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                {% if user.role == 'admin' %}bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200
+                                {% elif user.role == 'trader' %}bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
+                                {% else %}bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200{% endif %}">
+                                {{ user.role }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-gray-900 dark:text-white">
+                            ${{ user.balance|floatformat:2 }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}
