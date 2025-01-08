@@ -80,3 +80,605 @@ max    1.410812e+00  7.236543e-01         0.0    0.0  1.363217e+00  1.791951e+00
 2025-01-08 18:51:17.242 INFO {main} [main] Environment state - Position: short, Entry price: 1.03041
 2025-01-08 18:51:17.243 INFO {main} [main] Total profit: 0, Trades made: 1
 2025-01-08 18:52:17.260 INFO {main} [<module>] Bot stopped by user
+2025-01-08 18:58:57.443 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 18:58:57.446 INFO {main} [main] === Trading Bot Starting ===
+2025-01-08 18:58:57.449 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 18:58:57.607 DEBUG {attrs} [__getitem__] Creating converter from 3 to 5
+2025-01-08 18:58:58.425 INFO {main} [main] Model configuration: Window Size=10, State Size=10
+2025-01-08 18:58:58.425 INFO {main} [main] Current epsilon value: 1
+2025-01-08 18:58:58.425 INFO {main} [initialize_data] Loading initial candles...
+2025-01-08 18:59:07.685 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 1/3
+2025-01-08 18:59:12.853 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03051, 'high': 1.03054, 'low': 1.0305, 'tickVolume': 11, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:14.003 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03051, 'high': 1.03054, 'low': 1.0305, 'tickVolume': 11, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:15.163 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03051, 'high': 1.03054, 'low': 1.0305, 'tickVolume': 11, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:16.320 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03051, 'high': 1.03054, 'low': 1.0305, 'tickVolume': 11, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:17.482 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03051, 'high': 1.03054, 'low': 1.0305, 'tickVolume': 11, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:18.668 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03051, 'high': 1.03054, 'low': 1.0305, 'tickVolume': 15, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:19.842 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03051, 'high': 1.03054, 'low': 1.0305, 'tickVolume': 15, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:21.007 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03048, 'high': 1.03054, 'low': 1.03048, 'tickVolume': 17, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:22.158 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.03048, 'high': 1.03054, 'low': 1.03048, 'tickVolume': 17, 'spread': 4.999999999988347e-05}
+2025-01-08 18:59:23.337 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:59:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:59:00.000', 'open': 1.03054, 'close': 1.0305, 'high': 1.03054, 'low': 1.03048, 'tickVolume': 20, 'spread': 5.0000000000105516e-05}
+2025-01-08 18:59:24.348 INFO {main} [initialize_data] Loaded 10 initial candles
+2025-01-08 18:59:24.348 INFO {main} [main] Initial price history loaded: 10 candles
+2025-01-08 19:00:24.364 INFO {main} [<module>] Bot stopped by user
+2025-01-08 19:01:38.438 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:01:38.441 INFO {main} [main] === Trading Bot Starting ===
+2025-01-08 19:01:38.444 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:01:38.585 DEBUG {attrs} [__getitem__] Creating converter from 3 to 5
+2025-01-08 19:01:39.296 INFO {main} [main] Model configuration: Window Size=10, State Size=10
+2025-01-08 19:01:39.297 INFO {main} [main] Current epsilon value: 1
+2025-01-08 19:01:39.297 INFO {main} [initialize_data] Loading initial candles...
+2025-01-08 19:01:39.464 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03058, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 28, 'spread': 4.999999999988347e-05}
+2025-01-08 19:01:40.648 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03058, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 31, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:01:41.807 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03058, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 31, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:01:42.963 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03058, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 31, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:01:44.139 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03059, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 36, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:01:45.297 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03059, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 36, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:01:46.467 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03059, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 36, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:01:47.629 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03059, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 36, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:01:48.785 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03062, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 39, 'spread': 4.999999999988347e-05}
+2025-01-08 19:01:49.940 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:01:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:01:00.000', 'open': 1.03069, 'close': 1.03062, 'high': 1.03071, 'low': 1.03058, 'tickVolume': 39, 'spread': 4.999999999988347e-05}
+2025-01-08 19:01:50.954 INFO {main} [initialize_data] Loaded 10 initial candles
+2025-01-08 19:01:50.954 INFO {main} [main] Initial price history loaded: 10 candles
+2025-01-08 19:02:50.955 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:02:51.112 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:02:00.000Z', 'brokerTime': '2025-01-08 20:02:00.000', 'open': 1.03056, 'close': 1.031, 'high': 1.03102, 'low': 1.03056, 'tickVolume': 70, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:02:51.113 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:02:51.119 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:02:51.122 DEBUG {main} [main] Latest prices: Close=1.031, Open=1.03056
+2025-01-08 19:02:51.129 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:02:51.129 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:02:51.139 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:02:51.139 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:02:51.140 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:02:51.141 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-08 19:02:51.142 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=38.5000, std=11.4819
+2025-01-08 19:02:51.142 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0306, std=0.0001
+2025-01-08 19:02:51.142 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:02:51.143 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:02:51.160 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns   momentum  ...  tickVolume         close
+count  1.000000e+01  10.000000  ...   10.000000  1.000000e+01
+mean   4.440892e-17   0.000000  ...    0.000000 -5.145662e-13
+std    9.427316e-01   0.666469  ...    1.000000  9.999228e-01
+min   -3.721150e-01  -0.517740  ...   -0.653204 -4.170837e-01
+25%   -3.721150e-01  -0.388302  ...   -0.544336 -3.977743e-01
+50%   -3.721150e-01   0.000000  ...   -0.217735 -3.398460e-01
+75%   -1.727623e-01   0.000000  ...   -0.021773 -1.660611e-01
+max    2.657955e+00   1.783320  ...    2.743456  2.826901e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:02:51.161 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:02:51.162 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:02:51.162 DEBUG {main} [main] State values: min=-0.6532037258148193, max=2.8269004821777344, mean=-3.973643192267673e-09
+2025-01-08 19:02:51.690 DEBUG {dql_model} [act] Random action: 3, epsilon: 1.0000, steps: 1
+2025-01-08 19:02:51.691 INFO {main} [main] Q-values: [0.00908338 0.00598148 0.00314786 0.00885656]
+2025-01-08 19:02:51.691 INFO {main} [main] Selected action: 3
+2025-01-08 19:02:51.691 INFO {main} [main] Random action: True
+2025-01-08 19:02:51.691 DEBUG {main} [main] Current price: 1.031
+2025-01-08 19:02:51.857 INFO {main} [main] Current positions: []
+2025-01-08 19:02:52.006 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:02:52.006 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 0
+2025-01-08 19:02:52.007 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:02:52.007 INFO {main} [main] Environment state - Position: None, Entry price: None
+2025-01-08 19:02:52.007 INFO {main} [main] Total profit: 0, Trades made: 0
+2025-01-08 19:03:52.015 INFO {main} [<module>] Bot stopped by user
+2025-01-08 19:04:11.959 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:04:11.961 INFO {main} [main] === Trading Bot Starting ===
+2025-01-08 19:04:11.964 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:04:12.115 DEBUG {attrs} [__getitem__] Creating converter from 3 to 5
+2025-01-08 19:04:12.970 INFO {main} [main] Model configuration: Window Size=10, State Size=10
+2025-01-08 19:04:12.970 INFO {main} [main] Current epsilon value: 1
+2025-01-08 19:04:12.971 INFO {main} [initialize_data] Loading initial candles...
+2025-01-08 19:04:13.177 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 11, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:14.337 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 11, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:15.513 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 11, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:16.675 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 11, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:17.849 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 11, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:19.033 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 13, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:20.211 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 13, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:21.375 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 13, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:22.574 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03104, 'high': 1.03105, 'low': 1.03101, 'tickVolume': 13, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:04:23.775 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:04:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:04:00.000', 'open': 1.03101, 'close': 1.03108, 'high': 1.03108, 'low': 1.03094, 'tickVolume': 17, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:04:24.783 INFO {main} [initialize_data] Loaded 10 initial candles
+2025-01-08 19:04:24.784 INFO {main} [main] Initial price history loaded: 10 candles
+2025-01-08 19:05:24.785 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:05:24.970 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:05:00.000Z', 'brokerTime': '2025-01-08 20:05:00.000', 'open': 1.03109, 'close': 1.03094, 'high': 1.03109, 'low': 1.03088, 'tickVolume': 23, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:05:24.971 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:05:24.972 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:05:24.972 DEBUG {main} [main] Latest prices: Close=1.03094, Open=1.03109
+2025-01-08 19:05:24.974 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:05:24.974 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:05:24.978 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0000
+2025-01-08 19:05:24.978 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-08 19:05:24.978 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:05:24.980 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0000, std=nan
+2025-01-08 19:05:24.980 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=13.6000, std=3.7771
+2025-01-08 19:05:24.981 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0310, std=0.0000
+2025-01-08 19:05:24.982 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:05:24.982 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:05:24.996 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns   momentum  ...    tickVolume         close
+count  10.000000  10.000000  ...  1.000000e+01  1.000000e+01
+mean    0.000000   0.000000  ...  1.332268e-16  5.025091e-12
+std     0.942615   0.666008  ...  1.000000e+00  9.997171e-01
+min    -2.571533  -1.685648  ... -6.883544e-01 -2.659151e+00
+25%     0.221680   0.000000  ... -6.883544e-01  1.697331e-01
+50%     0.221680   0.000000  ... -1.588510e-01  1.697331e-01
+75%     0.221680   0.229852  ... -1.588510e-01  1.697331e-01
+max     1.019772   0.996093  ...  2.488666e+00  1.301287e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:05:24.997 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:05:24.998 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:05:24.998 DEBUG {main} [main] State values: min=-2.659151554107666, max=2.488665819168091, mean=0.0
+2025-01-08 19:05:25.428 DEBUG {dql_model} [act] Random action: 1, epsilon: 1.0000, steps: 1
+2025-01-08 19:05:25.429 INFO {main} [main] Q-values: [0.01115969 0.01053282 0.01049878 0.02027388]
+2025-01-08 19:05:25.429 INFO {main} [main] Selected action: 1
+2025-01-08 19:05:25.430 INFO {main} [main] Random action: True
+2025-01-08 19:05:25.430 DEBUG {main} [main] Current price: 1.03094
+2025-01-08 19:05:25.578 INFO {main} [main] Current positions: []
+2025-01-08 19:05:25.728 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:05:25.730 INFO {trading_env} [step] Attempting to execute ORDER_TYPE_SELL
+2025-01-08 19:05:26.020 INFO {trading_env} [step] Trade executed: ORDER_TYPE_SELL, ID: 1383349266
+2025-01-08 19:05:26.021 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-08 19:05:26.021 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:05:26.021 INFO {main} [main] Environment state - Position: short, Entry price: 1.03094
+2025-01-08 19:05:26.021 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-08 19:06:26.021 INFO {main} [<module>] Bot stopped by user
+2025-01-08 19:10:59.499 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:10:59.501 INFO {main} [main] === Trading Bot Starting ===
+2025-01-08 19:10:59.505 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:10:59.653 DEBUG {attrs} [__getitem__] Creating converter from 3 to 5
+2025-01-08 19:11:00.383 INFO {main} [main] Model configuration: Window Size=10, State Size=10
+2025-01-08 19:11:00.384 INFO {main} [main] Current epsilon value: 1
+2025-01-08 19:11:00.384 INFO {main} [initialize_data] Loading initial candles...
+2025-01-08 19:11:04.126 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:10:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:10:00.000', 'open': 1.03092, 'close': 1.03089, 'high': 1.031, 'low': 1.03085, 'tickVolume': 53, 'spread': 4.999999999988347e-05}
+2025-01-08 19:11:05.332 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:10:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:10:00.000', 'open': 1.03092, 'close': 1.03089, 'high': 1.031, 'low': 1.03085, 'tickVolume': 53, 'spread': 4.999999999988347e-05}
+2025-01-08 19:11:06.482 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:11:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:11:00.000', 'open': 1.03088, 'close': 1.03088, 'high': 1.0309, 'low': 1.03088, 'tickVolume': 4, 'spread': 4.999999999988347e-05}
+2025-01-08 19:11:07.637 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:11:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:11:00.000', 'open': 1.03088, 'close': 1.03088, 'high': 1.0309, 'low': 1.03088, 'tickVolume': 4, 'spread': 4.999999999988347e-05}
+2025-01-08 19:11:08.811 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:11:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:11:00.000', 'open': 1.03088, 'close': 1.03089, 'high': 1.0309, 'low': 1.03088, 'tickVolume': 7, 'spread': 4.999999999988347e-05}
+2025-01-08 19:11:18.975 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 1/3
+2025-01-08 19:11:33.165 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 2/3
+2025-01-08 19:11:47.340 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 3/3
+2025-01-08 19:12:02.541 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 1/3
+2025-01-08 19:12:07.699 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:12:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:12:00.000', 'open': 1.03097, 'close': 1.03093, 'high': 1.03099, 'low': 1.03092, 'tickVolume': 8, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:12:08.863 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:12:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:12:00.000', 'open': 1.03097, 'close': 1.03093, 'high': 1.03099, 'low': 1.03092, 'tickVolume': 8, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:12:10.041 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:12:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:12:00.000', 'open': 1.03097, 'close': 1.03088, 'high': 1.03099, 'low': 1.03088, 'tickVolume': 10, 'spread': 4.999999999988347e-05}
+2025-01-08 19:12:11.215 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:12:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:12:00.000', 'open': 1.03097, 'close': 1.03088, 'high': 1.03099, 'low': 1.03088, 'tickVolume': 10, 'spread': 4.999999999988347e-05}
+2025-01-08 19:12:12.223 INFO {main} [initialize_data] Loaded 9 initial candles
+2025-01-08 19:12:12.223 INFO {main} [main] Initial price history loaded: 9 candles
+2025-01-08 19:13:12.233 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:13:12.396 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:13:00.000Z', 'brokerTime': '2025-01-08 20:13:00.000', 'open': 1.0308, 'close': 1.0308, 'high': 1.0308, 'low': 1.03077, 'tickVolume': 6, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:13:12.397 DEBUG {main} [main] Price history length: 10
+2025-01-08 19:13:12.398 DEBUG {main} [main] Data shape: (9, 10)
+2025-01-08 19:13:12.398 DEBUG {main} [main] Latest prices: Close=1.0308, Open=1.0308
+2025-01-08 19:13:12.399 WARNING {trading_env} [get_state] Insufficient data: 9/10 candles
+2025-01-08 19:13:12.399 WARNING {main} [main] Invalid state generated
+2025-01-08 19:14:12.395 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:14:12.539 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:14:00.000Z', 'brokerTime': '2025-01-08 20:14:00.000', 'open': 1.03083, 'close': 1.03086, 'high': 1.0309, 'low': 1.03083, 'tickVolume': 8, 'spread': 4.999999999988347e-05}
+2025-01-08 19:14:12.540 DEBUG {main} [main] Price history length: 10
+2025-01-08 19:14:12.541 DEBUG {main} [main] Data shape: (9, 10)
+2025-01-08 19:14:12.541 DEBUG {main} [main] Latest prices: Close=1.03086, Open=1.03083
+2025-01-08 19:14:12.541 WARNING {trading_env} [get_state] Insufficient data: 9/10 candles
+2025-01-08 19:14:12.541 WARNING {main} [main] Invalid state generated
+2025-01-08 19:15:12.542 INFO {main} [<module>] Bot stopped by user
+2025-01-08 19:15:22.491 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:15:22.493 INFO {main} [main] === Trading Bot Starting ===
+2025-01-08 19:15:22.497 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 19:15:22.637 DEBUG {attrs} [__getitem__] Creating converter from 3 to 5
+2025-01-08 19:15:23.380 INFO {main} [main] Model configuration: Window Size=10, State Size=10
+2025-01-08 19:15:23.381 INFO {main} [main] Current epsilon value: 1
+2025-01-08 19:15:23.381 INFO {main} [initialize_data] Loading initial candles...
+2025-01-08 19:15:23.558 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03086, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 24, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:24.729 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03086, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 24, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:25.911 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03085, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 28, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:27.066 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03085, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 28, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:28.241 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03085, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 28, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:29.397 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03082, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 30, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:30.548 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03082, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 30, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:31.709 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03082, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 30, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:32.862 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03082, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 30, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:34.022 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 18:15:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 20:15:00.000', 'open': 1.03075, 'close': 1.03086, 'high': 1.03087, 'low': 1.03068, 'tickVolume': 33, 'spread': 4.999999999988347e-05}
+2025-01-08 19:15:35.018 INFO {main} [initialize_data] Loaded 10 initial candles
+2025-01-08 19:15:35.018 INFO {main} [main] Initial price history loaded: 10 candles
+2025-01-08 19:16:35.022 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:16:35.238 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:16:00.000Z', 'brokerTime': '2025-01-08 20:16:00.000', 'open': 1.03085, 'close': 1.03094, 'high': 1.03095, 'low': 1.03085, 'tickVolume': 30, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:16:35.238 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:16:35.239 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:16:35.240 DEBUG {main} [main] Latest prices: Close=1.03094, Open=1.03085
+2025-01-08 19:16:35.241 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:16:35.241 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:16:35.245 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0000
+2025-01-08 19:16:35.245 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:16:35.247 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:16:35.248 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-08 19:16:35.249 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=29.1000, std=2.3310
+2025-01-08 19:16:35.249 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0308, std=0.0000
+2025-01-08 19:16:35.249 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:16:35.249 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:16:35.264 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns   momentum  ...    tickVolume         close
+count  10.000000  10.000000  ...  1.000000e+01  1.000000e+01
+mean    0.000000   0.000000  ... -5.884182e-16 -1.832223e-12
+std     0.942507   0.666151  ...  1.000000e+00  9.997250e-01
+min    -1.207772  -0.690591  ... -2.187948e+00 -7.976435e-01
+25%    -0.276063  -0.405349  ... -4.719104e-01 -7.976435e-01
+50%    -0.276063   0.000000  ...  3.861085e-01  2.750495e-02
+75%    -0.069016   0.000000  ...  3.861085e-01  2.337921e-01
+max     2.208469   1.711457  ...  1.673137e+00  2.502950e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:16:35.265 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:16:35.266 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:16:35.266 DEBUG {main} [main] State values: min=-2.187947988510132, max=2.502950429916382, mean=-7.947286384535346e-09
+2025-01-08 19:16:35.674 DEBUG {dql_model} [act] Random action: 2, epsilon: 1.0000, steps: 1
+2025-01-08 19:16:35.676 INFO {main} [main] Q-values: [-7.0377872e-03  2.1188986e-05 -7.3354780e-03 -5.7810657e-03]
+2025-01-08 19:16:35.676 INFO {main} [main] Selected action: 2
+2025-01-08 19:16:35.676 INFO {main} [main] Random action: True
+2025-01-08 19:16:35.676 DEBUG {main} [main] Current price: 1.03094
+2025-01-08 19:16:35.858 INFO {main} [main] Current positions: []
+2025-01-08 19:16:36.006 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:16:36.007 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 0
+2025-01-08 19:16:36.007 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:16:36.007 INFO {main} [main] Environment state - Position: None, Entry price: None
+2025-01-08 19:16:36.007 INFO {main} [main] Total profit: 0, Trades made: 0
+2025-01-08 19:17:36.007 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:17:36.172 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:17:00.000Z', 'brokerTime': '2025-01-08 20:17:00.000', 'open': 1.03089, 'close': 1.03108, 'high': 1.03111, 'low': 1.03089, 'tickVolume': 39, 'spread': 4.0000000000040004e-05}
+2025-01-08 19:17:36.172 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:17:36.173 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:17:36.173 DEBUG {main} [main] Latest prices: Close=1.03108, Open=1.03089
+2025-01-08 19:17:36.174 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:17:36.174 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:17:36.177 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:17:36.178 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:17:36.178 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:17:36.180 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-08 19:17:36.181 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=30.6000, std=3.3066
+2025-01-08 19:17:36.181 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0309, std=0.0001
+2025-01-08 19:17:36.182 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:17:36.182 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:17:36.195 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns      momentum  ...    tickVolume         close
+count  10.000000  1.000000e+01  ...  1.000000e+01  1.000000e+01
+mean    0.000000  2.220446e-17  ... -3.996803e-16  2.170086e-12
+std     0.942626  6.663910e-01  ...  1.000000e+00  9.998778e-01
+min    -1.044570 -7.700394e-01  ... -7.863159e-01 -6.230397e-01
+25%    -0.480489 -3.368801e-01  ... -6.351013e-01 -6.230397e-01
+50%    -0.480489  0.000000e+00  ... -1.814575e-01 -2.565458e-01
+75%     0.203731  0.000000e+00  ... -1.814575e-01 -1.649223e-01
+max     2.151661  1.556076e+00  ...  2.540405e+00  2.553241e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:17:36.197 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:17:36.197 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:17:36.197 DEBUG {main} [main] State values: min=-1.0445704460144043, max=2.55324125289917, mean=0.0
+2025-01-08 19:17:36.250 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9950, steps: 2
+2025-01-08 19:17:36.251 INFO {main} [main] Q-values: [-0.00826189 -0.00551064 -0.00498011 -0.00710892]
+2025-01-08 19:17:36.251 INFO {main} [main] Selected action: 3
+2025-01-08 19:17:36.251 INFO {main} [main] Random action: True
+2025-01-08 19:17:36.251 DEBUG {main} [main] Current price: 1.03108
+2025-01-08 19:17:36.411 INFO {main} [main] Current positions: []
+2025-01-08 19:17:36.562 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:17:36.562 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 0
+2025-01-08 19:17:36.562 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:17:36.563 INFO {main} [main] Environment state - Position: None, Entry price: None
+2025-01-08 19:17:36.563 INFO {main} [main] Total profit: 0, Trades made: 0
+2025-01-08 19:18:36.579 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:18:36.735 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:18:00.000Z', 'brokerTime': '2025-01-08 20:18:00.000', 'open': 1.03101, 'close': 1.03105, 'high': 1.03105, 'low': 1.03096, 'tickVolume': 17, 'spread': 4.999999999988347e-05}
+2025-01-08 19:18:36.735 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:18:36.736 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:18:36.737 DEBUG {main} [main] Latest prices: Close=1.03105, Open=1.03101
+2025-01-08 19:18:36.737 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:18:36.737 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:18:36.740 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:18:36.741 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:18:36.742 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:18:36.742 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-08 19:18:36.743 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=29.5000, std=5.4212
+2025-01-08 19:18:36.743 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0309, std=0.0001
+2025-01-08 19:18:36.745 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:18:36.745 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:18:36.757 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  ...  tickVolume         close
+count  1.000000e+01  1.000000e+01  ...   10.000000  1.000000e+01
+mean   5.551115e-17  2.220446e-17  ...    0.000000  4.493961e-13
+std    9.426350e-01  6.663998e-01  ...    1.000000  9.998988e-01
+min   -9.348961e-01 -1.149299e+00  ...   -2.305783 -7.183993e-01
+25%   -3.978223e-01  0.000000e+00  ...   -0.184463 -7.183993e-01
+50%   -3.978223e-01  0.000000e+00  ...    0.092231 -4.148503e-01
+75%    2.387228e-01  1.166877e-02  ...    0.092231  2.934307e-01
+max    2.108304e+00  1.102661e+00  ...    1.752395  1.912359e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:18:36.759 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:18:36.759 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:18:36.759 DEBUG {main} [main] State values: min=-2.3057830333709717, max=2.1083035469055176, mean=-1.9868215961338365e-09
+2025-01-08 19:18:36.810 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9900, steps: 3
+2025-01-08 19:18:36.811 INFO {main} [main] Q-values: [-9.416366e-03 -8.442730e-05 -6.185133e-03 -6.225027e-03]
+2025-01-08 19:18:36.811 INFO {main} [main] Selected action: 3
+2025-01-08 19:18:36.811 INFO {main} [main] Random action: True
+2025-01-08 19:18:36.811 DEBUG {main} [main] Current price: 1.03105
+2025-01-08 19:18:36.959 INFO {main} [main] Current positions: []
+2025-01-08 19:18:37.106 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:18:37.107 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 0
+2025-01-08 19:18:37.107 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:18:37.107 INFO {main} [main] Environment state - Position: None, Entry price: None
+2025-01-08 19:18:37.108 INFO {main} [main] Total profit: 0, Trades made: 0
+2025-01-08 19:19:37.117 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:19:37.269 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:19:00.000Z', 'brokerTime': '2025-01-08 20:19:00.000', 'open': 1.03096, 'close': 1.03099, 'high': 1.03101, 'low': 1.03095, 'tickVolume': 18, 'spread': 4.999999999988347e-05}
+2025-01-08 19:19:37.269 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:19:37.270 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:19:37.271 DEBUG {main} [main] Latest prices: Close=1.03099, Open=1.03096
+2025-01-08 19:19:37.271 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:19:37.272 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:19:37.275 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:19:37.276 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:19:37.277 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:19:37.278 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-08 19:19:37.278 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=28.5000, std=6.5362
+2025-01-08 19:19:37.279 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0309, std=0.0001
+2025-01-08 19:19:37.279 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:19:37.279 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:19:37.293 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns   momentum  ...  tickVolume         close
+count  10.000000  10.000000  ...   10.000000  1.000000e+01
+mean    0.000000   0.000000  ...    0.000000  8.687939e-13
+std     0.942652   0.666319  ...    1.000000  9.999022e-01
+min    -1.216979  -1.496574  ...   -1.759426 -8.314158e-01
+25%    -0.612983   0.000000  ...    0.000000 -8.314158e-01
+50%    -0.250602   0.000000  ...    0.229490 -4.890681e-01
+75%     0.295344   0.091072  ...    0.229490  7.091488e-01
+max     2.004517   1.031341  ...    1.606432  1.711739e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:19:37.293 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:19:37.295 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:19:37.295 DEBUG {main} [main] State values: min=-1.7594256401062012, max=2.0045166015625, mean=9.934107980669182e-10
+2025-01-08 19:19:37.343 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9851, steps: 4
+2025-01-08 19:19:37.345 INFO {main} [main] Q-values: [-0.00921226  0.00255263 -0.00656268 -0.00359055]
+2025-01-08 19:19:37.345 INFO {main} [main] Selected action: 3
+2025-01-08 19:19:37.345 INFO {main} [main] Random action: True
+2025-01-08 19:19:37.345 DEBUG {main} [main] Current price: 1.03099
+2025-01-08 19:19:37.503 INFO {main} [main] Current positions: []
+2025-01-08 19:19:37.658 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:19:37.658 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 0
+2025-01-08 19:19:37.659 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:19:37.659 INFO {main} [main] Environment state - Position: None, Entry price: None
+2025-01-08 19:19:37.659 INFO {main} [main] Total profit: 0, Trades made: 0
+2025-01-08 19:20:37.654 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:20:37.803 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:20:00.000Z', 'brokerTime': '2025-01-08 20:20:00.000', 'open': 1.03091, 'close': 1.03086, 'high': 1.03094, 'low': 1.03086, 'tickVolume': 21, 'spread': 4.999999999988347e-05}
+2025-01-08 19:20:37.804 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:20:37.805 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:20:37.805 DEBUG {main} [main] Latest prices: Close=1.03086, Open=1.03091
+2025-01-08 19:20:37.806 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:20:37.806 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:20:37.809 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:20:37.809 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:20:37.810 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:20:37.811 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-08 19:20:37.812 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=27.8000, std=6.9570
+2025-01-08 19:20:37.813 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0309, std=0.0001
+2025-01-08 19:20:37.813 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:20:37.813 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:20:37.826 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns      momentum  ...    tickVolume         close
+count  10.000000  1.000000e+01  ...  1.000000e+01  1.000000e+01
+mean    0.000000  1.110223e-16  ... -1.110223e-16  1.746969e-12
+std     0.942685  6.663319e-01  ...  1.000000e+00  9.999017e-01
+min    -1.720751 -1.519457e+00  ... -1.552391e+00 -8.457503e-01
+25%    -0.344870  0.000000e+00  ... -6.540165e-01 -8.457503e-01
+50%    -0.056925  0.000000e+00  ...  3.162278e-01 -4.523780e-01
+75%     0.341329  1.023131e-01  ...  3.162278e-01  7.031528e-01
+max     1.734975  1.012963e+00  ...  1.609887e+00  1.711169e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:20:37.827 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:20:37.828 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:20:37.828 DEBUG {main} [main] State values: min=-1.720751404762268, max=1.734974980354309, mean=-1.9868215961338365e-09
+2025-01-08 19:20:37.877 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9801, steps: 5
+2025-01-08 19:20:37.878 INFO {main} [main] Q-values: [-0.00708789  0.00483251 -0.00672539 -0.00165565]
+2025-01-08 19:20:37.878 INFO {main} [main] Selected action: 3
+2025-01-08 19:20:37.878 INFO {main} [main] Random action: True
+2025-01-08 19:20:37.879 DEBUG {main} [main] Current price: 1.03086
+2025-01-08 19:20:38.028 INFO {main} [main] Current positions: []
+2025-01-08 19:20:38.180 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:20:38.181 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 0
+2025-01-08 19:20:38.181 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:20:38.181 INFO {main} [main] Environment state - Position: None, Entry price: None
+2025-01-08 19:20:38.181 INFO {main} [main] Total profit: 0, Trades made: 0
+2025-01-08 19:21:38.191 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:21:38.387 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:21:00.000Z', 'brokerTime': '2025-01-08 20:21:00.000', 'open': 1.03095, 'close': 1.03096, 'high': 1.03101, 'low': 1.03092, 'tickVolume': 20, 'spread': 4.999999999988347e-05}
+2025-01-08 19:21:38.388 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:21:38.389 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:21:38.389 DEBUG {main} [main] Latest prices: Close=1.03096, Open=1.03095
+2025-01-08 19:21:38.390 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:21:38.391 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:21:38.393 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:21:38.394 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:21:38.395 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:21:38.396 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-08 19:21:38.396 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=26.8000, std=7.3151
+2025-01-08 19:21:38.397 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0309, std=0.0001
+2025-01-08 19:21:38.397 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:21:38.398 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:21:38.410 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns  ...         close
+count  1.000000e+01  ...  1.000000e+01
+mean  -2.220446e-17  ...  2.220446e-17
+std    9.426937e-01  ...  9.998981e-01
+min   -1.726862e+00  ... -1.019338e+00
+25%   -4.515065e-01  ... -9.174038e-01
+50%   -9.229991e-02  ... -2.038675e-01
+75%    6.459584e-01  ...  6.370860e-01
+max    1.476379e+00  ...  1.630940e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:21:38.412 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:21:38.412 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:21:38.412 DEBUG {main} [main] State values: min=-1.7268621921539307, max=1.6677764654159546, mean=3.47693762670076e-09
+2025-01-08 19:21:38.462 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9752, steps: 6
+2025-01-08 19:21:38.463 INFO {main} [main] Q-values: [-0.00655368  0.00673131 -0.0064554  -0.00276588]
+2025-01-08 19:21:38.463 INFO {main} [main] Selected action: 1
+2025-01-08 19:21:38.463 INFO {main} [main] Random action: True
+2025-01-08 19:21:38.463 DEBUG {main} [main] Current price: 1.03096
+2025-01-08 19:21:38.627 INFO {main} [main] Current positions: []
+2025-01-08 19:21:38.783 DEBUG {trading_env} [step] Current position check: None
+2025-01-08 19:21:38.783 INFO {trading_env} [step] Attempting to execute ORDER_TYPE_SELL
+2025-01-08 19:21:39.087 INFO {trading_env} [step] Trade executed: ORDER_TYPE_SELL, ID: 1383357461
+2025-01-08 19:21:39.088 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-08 19:21:39.088 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:21:39.088 INFO {main} [main] Environment state - Position: short, Entry price: 1.03096
+2025-01-08 19:21:39.088 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-08 19:22:39.106 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:22:39.258 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:22:00.000Z', 'brokerTime': '2025-01-08 20:22:00.000', 'open': 1.03089, 'close': 1.03104, 'high': 1.03104, 'low': 1.03088, 'tickVolume': 20, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:22:39.258 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:22:39.260 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:22:39.260 DEBUG {main} [main] Latest prices: Close=1.03104, Open=1.03089
+2025-01-08 19:22:39.261 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:22:39.261 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:22:39.264 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:22:39.265 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:22:39.266 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:22:39.266 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-08 19:22:39.267 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=25.8000, std=7.5100
+2025-01-08 19:22:39.268 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0309, std=0.0001
+2025-01-08 19:22:39.268 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:22:39.268 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:22:39.281 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns  ...         close
+count  1.000000e+01  ...  1.000000e+01
+mean  -5.551115e-17  ...  2.268630e-13
+std    9.426968e-01  ...  9.998978e-01
+min   -1.782823e+00  ... -1.246763e+00
+25%   -5.419184e-01  ... -8.379882e-01
+50%    8.978912e-02  ...  8.175494e-02
+75%    6.413198e-01  ...  8.737559e-01
+max    1.333890e+00  ...  1.410273e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:22:39.282 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:22:39.282 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:22:39.283 DEBUG {main} [main] State values: min=-1.7828234434127808, max=1.7576580047607422, mean=-1.9868215961338365e-09
+2025-01-08 19:22:39.331 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9704, steps: 7
+2025-01-08 19:22:39.331 INFO {main} [main] Q-values: [-0.00707161  0.00560605 -0.0061644  -0.00517414]
+2025-01-08 19:22:39.332 INFO {main} [main] Selected action: 1
+2025-01-08 19:22:39.332 INFO {main} [main] Random action: True
+2025-01-08 19:22:39.332 DEBUG {main} [main] Current price: 1.03104
+2025-01-08 19:22:39.495 INFO {main} [main] Current positions: [{'id': '1383357461', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-08T18:21:38.000Z', 'brokerTime': '2025-01-08 20:21:38.000', 'updateTime': '2025-01-08T18:21:38.000Z', 'openPrice': 1.03097, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -12, 'profit': -12, 'currentPrice': 1.03109, 'currentTickValue': 1, 'updateSequenceNumber': 1736360498000013}]
+2025-01-08 19:22:39.652 DEBUG {trading_env} [step] Current position check: {'id': '1383357461', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-08T18:21:38.000Z', 'brokerTime': '2025-01-08 20:21:38.000', 'updateTime': '2025-01-08T18:21:38.000Z', 'openPrice': 1.03097, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -12, 'profit': -12, 'currentPrice': 1.03109, 'currentTickValue': 1, 'updateSequenceNumber': 1736360498000013}
+2025-01-08 19:22:39.652 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-08 19:22:39.653 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:22:39.653 INFO {main} [main] Environment state - Position: short, Entry price: 1.03096
+2025-01-08 19:22:39.653 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-08 19:23:39.670 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:23:39.822 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:23:00.000Z', 'brokerTime': '2025-01-08 20:23:00.000', 'open': 1.031, 'close': 1.031, 'high': 1.0311, 'low': 1.031, 'tickVolume': 25, 'spread': 5.0000000000105516e-05}
+2025-01-08 19:23:39.822 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:23:39.823 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:23:39.824 DEBUG {main} [main] Latest prices: Close=1.031, Open=1.031
+2025-01-08 19:23:39.824 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:23:39.825 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:23:39.828 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:23:39.829 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:23:39.829 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:23:39.830 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-08 19:23:39.831 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=25.3000, std=7.3643
+2025-01-08 19:23:39.831 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0310, std=0.0001
+2025-01-08 19:23:39.832 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:23:39.832 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:23:39.844 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns  ...         close
+count  1.000000e+01  ...  1.000000e+01
+mean  -1.110223e-17  ... -7.478573e-13
+std    9.426999e-01  ...  9.998877e-01
+min   -1.684773e+00  ... -1.571634e+00
+25%   -6.458417e-01  ... -8.980766e-01
+50%    1.123224e-01  ...  1.683894e-01
+75%    6.739195e-01  ...  7.858170e-01
+max    1.347790e+00  ...  1.347115e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:23:39.845 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:23:39.846 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:23:39.846 DEBUG {main} [main] State values: min=-1.6847729682922363, max=1.8603190183639526, mean=1.4901161415892261e-09
+2025-01-08 19:23:39.898 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9655, steps: 8
+2025-01-08 19:23:39.899 INFO {main} [main] Q-values: [-0.00713694  0.00422718 -0.00536394 -0.00572465]
+2025-01-08 19:23:39.899 INFO {main} [main] Selected action: 1
+2025-01-08 19:23:39.899 INFO {main} [main] Random action: True
+2025-01-08 19:23:39.900 DEBUG {main} [main] Current price: 1.031
+2025-01-08 19:23:40.064 INFO {main} [main] Current positions: [{'id': '1383357461', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-08T18:21:38.000Z', 'brokerTime': '2025-01-08 20:21:38.000', 'updateTime': '2025-01-08T18:21:38.000Z', 'openPrice': 1.03097, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -8, 'profit': -8, 'currentPrice': 1.03105, 'currentTickValue': 1, 'updateSequenceNumber': 1736360498000013}]
+2025-01-08 19:23:40.217 DEBUG {trading_env} [step] Current position check: {'id': '1383357461', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-08T18:21:38.000Z', 'brokerTime': '2025-01-08 20:21:38.000', 'updateTime': '2025-01-08T18:21:38.000Z', 'openPrice': 1.03097, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -8, 'profit': -8, 'currentPrice': 1.03105, 'currentTickValue': 1, 'updateSequenceNumber': 1736360498000013}
+2025-01-08 19:23:40.217 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-08 19:23:40.218 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-08 19:23:40.218 INFO {main} [main] Environment state - Position: short, Entry price: 1.03096
+2025-01-08 19:23:40.218 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-08 19:24:40.226 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-08 19:24:49.408 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 1/3
+2025-01-08 19:25:03.574 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 2/3
+2025-01-08 19:25:08.738 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-08T18:25:00.000Z', 'brokerTime': '2025-01-08 20:25:00.000', 'open': 1.0312, 'close': 1.03122, 'high': 1.03122, 'low': 1.0312, 'tickVolume': 6, 'spread': 4.999999999988347e-05}
+2025-01-08 19:25:08.739 DEBUG {main} [main] Price history length: 11
+2025-01-08 19:25:08.739 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-08 19:25:08.739 DEBUG {main} [main] Latest prices: Close=1.03122, Open=1.0312
+2025-01-08 19:25:08.740 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:25:08.740 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:25:08.744 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:25:08.745 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:25:08.745 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:25:08.746 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-08 19:25:08.747 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=22.9000, std=9.3149
+2025-01-08 19:25:08.748 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0310, std=0.0001
+2025-01-08 19:25:08.748 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:25:08.748 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:25:08.761 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns  ...         close
+count  1.000000e+01  ...  1.000000e+01
+mean  -2.220446e-17  ... -1.035660e-12
+std    9.427218e-01  ...  9.999067e-01
+min   -1.524992e+00  ... -1.306016e+00
+25%   -6.952184e-01  ... -5.130777e-01
+50%    1.793980e-01  ... -4.664343e-02
+75%    4.934374e-01  ...  4.431126e-01
+max    1.614601e+00  ...  2.052311e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:25:08.762 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:25:08.762 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-08 19:25:08.762 DEBUG {main} [main] State values: min=-1.8143048286437988, max=2.0523109436035156, mean=0.0
+2025-01-08 19:25:08.811 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9607, steps: 9
+2025-01-08 19:25:08.812 INFO {main} [main] Q-values: [-0.00836781 -0.00027404 -0.00933211 -0.01137339]
+2025-01-08 19:25:08.812 INFO {main} [main] Selected action: 3
+2025-01-08 19:25:08.812 INFO {main} [main] Random action: True
+2025-01-08 19:25:08.812 DEBUG {main} [main] Current price: 1.03122
+2025-01-08 19:25:08.977 INFO {main} [main] Current positions: [{'id': '1383357461', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-08T18:21:38.000Z', 'brokerTime': '2025-01-08 20:21:38.000', 'updateTime': '2025-01-08T18:21:38.000Z', 'openPrice': 1.03097, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -35, 'profit': -35, 'currentPrice': 1.03132, 'currentTickValue': 1, 'updateSequenceNumber': 1736360498000013}]
+2025-01-08 19:25:09.200 DEBUG {trading_env} [step] Current position check: {'id': '1383357461', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-08T18:21:38.000Z', 'brokerTime': '2025-01-08 20:21:38.000', 'updateTime': '2025-01-08T18:21:38.000Z', 'openPrice': 1.03097, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -35, 'profit': -35, 'currentPrice': 1.03132, 'currentTickValue': 1, 'updateSequenceNumber': 1736360498000013}
+2025-01-08 19:25:09.200 INFO {trading_env} [step] Attempting to close position, current P/L: -35.0
+2025-01-08 19:25:09.531 INFO {trading_env} [step] Position closed, Profit: -35.0
+2025-01-08 19:25:09.532 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 2
+2025-01-08 19:25:09.532 INFO {main} [main] Step result - Reward: -35.0, Done: False
+2025-01-08 19:25:09.532 INFO {main} [main] Environment state - Position: None, Entry price: 1.03096
+2025-01-08 19:25:09.532 INFO {main} [main] Total profit: -35.0, Trades made: 2
+2025-01-08 19:25:09.533 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-08 19:25:09.533 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-08 19:25:09.537 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-08 19:25:09.538 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-08 19:25:09.538 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-08 19:25:09.539 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-08 19:25:09.540 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=22.9000, std=9.3149
+2025-01-08 19:25:09.540 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0310, std=0.0001
+2025-01-08 19:25:09.541 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-08 19:25:09.541 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-08 19:25:09.556 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns  ...         close
+count  1.000000e+01  ...  1.000000e+01
+mean  -2.220446e-17  ... -1.035660e-12
+std    9.427218e-01  ...  9.999067e-01
+min   -1.524992e+00  ... -1.306016e+00
+25%   -6.952184e-01  ... -5.130777e-01
+50%    1.793980e-01  ... -4.664343e-02
+75%    4.934374e-01  ...  4.431126e-01
+max    1.614601e+00  ...  2.052311e+00
+
+[8 rows x 6 columns]
+2025-01-08 19:25:09.558 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-08 19:25:09.558 DEBUG {main} [main] Training model...
+2025-01-08 19:25:09.558 INFO {main} [main] New epsilon value: 0.960693043575437
+2025-01-08 19:26:09.562 INFO {main} [<module>] Bot stopped by user
