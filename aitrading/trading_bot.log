@@ -1,0 +1,21 @@
+2025-01-08 18:40:43.221 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-08 18:40:43.221 INFO {main} [main] === Trading Bot Starting ===
+2025-01-08 18:40:43.260 DEBUG {attrs} [__getitem__] Creating converter from 3 to 5
+2025-01-08 18:40:44.049 INFO {main} [main] Model configuration: Window Size=10, State Size=10
+2025-01-08 18:40:44.049 INFO {main} [main] Current epsilon value: 1
+2025-01-08 18:40:44.049 INFO {main} [initialize_data] Loading initial candles...
+2025-01-08 18:40:53.822 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 1/3
+2025-01-08 18:41:08.018 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 2/3
+2025-01-08 18:41:13.212 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03011, 'low': 1.0301, 'tickVolume': 6, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:14.379 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03011, 'low': 1.0301, 'tickVolume': 6, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:15.530 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03011, 'low': 1.0301, 'tickVolume': 6, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:16.700 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03011, 'low': 1.0301, 'tickVolume': 8, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:17.927 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03011, 'low': 1.0301, 'tickVolume': 8, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:19.093 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03011, 'low': 1.0301, 'tickVolume': 8, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:20.250 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03012, 'high': 1.03016, 'low': 1.0301, 'tickVolume': 10, 'spread': 4.0000000000040004e-05}
+2025-01-08 18:41:21.417 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03012, 'high': 1.03016, 'low': 1.0301, 'tickVolume': 10, 'spread': 4.0000000000040004e-05}
+2025-01-08 18:41:22.586 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03016, 'low': 1.0301, 'tickVolume': 14, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:23.740 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-08 17:41:00+0000', tz='UTC'), 'brokerTime': '2025-01-08 19:41:00.000', 'open': 1.03011, 'close': 1.03011, 'high': 1.03016, 'low': 1.0301, 'tickVolume': 14, 'spread': 3.999999999981796e-05}
+2025-01-08 18:41:24.741 INFO {main} [initialize_data] Loaded 10 initial candles
+2025-01-08 18:41:24.741 INFO {main} [main] Initial price history loaded: 10 candles
+2025-01-08 18:42:24.747 INFO {main} [<module>] Bot stopped by user
