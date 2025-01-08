@@ -70,6 +70,13 @@ def news_detail(request, pk):
     return render(request, 'news_detail.html', {'news': news_item})
 
 def dashboard(request):
+        market_data = MarketData.objects.all().order_by('-id')[:100]
+        market_data_list = [{
+            'time': m.time.isoformat(),
+            'close': float(m.close),  # Ensure numbers are serializable
+            'symbol': m.symbol
+        } for m in market_data]
+        
         recent_trades = Trade.objects.filter(user=request.user).select_related('user').order_by('-time')[:5]
         
         today = datetime.today().date()
@@ -83,9 +90,9 @@ def dashboard(request):
         market_data = MarketData.objects.filter(time__gte=last_100_minutes).order_by('time')
         
         # Convert datetime objects to strings
-        market_data_list = list(market_data.values('time', 'close'))
+        '''market_data_list = list(market_data.values('time', 'close'))
         for data in market_data_list:
-            data['time'] = data['time'].isoformat()
+            data['time'] = data['time'].isoformat()'''
 
         user = request.user
         if user.is_authenticated:
@@ -99,11 +106,11 @@ def dashboard(request):
         else:
             open_trades = []
         
-        market_data_json = json.dumps(market_data_list)
+        '''market_data_json = json.dumps(market_data_list)'''
         latest_news = News.objects.order_by('-publishdate')[:5]
         total_user_trades = Trade.objects.filter(user=request.user).count()
         return render(request, 'dashboard.html', {
-            'market_data_json': market_data_json,
+            'market_data_json': json.dumps(market_data_list),
             'recent_trades': recent_trades,
             'latest_news': latest_news,
             'total_trades': total_user_trades,

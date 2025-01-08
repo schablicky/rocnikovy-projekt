@@ -81,44 +81,95 @@
         </div>
     </div>
 
-    <h1>Market Data Dashboard</h1>
-    <canvas id="marketDataChart" width="400" height="200"></canvas>
-    <script id="market-data" type="application/json">{{ market_data_json|escapejs }}</script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('marketDataChart').getContext('2d');
-            const marketData = JSON.parse(document.getElementById('market-data').textContent);
-            const labels = marketData.map(data => new Date(data.time).toLocaleTimeString());
-            const closePrices = marketData.map(data => data.close);
-            const chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Close Prices',
-                        data: closePrices,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1,
-                        fill: false
-                    }]
-                },
-                options: {
-                    scales: {
-                        x: {
-                            type: 'time',
-                            time: {
-                                unit: 'minute'
-                            }
+    <div class="container mx-auto px-4 py-12">
+        <!-- Chart container with fixed dimensions -->
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold dark:text-white">Market Data</h2>
+                <select id="dataPointSelector" class="border rounded p-2 dark:bg-gray-700 dark:text-white">
+                    <option value="10">Last 10 points</option>
+                    <option value="20">Last 20 points</option>
+                    <option value="50">Last 50 points</option>
+                </select>
+            </div>
+            <div class="relative" style="height: 400px; width: 100%;">
+                <div id="chartLoading" class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-800">
+                    Loading...
+                </div>
+                <canvas id="marketDataChart"></canvas>
+            </div>
+        </div>
+    
+        <div id="market-data" class="hidden">{{ market_data_json|safe }}</div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            let chart = null;
+    
+            function createChart(marketData) {
+                const ctx = document.getElementById('marketDataChart');
+                
+                return new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: marketData.map(d => new Date(d.time).toLocaleTimeString()),
+                        datasets: [{
+                            label: 'Price',
+                            data: marketData.map(d => d.close),
+                            borderColor: '#4F46E5',
+                            tension: 0.1,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 750
                         },
-                        y: {
-                            beginAtZero: false
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
                         }
                     }
+                });
+            }
+    
+            function updateChartData(numPoints = 20) {
+                const dataElement = document.getElementById('market-data');
+                if (!dataElement?.textContent) return;
+    
+                try {
+                    const marketData = JSON.parse(dataElement.textContent);
+                    const filteredData = marketData.slice(-numPoints);
+    
+                    if (chart) chart.destroy();
+                    chart = createChart(filteredData);
+                    
+                    document.getElementById('chartLoading').style.display = 'none';
+                } catch (error) {
+                    console.error('Chart update error:', error);
                 }
+            }
+    
+            document.addEventListener('DOMContentLoaded', () => {
+                updateChartData(20);
+    
+                document.getElementById('dataPointSelector')?.addEventListener('change', (e) => {
+                    updateChartData(parseInt(e.target.value));
+                });
             });
-        });
-    </script>
+        </script>
+    </div>
 
     <div class="bg-gray-50 p-6 dark:bg-gray-700 rounded-lg shadow-md mb-12">
         <h3 class="font-bold text-2xl text-gray-500 dark:text-white mb-4">Recent Trading Activity</h3>
@@ -161,7 +212,7 @@
                 .catch(error => {
                     console.error("Error fetching current position:", error);
                 });
-                setInterval(fetchCurrentPosition, 1000);
+                setInterval(fetch, 1000);
         });
     </script>
     
