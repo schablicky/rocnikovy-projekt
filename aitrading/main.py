@@ -8,6 +8,8 @@ from datetime import datetime
 from data_fetcher import RestDataFetcher
 from trading_env import TradingEnv
 from dql_model import DQLModel
+from api_service import bot_state, start_api_server
+import threading
 
 # Configure detailed logging
 logging.basicConfig(
@@ -42,6 +44,8 @@ async def initialize_data(data_fetcher, symbol):
     return price_history
 
 async def main():
+    api_thread = threading.Thread(target=start_api_server, daemon=True)
+    api_thread.start()
     logger.info("=== Trading Bot Starting ===")
     data_fetcher = RestDataFetcher()
     env = TradingEnv(window_size=10)  # Increased window size
@@ -101,6 +105,23 @@ async def main():
                             data_fetcher, 
                             symbol
                         )
+
+                        
+                        bot_state["model_state"].update({
+                            "epsilon": model.epsilon,
+                            "total_steps": model.total_steps
+                        })
+
+                        bot_state["trading_stats"].update({
+                            "total_profit": env.total_profit,
+                            "trades_count": env.trades_count,
+                            "current_position": env.position
+                        })
+
+                        if action_values is not None:
+                            bot_state["last_prediction"] = action_values[0].tolist()
+
+
                         logger.info(f"Step result - Reward: {reward}, Done: {done}")
                         logger.info(f"Environment state - Position: {env.position}, Entry price: {env.entry_price}")
                         logger.info(f"Total profit: {env.total_profit}, Trades made: {env.trades_count}")
