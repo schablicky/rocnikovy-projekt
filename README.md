@@ -58,10 +58,10 @@ Hlavní rysy aplikace:
 - [x] Vidět své otevřené obchody
 - [x] Uzavřít své otevřené obchody
 - [x] Zprávy
-- [ ] Chat mezi uživateli
+- [x] Chat mezi uživateli
 - [ ] CopyTrading
-- [ ] AI
+- [x] AI
 - [x] Uživatelské nastavení
-- [ ] Graf s vývojem ceny
+- [x] Graf s vývojem ceny
 - [ ] Social login
 - [x] Žebříček
