@@ -74,6 +74,10 @@ CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'forex_trading_project.urls'
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'login'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

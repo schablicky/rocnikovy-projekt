@@ -195,27 +195,53 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetch("http://localhost:8001/state")
-                .then(response => response.json())
-                .then(data => {
-                    const currentPosition = data.trading_stats.current_position;
-                    if (currentPosition) {
-                        if (JSON.stringify(currentPosition, null, 2) == "long") {
-                            document.getElementById('current-position').style.color = "blue";
-                            document.getElementById('current-position').style.innerText = "BUY";
-                        } else if (JSON.stringify(currentPosition, null, 2) == "short") {
-                            document.getElementById('current-position').style.color = "red";
-                            document.getElementById('current-position').style.innerText = "SELL";
-                        }
-                        document.getElementById('current-position').innerText = JSON.stringify(currentPosition, null, 2);
-                    } else {
-                        document.getElementById('current-position').innerText = "No current position";
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching current position:", error);
-                });
-                setInterval(fetch, 1000);
+            const API_URL = window.location.hostname === 'localhost' 
+                ? 'http://localhost:8001' 
+                : 'http://127.0.0.1:8001';
+            
+            async function updatePosition() {
+                try {
+                    const response = await fetch(`${API_URL}/state`, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                        },
+                        mode: 'cors'
+                    });
+                    
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    const data = await response.json();
+                    updatePositionDisplay(data.trading_stats.current_position);
+                } catch (error) {
+                    console.error('Error:', error);
+                    document.getElementById('current-position').innerText = "Error fetching position";
+                }
+            }
+    
+            function updatePositionDisplay(position) {
+                const element = document.getElementById('current-position');
+                if (!element) return;
+    
+                switch(position) {
+                    case "long":
+                        element.style.color = "blue";
+                        element.innerText = "BUY";
+                        break;
+                    case "short":
+                        element.style.color = "red";
+                        element.innerText = "SELL";
+                        break;
+                    default:
+                        element.innerText = position || "No position";
+                }
+            }
+    
+            updatePosition();
+            const intervalId = setInterval(updatePosition, 1000);
+    
+            // Cleanup on page unload
+            window.addEventListener('unload', () => clearInterval(intervalId));
         });
     </script>
     

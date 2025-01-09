@@ -69,7 +69,11 @@ def news_detail(request, pk):
     news_item = get_object_or_404(News, pk=pk)
     return render(request, 'news_detail.html', {'news': news_item})
 
+@login_required(login_url='/registration/login/')
 def dashboard(request):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        
         market_data = MarketData.objects.all().order_by('-id')[:100]
         market_data_list = [{
             'time': m.time.isoformat(),

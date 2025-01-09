@@ -97,5 +97,20 @@ class WSClient {
 document.addEventListener('DOMContentLoaded', () => {
     new WSClient();
 });
+
+const ws = new WebSocket('ws://localhost:8001/ws');
+
+ws.onmessage = function(event) {
+    try {
+        const data = JSON.parse(event.data);
+        if (data.stats) {
+            document.getElementById('sma').textContent = data.stats.SMA.toFixed(2);
+            document.getElementById('rsi').textContent = data.stats.RSI.toFixed(2);
+            document.getElementById('macd').textContent = data.stats.MACD.toFixed(2);
+        }
+    } catch (error) {
+        console.error('Error parsing message:', error);
+    }
+};
 </script>
 {% endblock %}

@@ -22,6 +22,11 @@ class TradingEnv:
         self.min_trade_interval = 1  # Minimum minutes between trades
         self.save_threshold = 5  # Save every 5 trades
         self.logger = logging.getLogger(__name__)
+        
+        # Add indicator attributes
+        self.sma = None
+        self.rsi = None 
+        self.macd = None
 
     def calculate_features(self, data):
         df = data.copy()
@@ -60,6 +65,21 @@ class TradingEnv:
         df = data.copy()
         
         try:
+            # Calculate SMA
+            self.sma = df['close'].rolling(window=20).mean().iloc[-1]
+            
+            # Calculate RSI
+            delta = df['close'].diff()
+            gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+            loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+            rs = gain / loss
+            self.rsi = 100 - (100 / (1 + rs)).iloc[-1]
+            
+            # Calculate MACD
+            exp1 = df['close'].ewm(span=12, adjust=False).mean()
+            exp2 = df['close'].ewm(span=26, adjust=False).mean()
+            self.macd = (exp1 - exp2).iloc[-1]
+            
             # Price features
             df['returns'] = df['close'].pct_change()
             df['momentum'] = df['returns'].rolling(5).mean()
