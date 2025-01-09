@@ -118,6 +118,12 @@ async def main():
                             "current_position": env.position
                         })
 
+                        bot_state["indicators"].update({
+                            "SMA": env.sma,
+                            "RSI": env.rsi,
+                            "MACD": env.macd
+                        })
+
                         if action_values is not None:
                             bot_state["last_prediction"] = action_values[0].tolist()
 

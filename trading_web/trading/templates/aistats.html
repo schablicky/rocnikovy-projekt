@@ -4,6 +4,9 @@
 <div class="container mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold mb-8">AI Trading Statistics</h1>
 
+    <!-- Connection Status -->
+    <div id="connection-status" class="mb-4 p-2 rounded text-center"></div>
+
     <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
         <span class="block sm:inline"></span>
     </div>
@@ -27,36 +30,72 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const ws = new WebSocket('ws://127.0.0.1:8001/ws');
-    
-    ws.onmessage = function(event) {
+class WSClient {
+    constructor() {
+        this.connect();
+        this.retryCount = 0;
+        this.maxRetries = 5;
+    }
+
+    connect() {
+        this.ws = new WebSocket('ws://127.0.0.1:8001/ws');
+        this.ws.onopen = () => this.handleOpen();
+        this.ws.onclose = () => this.handleClose();
+        this.ws.onerror = (e) => this.handleError(e);
+        this.ws.onmessage = (e) => this.handleMessage(e);
+    }
+
+    handleOpen() {
+        this.updateStatus('Connected', 'bg-green-500');
+        this.retryCount = 0;
+    }
+
+    handleClose() {
+        this.updateStatus('Disconnected', 'bg-red-500');
+        if (this.retryCount < this.maxRetries) {
+            setTimeout(() => {
+                this.retryCount++;
+                this.connect();
+            }, 1000);
+        }
+    }
+
+    handleError(error) {
+        console.error('WebSocket error:', error);
+        this.updateStatus('Connection error', 'bg-red-500');
+    }
+
+    handleMessage(event) {
         const data = JSON.parse(event.data);
-        
+        this.updateStats(data);
+    }
+
+    updateStatus(message, className) {
+        const status = document.getElementById('connection-status');
+        status.textContent = message;
+        status.className = `mb-4 p-2 rounded text-white ${className}`;
+    }
+
+    updateStats(data) {
         document.getElementById('model-stats').innerHTML = `
             <p>Epsilon: ${data.model_state.epsilon}</p>
             <p>Total Steps: ${data.model_state.total_steps}</p>
         `;
-
         document.getElementById('trading-stats').innerHTML = `
-            <p>Total Profit: $${data.trading_stats.total_profit}</p>
-            <p>Trades Count: ${data.trading_stats.trades_count}</p>
-            <p>Current Position: ${JSON.stringify(data.trading_stats.current_position)}</p>
+            <p>Total profit: ${data.trading_stats.total_profit}</p>
+            <p>Total trades: ${data.trading_stats.trades_countr}</p>
+            <p>Current position: ${data.trading_stats.current_position}</p>
         `;
-
         document.getElementById('indicators').innerHTML = `
-            <p>RSI: ${data.indicators.rsi || 'N/A'}</p>
-            <p>MACD: ${data.indicators.macd || 'N/A'}</p>
-            <p>SMA: ${data.indicators.sma || 'N/A'}</p>
-            <p>ATR: ${data.indicators.atr || 'N/A'}</p>
+            <p>RSI: ${data.indicators.rsi}</p>
+            <p>MACD: ${data.indicators.macd}</p>
+            <p>SMA: ${data.indicators.sma}</p>
         `;
-    };
+    }
+}
 
-    ws.onerror = function(error) {
-        document.getElementById('error-message').classList.remove('hidden');
-        document.getElementById('error-message').querySelector('span').textContent = 
-            'Connection error. Please check if the API server is running.';
-    };
+document.addEventListener('DOMContentLoaded', () => {
+    new WSClient();
 });
 </script>
 {% endblock %}

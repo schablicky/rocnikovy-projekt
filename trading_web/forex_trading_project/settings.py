@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'django_extensions',
+    'channels',
 ]
 
 AUTH_USER_MODEL = 'trading.CustomUser'
@@ -90,6 +91,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'forex_trading_project.wsgi.application'
+ASGI_APPLICATION = 'forex_trading_project.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 
 # Database
