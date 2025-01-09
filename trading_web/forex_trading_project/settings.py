@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-&g+pkz1y=pz=j+=j0*3x42^opw-^dma3us(_11r(nhzmxsn)9z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.ngrok-free.app',
+    'https://*.ngrok.io',
+]
 
 # Application definition
 
@@ -64,6 +69,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'forex_trading_project.urls'
 
