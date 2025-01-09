@@ -13,6 +13,7 @@ from trading.views import chat_list
 from trading.views import chat_detail
 from trading.views import leaderboards
 from trading.views import update_balance_view
+from trading.views import aistats
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,4 +37,5 @@ urlpatterns = [
     path('chats/<int:user_id>/', chat_detail, name='chat_detail'),
     path('leaderboards/', leaderboards, name='leaderboards'),
     path('update-balance/', update_balance_view, name='update_balance'),
+    path('aistats/', aistats, name='aistats'),
 ]

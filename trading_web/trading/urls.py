@@ -12,4 +12,5 @@ urlpatterns = [
     path('chats/', views.chat_list, name='chat_list'),
     path('chats/<int:user_id>/', views.chat_detail, name='chat_detail'),
     path('update-balance/', update_balance_view, name='update_balance'),
+    path('aistats/', views.aistats, name='aistats'),
 ]

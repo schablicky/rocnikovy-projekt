@@ -298,3 +298,9 @@ def chart_view(request):
         'dataset': dataset,
     }
     return render(request, 'chart.html', context)
+
+def aistats(request):
+    context = {
+        'page_title': 'AI Trading Statistics'
+    }
+    return render(request, 'aistats.html', context)

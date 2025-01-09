@@ -31384,3 +31384,775 @@ max    1.936981e+00  8.986754e-01         0.0    0.0  1.481873e+00  1.764596e+00
 2025-01-09 13:39:47.366 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 2/3
 2025-01-09 13:40:01.537 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 3/3
 2025-01-09 13:41:06.565 INFO {main} [<module>] Bot stopped by user
+2025-01-09 13:49:18.640 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-09 13:49:18.643 INFO {main} [main] === Trading Bot Starting ===
+2025-01-09 13:49:18.647 DEBUG {selector_events} [__init__] Using selector: SelectSelector
+2025-01-09 13:49:18.809 DEBUG {attrs} [__getitem__] Creating converter from 3 to 5
+2025-01-09 13:49:19.779 INFO {main} [main] Model configuration: Window Size=10, State Size=10
+2025-01-09 13:49:19.779 INFO {main} [main] Current epsilon value: 1
+2025-01-09 13:49:19.779 INFO {main} [initialize_data] Loading initial candles...
+2025-01-09 13:49:20.649 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03017, 'high': 1.03021, 'low': 1.03009, 'tickVolume': 16, 'spread': 4.999999999988347e-05}
+2025-01-09 13:49:21.834 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03017, 'high': 1.03021, 'low': 1.03009, 'tickVolume': 16, 'spread': 4.999999999988347e-05}
+2025-01-09 13:49:22.998 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03019, 'high': 1.03022, 'low': 1.03009, 'tickVolume': 19, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:49:24.162 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03019, 'high': 1.03022, 'low': 1.03009, 'tickVolume': 19, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:49:25.327 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03019, 'high': 1.03022, 'low': 1.03009, 'tickVolume': 19, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:49:26.511 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03021, 'high': 1.03022, 'low': 1.03009, 'tickVolume': 22, 'spread': 4.0000000000040004e-05}
+2025-01-09 13:49:27.689 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03021, 'high': 1.03022, 'low': 1.03009, 'tickVolume': 22, 'spread': 4.0000000000040004e-05}
+2025-01-09 13:49:28.857 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03022, 'high': 1.03022, 'low': 1.03009, 'tickVolume': 24, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:49:30.029 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03022, 'high': 1.03022, 'low': 1.03009, 'tickVolume': 24, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:49:31.199 DEBUG {main} [initialize_data] Initial candle loaded: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': Timestamp('2025-01-09 12:49:00+0000', tz='UTC'), 'brokerTime': '2025-01-09 14:49:00.000', 'open': 1.03009, 'close': 1.03022, 'high': 1.03025, 'low': 1.03009, 'tickVolume': 29, 'spread': 4.0000000000040004e-05}
+2025-01-09 13:49:32.205 INFO {main} [initialize_data] Loaded 10 initial candles
+2025-01-09 13:49:32.205 INFO {main} [main] Initial price history loaded: 10 candles
+2025-01-09 13:50:32.216 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:50:32.376 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:50:00.000Z', 'brokerTime': '2025-01-09 14:50:00.000', 'open': 1.03021, 'close': 1.0303, 'high': 1.0303, 'low': 1.0302, 'tickVolume': 16, 'spread': 4.0000000000040004e-05}
+2025-01-09 13:50:32.376 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:50:32.377 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:50:32.377 DEBUG {main} [main] Latest prices: Close=1.0303, Open=1.03021
+2025-01-09 13:50:32.378 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:50:32.378 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:50:32.382 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0000
+2025-01-09 13:50:32.382 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 13:50:32.384 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:50:32.384 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 13:50:32.385 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=21.0000, std=4.0277
+2025-01-09 13:50:32.386 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0000
+2025-01-09 13:50:32.386 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:50:32.387 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:50:32.404 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns      momentum  volatility  trend    tickVolume         close
+count  10.000000  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean    0.000000  2.220446e-17         0.0    0.0 -2.220446e-17 -4.412648e-12
+std     0.942436  6.653523e-01         0.0    0.0  1.000000e+00  9.997161e-01
+min    -0.554613 -5.358252e-01         0.0    0.0 -1.241409e+00 -1.192381e+00
+25%    -0.554613 -4.401342e-01         0.0    0.0 -4.965635e-01 -6.245806e-01
+50%    -0.362632  0.000000e+00         0.0    0.0 -1.241409e-01 -5.678006e-02
+75%     0.159994  0.000000e+00         0.0    0.0  6.207044e-01  2.271202e-01
+max     2.517052  1.760537e+00         0.0    0.0  1.986254e+00  2.498323e+00
+2025-01-09 13:50:32.404 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:50:32.404 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:50:32.405 DEBUG {main} [main] State values: min=-1.2414088249206543, max=2.5170516967773438, mean=-7.947286384535346e-09
+2025-01-09 13:50:32.817 DEBUG {dql_model} [act] Random action: 1, epsilon: 1.0000, steps: 1
+2025-01-09 13:50:32.818 INFO {main} [main] Q-values: [-0.00747456 -0.01984808 -0.00582554 -0.01049181]
+2025-01-09 13:50:32.818 INFO {main} [main] Selected action: 1
+2025-01-09 13:50:32.818 INFO {main} [main] Random action: True
+2025-01-09 13:50:32.818 DEBUG {main} [main] Current price: 1.0303
+2025-01-09 13:50:33.018 INFO {main} [main] Current positions: []
+2025-01-09 13:50:33.202 DEBUG {trading_env} [step] Current position check: None
+2025-01-09 13:50:33.202 INFO {trading_env} [step] Attempting to execute ORDER_TYPE_SELL
+2025-01-09 13:50:33.487 INFO {trading_env} [step] Trade executed: ORDER_TYPE_SELL, ID: 1383764070
+2025-01-09 13:50:33.487 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-09 13:50:33.487 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 13:50:33.487 INFO {main} [main] Environment state - Position: short, Entry price: 1.0303
+2025-01-09 13:50:33.487 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-09 13:51:33.505 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:51:33.666 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:51:00.000Z', 'brokerTime': '2025-01-09 14:51:00.000', 'open': 1.03022, 'close': 1.03023, 'high': 1.03025, 'low': 1.03019, 'tickVolume': 14, 'spread': 4.0000000000040004e-05}
+2025-01-09 13:51:33.667 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:51:33.667 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:51:33.668 DEBUG {main} [main] Latest prices: Close=1.03023, Open=1.03022
+2025-01-09 13:51:33.668 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:51:33.668 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:51:33.672 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0000
+2025-01-09 13:51:33.672 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 13:51:33.672 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:51:33.674 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 13:51:33.675 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=20.8000, std=4.3410
+2025-01-09 13:51:33.675 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0000
+2025-01-09 13:51:33.675 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:51:33.675 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:51:33.687 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean   2.220446e-17  3.330669e-17         0.0    0.0 -1.554312e-16 -3.441575e-12
+std    9.425543e-01  6.654547e-01         0.0    0.0  1.000000e+00  9.996900e-01
+min   -1.952551e+00 -7.057080e-01         0.0    0.0 -1.566453e+00 -8.679740e-01
+25%   -1.165955e-01 -3.529547e-01         0.0    0.0 -4.146492e-01 -7.129786e-01
+50%   -1.165955e-01  0.000000e+00         0.0    0.0 -6.910820e-02 -9.299721e-02
+75%    1.092801e-01  0.000000e+00         0.0    0.0  6.219738e-01  6.199814e-02
+max    1.981802e+00  1.764572e+00         0.0    0.0  1.888957e+00  2.541924e+00
+2025-01-09 13:51:33.688 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:51:33.688 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:51:33.688 DEBUG {main} [main] State values: min=-1.9525507688522339, max=2.541923761367798, mean=-6.457169909879212e-09
+2025-01-09 13:51:33.738 DEBUG {dql_model} [act] Random action: 0, epsilon: 0.9950, steps: 2
+2025-01-09 13:51:33.738 INFO {main} [main] Q-values: [-0.00881568 -0.01804691 -0.00360639 -0.00695467]
+2025-01-09 13:51:33.738 INFO {main} [main] Selected action: 0
+2025-01-09 13:51:33.739 INFO {main} [main] Random action: True
+2025-01-09 13:51:33.739 DEBUG {main} [main] Current price: 1.03023
+2025-01-09 13:51:33.895 INFO {main} [main] Current positions: [{'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -4, 'profit': -4, 'currentPrice': 1.03027, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}]
+2025-01-09 13:51:34.057 DEBUG {trading_env} [step] Current position check: {'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -4, 'profit': -4, 'currentPrice': 1.03027, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}
+2025-01-09 13:51:34.057 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-09 13:51:34.057 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 13:51:34.057 INFO {main} [main] Environment state - Position: short, Entry price: 1.0303
+2025-01-09 13:51:34.057 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-09 13:52:34.055 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:52:43.302 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 1/3
+2025-01-09 13:53:00.565 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 2/3
+2025-01-09 13:53:17.359 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:53:00.000Z', 'brokerTime': '2025-01-09 14:53:00.000', 'open': 1.03002, 'close': 1.03002, 'high': 1.03004, 'low': 1.03002, 'tickVolume': 5, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:53:17.359 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:53:17.360 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:53:17.361 DEBUG {main} [main] Latest prices: Close=1.03002, Open=1.03002
+2025-01-09 13:53:17.361 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:53:17.361 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:53:17.365 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 13:53:17.366 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-09 13:53:17.366 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:53:17.367 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0000, std=nan
+2025-01-09 13:53:17.367 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=19.4000, std=6.6366
+2025-01-09 13:53:17.368 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:53:17.368 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:53:17.368 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:53:17.380 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean   4.440892e-17 -4.440892e-17         0.0    0.0  2.220446e-16  6.286971e-13
+std    9.426894e-01  6.663600e-01         0.0    0.0  1.000000e+00  9.998584e-01
+min   -2.354610e+00 -1.732315e+00         0.0    0.0 -2.169786e+00 -2.562498e+00
+25%    5.817833e-02  0.000000e+00         0.0    0.0 -3.993009e-01 -8.494469e-02
+50%    2.327133e-01  0.000000e+00         0.0    0.0  1.657475e-01  1.982043e-01
+75%    3.251195e-01  2.991351e-01         0.0    0.0  6.177863e-01  2.689915e-01
+max    1.218370e+00  8.572235e-01         0.0    0.0  1.446524e+00  1.401587e+00
+2025-01-09 13:53:17.380 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:53:17.380 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:53:17.380 DEBUG {main} [main] State values: min=-2.562498092651367, max=1.4465240240097046, mean=-7.947286384535346e-09
+2025-01-09 13:53:17.426 DEBUG {dql_model} [act] Random action: 2, epsilon: 0.9900, steps: 3
+2025-01-09 13:53:17.427 INFO {main} [main] Q-values: [-0.00491166 -0.01221451 -0.00300839 -0.00538675]
+2025-01-09 13:53:17.427 INFO {main} [main] Selected action: 2
+2025-01-09 13:53:17.427 INFO {main} [main] Random action: True
+2025-01-09 13:53:17.427 DEBUG {main} [main] Current price: 1.03002
+2025-01-09 13:53:17.587 INFO {main} [main] Current positions: [{'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 19, 'profit': 19, 'currentPrice': 1.03004, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}]
+2025-01-09 13:53:17.748 DEBUG {trading_env} [step] Current position check: {'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 19, 'profit': 19, 'currentPrice': 1.03004, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}
+2025-01-09 13:53:17.749 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-09 13:53:17.749 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 13:53:17.749 INFO {main} [main] Environment state - Position: short, Entry price: 1.0303
+2025-01-09 13:53:17.749 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-09 13:54:17.752 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:54:17.913 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:54:00.000Z', 'brokerTime': '2025-01-09 14:54:00.000', 'open': 1.03013, 'close': 1.03007, 'high': 1.03014, 'low': 1.03006, 'tickVolume': 15, 'spread': 4.0000000000040004e-05}
+2025-01-09 13:54:17.913 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:54:17.914 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:54:17.914 DEBUG {main} [main] Latest prices: Close=1.03007, Open=1.03013
+2025-01-09 13:54:17.915 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:54:17.915 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:54:17.918 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 13:54:17.919 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-09 13:54:17.919 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:54:17.920 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0000, std=nan
+2025-01-09 13:54:17.920 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=19.0000, std=6.7823
+2025-01-09 13:54:17.921 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:54:17.921 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:54:17.922 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:54:17.933 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean  -1.110223e-17  4.440892e-17         0.0    0.0 -3.330669e-17 -5.416556e-13
+std    9.426938e-01  6.663933e-01         0.0    0.0  1.000000e+00  9.998780e-01
+min   -2.333721e+00 -1.257702e+00         0.0    0.0 -2.064187e+00 -2.061167e+00
+25%    3.954872e-02  0.000000e+00         0.0    0.0 -5.529073e-01  7.317753e-02
+50%    1.581949e-01  0.000000e+00         0.0    0.0  2.211629e-01  3.171026e-01
+75%    3.658620e-01  3.701455e-01         0.0    0.0  6.634888e-01  3.780839e-01
+max    1.107505e+00  1.050698e+00         0.0    0.0  1.474420e+00  1.353784e+00
+2025-01-09 13:54:17.933 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:54:17.933 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:54:17.935 DEBUG {main} [main] State values: min=-2.3337209224700928, max=1.4744195938110352, mean=1.9868215961338365e-09
+2025-01-09 13:54:17.982 DEBUG {dql_model} [act] Random action: 2, epsilon: 0.9851, steps: 4
+2025-01-09 13:54:17.983 INFO {main} [main] Q-values: [-0.0051468  -0.0175614  -0.00328758 -0.00650046]
+2025-01-09 13:54:17.983 INFO {main} [main] Selected action: 2
+2025-01-09 13:54:17.983 INFO {main} [main] Random action: True
+2025-01-09 13:54:17.983 DEBUG {main} [main] Current price: 1.03007
+2025-01-09 13:54:18.149 INFO {main} [main] Current positions: [{'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 12, 'profit': 12, 'currentPrice': 1.03011, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}]
+2025-01-09 13:54:18.311 DEBUG {trading_env} [step] Current position check: {'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 12, 'profit': 12, 'currentPrice': 1.03011, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}
+2025-01-09 13:54:18.311 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 1
+2025-01-09 13:54:18.311 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 13:54:18.311 INFO {main} [main] Environment state - Position: short, Entry price: 1.0303
+2025-01-09 13:54:18.312 INFO {main} [main] Total profit: 0, Trades made: 1
+2025-01-09 13:55:18.318 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:55:23.649 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:55:00.000Z', 'brokerTime': '2025-01-09 14:55:00.000', 'open': 1.03005, 'close': 1.03007, 'high': 1.03007, 'low': 1.03, 'tickVolume': 20, 'spread': 4.999999999988347e-05}
+2025-01-09 13:55:23.650 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:55:23.651 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:55:23.651 DEBUG {main} [main] Latest prices: Close=1.03007, Open=1.03005
+2025-01-09 13:55:23.653 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:55:23.653 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:55:23.656 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 13:55:23.658 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-09 13:55:23.658 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:55:23.659 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0000, std=nan
+2025-01-09 13:55:23.660 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=19.1000, std=6.7897
+2025-01-09 13:55:23.660 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:55:23.660 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:55:23.661 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:55:23.672 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns   momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  10.000000        10.0   10.0  1.000000e+01  1.000000e+01
+mean   2.775558e-18   0.000000         0.0    0.0 -2.331468e-16 -1.477041e-12
+std    9.426928e-01   0.666393         0.0    0.0  1.000000e+00  9.998891e-01
+min   -2.327467e+00  -0.971164         0.0    0.0 -2.076676e+00 -1.740554e+00
+25%    4.654363e-02  -0.429806         0.0    0.0 -5.670355e-01 -7.982159e-01
+50%    1.861745e-01   0.000000         0.0    0.0  2.798357e-01  4.212806e-01
+75%    2.759492e-01   0.000000         0.0    0.0  6.480406e-01  4.767123e-01
+max    1.143762e+00   1.337244         0.0    0.0  1.458091e+00  1.363619e+00
+2025-01-09 13:55:23.673 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:55:23.673 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:55:23.673 DEBUG {main} [main] State values: min=-2.327467203140259, max=1.458091378211975, mean=0.0
+2025-01-09 13:55:23.722 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9801, steps: 5
+2025-01-09 13:55:23.722 INFO {main} [main] Q-values: [-0.0065948  -0.01817706 -0.0034153  -0.00881054]
+2025-01-09 13:55:23.722 INFO {main} [main] Selected action: 3
+2025-01-09 13:55:23.722 INFO {main} [main] Random action: True
+2025-01-09 13:55:23.723 DEBUG {main} [main] Current price: 1.03007
+2025-01-09 13:55:23.870 INFO {main} [main] Current positions: [{'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 11, 'profit': 11, 'currentPrice': 1.03012, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}]
+2025-01-09 13:55:24.023 DEBUG {trading_env} [step] Current position check: {'id': '1383764070', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:50:33.000Z', 'brokerTime': '2025-01-09 14:50:33.000', 'updateTime': '2025-01-09T12:50:33.000Z', 'openPrice': 1.03023, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 11, 'profit': 11, 'currentPrice': 1.03012, 'currentTickValue': 1, 'updateSequenceNumber': 1736427033000013}
+2025-01-09 13:55:24.023 INFO {trading_env} [step] Attempting to close position, current P/L: 11.0
+2025-01-09 13:55:24.294 INFO {trading_env} [step] Position closed, Profit: 11.0
+2025-01-09 13:55:24.294 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 2
+2025-01-09 13:55:24.295 INFO {main} [main] Step result - Reward: 11.0, Done: False
+2025-01-09 13:55:24.295 INFO {main} [main] Environment state - Position: None, Entry price: 1.0303
+2025-01-09 13:55:24.295 INFO {main} [main] Total profit: 11.0, Trades made: 2
+2025-01-09 13:55:24.296 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:55:24.296 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:55:24.298 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 13:55:24.299 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-09 13:55:24.299 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:55:24.300 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0000, std=nan
+2025-01-09 13:55:24.300 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=19.1000, std=6.7897
+2025-01-09 13:55:24.300 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:55:24.301 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:55:24.301 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:55:24.313 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns   momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  10.000000        10.0   10.0  1.000000e+01  1.000000e+01
+mean   2.775558e-18   0.000000         0.0    0.0 -2.331468e-16 -1.477041e-12
+std    9.426928e-01   0.666393         0.0    0.0  1.000000e+00  9.998891e-01
+min   -2.327467e+00  -0.971164         0.0    0.0 -2.076676e+00 -1.740554e+00
+25%    4.654363e-02  -0.429806         0.0    0.0 -5.670355e-01 -7.982159e-01
+50%    1.861745e-01   0.000000         0.0    0.0  2.798357e-01  4.212806e-01
+75%    2.759492e-01   0.000000         0.0    0.0  6.480406e-01  4.767123e-01
+max    1.143762e+00   1.337244         0.0    0.0  1.458091e+00  1.363619e+00
+2025-01-09 13:55:24.314 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:55:24.314 DEBUG {main} [main] Training model...
+2025-01-09 13:55:24.314 INFO {main} [main] New epsilon value: 0.9801495006250001
+2025-01-09 13:56:24.316 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:56:24.599 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:56:00.000Z', 'brokerTime': '2025-01-09 14:56:00.000', 'open': 1.0301, 'close': 1.03005, 'high': 1.03016, 'low': 1.03002, 'tickVolume': 21, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:56:24.600 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:56:24.601 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:56:24.601 DEBUG {main} [main] Latest prices: Close=1.03005, Open=1.0301
+2025-01-09 13:56:24.602 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:56:24.602 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:56:24.604 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 13:56:24.605 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-09 13:56:24.606 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:56:24.606 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0001, std=nan
+2025-01-09 13:56:24.608 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=19.0000, std=6.7495
+2025-01-09 13:56:24.608 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:56:24.608 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:56:24.609 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:56:24.621 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean  -1.734723e-18  1.332268e-16         0.0    0.0  1.665335e-17  9.101164e-13
+std    9.426925e-01  6.663290e-01         0.0    0.0  1.000000e+00  9.998975e-01
+min   -2.306377e+00 -1.022743e+00         0.0    0.0 -2.074232e+00 -1.444877e+00
+25%   -2.003810e-02 -3.928928e-02         0.0    0.0 -5.555979e-01 -9.325091e-01
+50%    2.132878e-01  0.000000e+00         0.0    0.0  2.222392e-01  5.533570e-01
+75%    3.032776e-01  0.000000e+00         0.0    0.0  6.667175e-01  6.045938e-01
+max    1.173169e+00  1.632419e+00         0.0    0.0  1.481594e+00  1.424382e+00
+2025-01-09 13:56:24.621 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:56:24.621 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:56:24.622 DEBUG {main} [main] State values: min=-2.3063766956329346, max=1.6324193477630615, mean=1.9868215961338365e-09
+2025-01-09 13:56:24.668 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9752, steps: 6
+2025-01-09 13:56:24.670 INFO {main} [main] Q-values: [-0.00869831 -0.01925756 -0.00644174 -0.01065565]
+2025-01-09 13:56:24.671 INFO {main} [main] Selected action: 1
+2025-01-09 13:56:24.671 INFO {main} [main] Random action: True
+2025-01-09 13:56:24.671 DEBUG {main} [main] Current price: 1.03005
+2025-01-09 13:56:24.845 INFO {main} [main] Current positions: []
+2025-01-09 13:56:25.010 DEBUG {trading_env} [step] Current position check: None
+2025-01-09 13:56:25.010 INFO {trading_env} [step] Attempting to execute ORDER_TYPE_SELL
+2025-01-09 13:56:25.314 INFO {trading_env} [step] Trade executed: ORDER_TYPE_SELL, ID: 1383767868
+2025-01-09 13:56:25.314 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 3
+2025-01-09 13:56:25.315 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 13:56:25.315 INFO {main} [main] Environment state - Position: short, Entry price: 1.03005
+2025-01-09 13:56:25.315 INFO {main} [main] Total profit: 11.0, Trades made: 3
+2025-01-09 13:57:25.315 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:57:25.464 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:57:00.000Z', 'brokerTime': '2025-01-09 14:57:00.000', 'open': 1.03006, 'close': 1.03011, 'high': 1.03012, 'low': 1.03006, 'tickVolume': 16, 'spread': 4.999999999988347e-05}
+2025-01-09 13:57:25.465 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:57:25.466 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:57:25.466 DEBUG {main} [main] Latest prices: Close=1.03011, Open=1.03006
+2025-01-09 13:57:25.466 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:57:25.467 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:57:25.470 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 13:57:25.470 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-09 13:57:25.471 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:57:25.471 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0001, std=nan
+2025-01-09 13:57:25.472 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=18.4000, std=6.7198
+2025-01-09 13:57:25.472 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:57:25.472 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:57:25.473 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:57:25.484 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean   1.110223e-17 -1.776357e-16         0.0    0.0  2.498002e-16 -6.857903e-13
+std    9.426974e-01  6.659978e-01         0.0    0.0  1.000000e+00  9.998970e-01
+min   -2.272956e+00 -1.480406e+00         0.0    0.0 -1.994110e+00 -1.348713e+00
+25%   -6.708746e-02  0.000000e+00         0.0    0.0 -4.687648e-01 -8.339371e-01
+50%    1.404322e-01  0.000000e+00         0.0    0.0 -5.952568e-02  1.441373e-01
+75%    5.714823e-01  3.506515e-01         0.0    0.0  7.217489e-01  7.103909e-01
+max    1.059827e+00  1.051931e+00         0.0    0.0  1.577431e+00  1.534032e+00
+2025-01-09 13:57:25.485 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:57:25.485 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:57:25.485 DEBUG {main} [main] State values: min=-2.272955894470215, max=1.5774306058883667, mean=-1.0430812658057675e-08
+2025-01-09 13:57:25.532 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9704, steps: 7
+2025-01-09 13:57:25.533 INFO {main} [main] Q-values: [-0.00982548 -0.02175562 -0.00887312 -0.01487903]
+2025-01-09 13:57:25.533 INFO {main} [main] Selected action: 1
+2025-01-09 13:57:25.533 INFO {main} [main] Random action: True
+2025-01-09 13:57:25.533 DEBUG {main} [main] Current price: 1.03011
+2025-01-09 13:57:25.679 INFO {main} [main] Current positions: [{'id': '1383767868', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:56:25.000Z', 'brokerTime': '2025-01-09 14:56:25.000', 'updateTime': '2025-01-09T12:56:25.000Z', 'openPrice': 1.03005, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -11, 'profit': -11, 'currentPrice': 1.03016, 'currentTickValue': 1, 'updateSequenceNumber': 1736427385000013}]
+2025-01-09 13:57:25.828 DEBUG {trading_env} [step] Current position check: {'id': '1383767868', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:56:25.000Z', 'brokerTime': '2025-01-09 14:56:25.000', 'updateTime': '2025-01-09T12:56:25.000Z', 'openPrice': 1.03005, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -11, 'profit': -11, 'currentPrice': 1.03016, 'currentTickValue': 1, 'updateSequenceNumber': 1736427385000013}
+2025-01-09 13:57:25.829 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 3
+2025-01-09 13:57:25.829 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 13:57:25.829 INFO {main} [main] Environment state - Position: short, Entry price: 1.03005
+2025-01-09 13:57:25.829 INFO {main} [main] Total profit: 11.0, Trades made: 3
+2025-01-09 13:58:25.840 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:58:26.009 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:58:00.000Z', 'brokerTime': '2025-01-09 14:58:00.000', 'open': 1.03024, 'close': 1.0303, 'high': 1.0303, 'low': 1.03016, 'tickVolume': 21, 'spread': 5.0000000000105516e-05}
+2025-01-09 13:58:26.009 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:58:26.010 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:58:26.010 DEBUG {main} [main] Latest prices: Close=1.0303, Open=1.03024
+2025-01-09 13:58:26.011 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:58:26.011 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:58:26.015 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-09 13:58:26.015 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=-0.0000, std=0.0000
+2025-01-09 13:58:26.016 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:58:26.016 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=-0.0000, std=nan
+2025-01-09 13:58:26.016 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=18.1000, std=6.5056
+2025-01-09 13:58:26.016 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:58:26.018 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:58:26.018 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:58:26.029 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean   4.440892e-17  2.220446e-17         0.0    0.0 -2.331468e-16 -6.266543e-13
+std    9.427210e-01  6.665001e-01         0.0    0.0  1.000000e+00  9.999059e-01
+min   -1.984657e+00 -8.344037e-01         0.0    0.0 -2.013664e+00 -1.307543e+00
+25%   -2.166613e-01 -3.129054e-01         0.0    0.0 -4.380873e-01 -8.372040e-01
+50%   -4.031946e-02  0.000000e+00         0.0    0.0 -1.537148e-02  5.644072e-02
+75%    4.407937e-01  0.000000e+00         0.0    0.0  4.457730e-01  6.443649e-01
+max    1.642244e+00  1.736735e+00         0.0    0.0  1.675492e+00  1.326357e+00
+2025-01-09 13:58:26.030 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:58:26.030 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:58:26.030 DEBUG {main} [main] State values: min=-2.0136642456054688, max=1.736735463142395, mean=1.9868215961338365e-09
+2025-01-09 13:58:26.076 DEBUG {dql_model} [act] Random action: 0, epsilon: 0.9655, steps: 8
+2025-01-09 13:58:26.077 INFO {main} [main] Q-values: [-0.00765373 -0.02045563 -0.00461582 -0.00982619]
+2025-01-09 13:58:26.077 INFO {main} [main] Selected action: 0
+2025-01-09 13:58:26.077 INFO {main} [main] Random action: True
+2025-01-09 13:58:26.077 DEBUG {main} [main] Current price: 1.0303
+2025-01-09 13:58:26.254 INFO {main} [main] Current positions: [{'id': '1383767868', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:56:25.000Z', 'brokerTime': '2025-01-09 14:56:25.000', 'updateTime': '2025-01-09T12:56:25.000Z', 'openPrice': 1.03005, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -30, 'profit': -30, 'currentPrice': 1.03035, 'currentTickValue': 1, 'updateSequenceNumber': 1736427385000013}]
+2025-01-09 13:58:26.406 DEBUG {trading_env} [step] Current position check: {'id': '1383767868', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:56:25.000Z', 'brokerTime': '2025-01-09 14:56:25.000', 'updateTime': '2025-01-09T12:56:25.000Z', 'openPrice': 1.03005, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -30, 'profit': -30, 'currentPrice': 1.03035, 'currentTickValue': 1, 'updateSequenceNumber': 1736427385000013}
+2025-01-09 13:58:26.406 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 3
+2025-01-09 13:58:26.406 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 13:58:26.406 INFO {main} [main] Environment state - Position: short, Entry price: 1.03005
+2025-01-09 13:58:26.406 INFO {main} [main] Total profit: 11.0, Trades made: 3
+2025-01-09 13:59:26.426 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 13:59:26.581 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T12:59:00.000Z', 'brokerTime': '2025-01-09 14:59:00.000', 'open': 1.03039, 'close': 1.03049, 'high': 1.03049, 'low': 1.03036, 'tickVolume': 24, 'spread': 4.0000000000040004e-05}
+2025-01-09 13:59:26.581 DEBUG {main} [main] Price history length: 11
+2025-01-09 13:59:26.582 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 13:59:26.583 DEBUG {main} [main] Latest prices: Close=1.03049, Open=1.03039
+2025-01-09 13:59:26.584 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:59:26.584 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:59:26.587 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-09 13:59:26.587 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0001
+2025-01-09 13:59:26.588 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:59:26.589 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 13:59:26.589 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=18.1000, std=6.5056
+2025-01-09 13:59:26.589 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:59:26.589 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:59:26.591 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:59:26.602 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns      momentum  volatility  trend    tickVolume         close
+count  10.000000  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean    0.000000 -2.220446e-17         0.0    0.0 -2.331468e-16 -4.466205e-13
+std     0.942732  6.665502e-01         0.0    0.0  1.000000e+00  9.999330e-01
+min    -1.912211 -9.698608e-01         0.0    0.0 -2.013664e+00 -1.112820e+00
+25%    -0.358581 -3.967564e-01         0.0    0.0 -4.380873e-01 -7.776331e-01
+50%     0.079701  0.000000e+00         0.0    0.0 -1.537148e-02 -1.407784e-01
+75%     0.358531  0.000000e+00         0.0    0.0  4.457730e-01  6.469103e-01
+max     1.274936  1.302140e+00         0.0    0.0  1.675492e+00  2.037935e+00
+2025-01-09 13:59:26.602 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:59:26.602 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 13:59:26.603 DEBUG {main} [main] State values: min=-2.0136642456054688, max=2.0379347801208496, mean=0.0
+2025-01-09 13:59:26.652 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9607, steps: 9
+2025-01-09 13:59:26.652 INFO {main} [main] Q-values: [-0.00658118 -0.02010448 -0.00467652 -0.00856118]
+2025-01-09 13:59:26.652 INFO {main} [main] Selected action: 3
+2025-01-09 13:59:26.654 INFO {main} [main] Random action: True
+2025-01-09 13:59:26.654 DEBUG {main} [main] Current price: 1.03049
+2025-01-09 13:59:26.811 INFO {main} [main] Current positions: [{'id': '1383767868', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:56:25.000Z', 'brokerTime': '2025-01-09 14:56:25.000', 'updateTime': '2025-01-09T12:56:25.000Z', 'openPrice': 1.03005, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -48, 'profit': -48, 'currentPrice': 1.03053, 'currentTickValue': 1, 'updateSequenceNumber': 1736427385000013}]
+2025-01-09 13:59:26.993 DEBUG {trading_env} [step] Current position check: {'id': '1383767868', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T12:56:25.000Z', 'brokerTime': '2025-01-09 14:56:25.000', 'updateTime': '2025-01-09T12:56:25.000Z', 'openPrice': 1.03005, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -48, 'profit': -48, 'currentPrice': 1.03053, 'currentTickValue': 1, 'updateSequenceNumber': 1736427385000013}
+2025-01-09 13:59:26.993 INFO {trading_env} [step] Attempting to close position, current P/L: -48.0
+2025-01-09 13:59:27.244 INFO {trading_env} [step] Position closed, Profit: -48.0
+2025-01-09 13:59:27.244 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 4
+2025-01-09 13:59:27.244 INFO {main} [main] Step result - Reward: -48.0, Done: False
+2025-01-09 13:59:27.244 INFO {main} [main] Environment state - Position: None, Entry price: 1.03005
+2025-01-09 13:59:27.244 INFO {main} [main] Total profit: -37.0, Trades made: 4
+2025-01-09 13:59:27.246 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 13:59:27.246 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 13:59:27.249 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-09 13:59:27.249 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0001
+2025-01-09 13:59:27.251 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 13:59:27.251 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 13:59:27.252 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=18.1000, std=6.5056
+2025-01-09 13:59:27.253 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 13:59:27.253 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 13:59:27.253 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 13:59:27.265 DEBUG {trading_env} [get_state] Feature statistics: 
+         returns      momentum  volatility  trend    tickVolume         close
+count  10.000000  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean    0.000000 -2.220446e-17         0.0    0.0 -2.331468e-16 -4.466205e-13
+std     0.942732  6.665502e-01         0.0    0.0  1.000000e+00  9.999330e-01
+min    -1.912211 -9.698608e-01         0.0    0.0 -2.013664e+00 -1.112820e+00
+25%    -0.358581 -3.967564e-01         0.0    0.0 -4.380873e-01 -7.776331e-01
+50%     0.079701  0.000000e+00         0.0    0.0 -1.537148e-02 -1.407784e-01
+75%     0.358531  0.000000e+00         0.0    0.0  4.457730e-01  6.469103e-01
+max     1.274936  1.302140e+00         0.0    0.0  1.675492e+00  2.037935e+00
+2025-01-09 13:59:27.265 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 13:59:27.265 DEBUG {main} [main] Training model...
+2025-01-09 13:59:27.265 INFO {main} [main] New epsilon value: 0.960693043575437
+2025-01-09 14:00:27.269 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:00:27.583 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:00:00.000Z', 'brokerTime': '2025-01-09 15:00:00.000', 'open': 1.03032, 'close': 1.03027, 'high': 1.03034, 'low': 1.03019, 'tickVolume': 29, 'spread': 4.0000000000040004e-05}
+2025-01-09 14:00:27.583 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:00:27.584 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:00:27.584 DEBUG {main} [main] Latest prices: Close=1.03027, Open=1.03032
+2025-01-09 14:00:27.585 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:00:27.585 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:00:27.587 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 14:00:27.588 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0001
+2025-01-09 14:00:27.589 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:00:27.589 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-09 14:00:27.590 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=18.1000, std=6.5056
+2025-01-09 14:00:27.590 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0002
+2025-01-09 14:00:27.590 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:00:27.592 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:00:27.603 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean  -2.220446e-17  2.220446e-17         0.0    0.0 -1.998401e-16 -5.871859e-13
+std    9.427436e-01  6.665444e-01         0.0    0.0  1.000000e+00  9.999339e-01
+min   -1.460433e+00 -1.267349e+00         0.0    0.0 -2.013664e+00 -1.130501e+00
+25%   -3.652319e-01  0.000000e+00         0.0    0.0 -4.380873e-01 -7.999453e-01
+50%    1.120387e-02  0.000000e+00         0.0    0.0 -1.537148e-02 -1.388335e-01
+75%    4.101364e-01  2.510722e-01         0.0    0.0  4.457730e-01  6.710285e-01
+max    1.303515e+00  1.117715e+00         0.0    0.0  1.675492e+00  1.976724e+00
+2025-01-09 14:00:27.604 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:00:27.604 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:00:27.604 DEBUG {main} [main] State values: min=-2.0136642456054688, max=1.9767242670059204, mean=1.9868215961338365e-09
+2025-01-09 14:00:27.654 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9559, steps: 10
+2025-01-09 14:00:27.655 INFO {main} [main] Q-values: [-0.00989668 -0.02158546 -0.0059472  -0.01089671]
+2025-01-09 14:00:27.655 INFO {main} [main] Selected action: 1
+2025-01-09 14:00:27.655 INFO {main} [main] Random action: True
+2025-01-09 14:00:27.655 DEBUG {main} [main] Current price: 1.03027
+2025-01-09 14:00:27.859 INFO {main} [main] Current positions: []
+2025-01-09 14:00:28.027 DEBUG {trading_env} [step] Current position check: None
+2025-01-09 14:00:28.028 INFO {trading_env} [step] Attempting to execute ORDER_TYPE_SELL
+2025-01-09 14:00:28.337 INFO {trading_env} [step] Trade executed: ORDER_TYPE_SELL, ID: 1383771006
+2025-01-09 14:00:28.338 DEBUG {trading_env} [step] Step complete - Position: short, Trades: 5
+2025-01-09 14:00:28.338 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 14:00:28.338 INFO {main} [main] Environment state - Position: short, Entry price: 1.03027
+2025-01-09 14:00:28.338 INFO {main} [main] Total profit: -37.0, Trades made: 5
+2025-01-09 14:01:28.360 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:01:28.523 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:01:00.000Z', 'brokerTime': '2025-01-09 15:01:00.000', 'open': 1.03018, 'close': 1.03015, 'high': 1.03018, 'low': 1.03013, 'tickVolume': 23, 'spread': 4.0000000000040004e-05}
+2025-01-09 14:01:28.523 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:01:28.524 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:01:28.525 DEBUG {main} [main] Latest prices: Close=1.03015, Open=1.03018
+2025-01-09 14:01:28.525 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:01:28.525 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:01:28.528 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 14:01:28.529 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 14:01:28.529 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:01:28.530 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-09 14:01:28.530 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=18.8000, std=6.6299
+2025-01-09 14:01:28.531 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 14:01:28.531 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:01:28.532 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:01:28.543 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean   4.440892e-17  2.775558e-17         0.0    0.0 -1.110223e-16 -1.514378e-12
+std    9.427452e-01  6.664973e-01         0.0    0.0  1.000000e+00  9.999318e-01
+min   -1.388347e+00 -1.460193e+00         0.0    0.0 -2.081480e+00 -1.064004e+00
+25%   -5.664683e-01  0.000000e+00         0.0    0.0 -5.354531e-01 -7.229768e-01
+50%    2.920294e-02  0.000000e+00         0.0    0.0  2.564142e-01 -3.137446e-01
+75%    4.366985e-01  8.888688e-02         0.0    0.0  5.580779e-01  5.729250e-01
+max    1.308336e+00  1.203419e+00         0.0    0.0  1.538485e+00  2.141648e+00
+2025-01-09 14:01:28.544 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:01:28.544 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:01:28.544 DEBUG {main} [main] State values: min=-2.081479787826538, max=2.141648292541504, mean=5.215406329028838e-09
+2025-01-09 14:01:28.592 DEBUG {dql_model} [act] Random action: 3, epsilon: 0.9511, steps: 11
+2025-01-09 14:01:28.593 INFO {main} [main] Q-values: [-0.00815356 -0.01999807 -0.00495208 -0.01087132]
+2025-01-09 14:01:28.593 INFO {main} [main] Selected action: 3
+2025-01-09 14:01:28.593 INFO {main} [main] Random action: True
+2025-01-09 14:01:28.593 DEBUG {main} [main] Current price: 1.03015
+2025-01-09 14:01:28.751 INFO {main} [main] Current positions: [{'id': '1383771006', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:00:28.000Z', 'brokerTime': '2025-01-09 15:00:28.000', 'updateTime': '2025-01-09T13:00:28.000Z', 'openPrice': 1.03025, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 6, 'profit': 6, 'currentPrice': 1.03019, 'currentTickValue': 1, 'updateSequenceNumber': 1736427628000013}]
+2025-01-09 14:01:28.971 DEBUG {trading_env} [step] Current position check: {'id': '1383771006', 'platform': 'mt4', 'type': 'POSITION_TYPE_SELL', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:00:28.000Z', 'brokerTime': '2025-01-09 15:00:28.000', 'updateTime': '2025-01-09T13:00:28.000Z', 'openPrice': 1.03025, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 6, 'profit': 6, 'currentPrice': 1.03019, 'currentTickValue': 1, 'updateSequenceNumber': 1736427628000013}
+2025-01-09 14:01:28.971 INFO {trading_env} [step] Attempting to close position, current P/L: 6.0
+2025-01-09 14:01:29.182 INFO {trading_env} [step] Position closed, Profit: 6.0
+2025-01-09 14:01:29.183 DEBUG {trading_env} [step] Step complete - Position: None, Trades: 6
+2025-01-09 14:01:29.183 INFO {main} [main] Step result - Reward: 6.0, Done: False
+2025-01-09 14:01:29.183 INFO {main} [main] Environment state - Position: None, Entry price: 1.03027
+2025-01-09 14:01:29.183 INFO {main} [main] Total profit: -31.0, Trades made: 6
+2025-01-09 14:01:29.184 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:01:29.184 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:01:29.187 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=-0.0000, std=0.0001
+2025-01-09 14:01:29.188 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 14:01:29.188 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:01:29.189 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-09 14:01:29.190 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=18.8000, std=6.6299
+2025-01-09 14:01:29.190 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 14:01:29.190 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:01:29.191 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:01:29.202 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean   4.440892e-17  2.775558e-17         0.0    0.0 -1.110223e-16 -1.514378e-12
+std    9.427452e-01  6.664973e-01         0.0    0.0  1.000000e+00  9.999318e-01
+min   -1.388347e+00 -1.460193e+00         0.0    0.0 -2.081480e+00 -1.064004e+00
+25%   -5.664683e-01  0.000000e+00         0.0    0.0 -5.354531e-01 -7.229768e-01
+50%    2.920294e-02  0.000000e+00         0.0    0.0  2.564142e-01 -3.137446e-01
+75%    4.366985e-01  8.888688e-02         0.0    0.0  5.580779e-01  5.729250e-01
+max    1.308336e+00  1.203419e+00         0.0    0.0  1.538485e+00  2.141648e+00
+2025-01-09 14:01:29.204 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:01:29.204 DEBUG {main} [main] Training model...
+2025-01-09 14:01:29.204 INFO {main} [main] New epsilon value: 0.9511101304657719
+2025-01-09 14:02:29.210 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:02:29.385 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:02:00.000Z', 'brokerTime': '2025-01-09 15:02:00.000', 'open': 1.03012, 'close': 1.03028, 'high': 1.03036, 'low': 1.03012, 'tickVolume': 32, 'spread': 3.999999999981796e-05}
+2025-01-09 14:02:29.385 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:02:29.387 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:02:29.387 DEBUG {main} [main] Latest prices: Close=1.03028, Open=1.03012
+2025-01-09 14:02:29.387 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:02:29.387 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:02:29.390 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-09 14:02:29.391 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 14:02:29.391 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:02:29.392 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-09 14:02:29.392 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=20.6000, std=7.5601
+2025-01-09 14:02:29.393 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 14:02:29.393 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:02:29.393 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:02:29.404 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean   4.440892e-17 -1.110223e-17         0.0    0.0 -1.998401e-16  1.336875e-12
+std    9.427383e-01  6.663861e-01         0.0    0.0  1.000000e+00  9.999331e-01
+min   -1.811940e+00 -1.094436e+00         0.0    0.0 -2.063457e+00 -1.077018e+00
+25%   -3.196691e-01 -2.082151e-01         0.0    0.0 -4.761823e-01 -7.425402e-01
+50%    7.685733e-02  0.000000e+00         0.0    0.0  5.290915e-02 -3.411671e-01
+75%    6.088037e-01  0.000000e+00         0.0    0.0  4.166595e-01  6.455417e-01
+max    1.173201e+00  1.519061e+00         0.0    0.0  1.507911e+00  2.067071e+00
+2025-01-09 14:02:29.405 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:02:29.405 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:02:29.405 DEBUG {main} [main] State values: min=-2.0634567737579346, max=2.0670711994171143, mean=-9.934107980669182e-10
+2025-01-09 14:02:29.452 DEBUG {dql_model} [act] Random action: 0, epsilon: 0.9464, steps: 12
+2025-01-09 14:02:29.453 INFO {main} [main] Q-values: [-0.00757782 -0.01990944 -0.00597261 -0.01041666]
+2025-01-09 14:02:29.453 INFO {main} [main] Selected action: 0
+2025-01-09 14:02:29.453 INFO {main} [main] Random action: False
+2025-01-09 14:02:29.453 DEBUG {main} [main] Current price: 1.03028
+2025-01-09 14:02:29.619 INFO {main} [main] Current positions: []
+2025-01-09 14:02:29.768 DEBUG {trading_env} [step] Current position check: None
+2025-01-09 14:02:29.769 INFO {trading_env} [step] Attempting to execute ORDER_TYPE_BUY
+2025-01-09 14:02:29.994 INFO {trading_env} [step] Trade executed: ORDER_TYPE_BUY, ID: 1383772652
+2025-01-09 14:02:29.994 DEBUG {trading_env} [step] Step complete - Position: long, Trades: 7
+2025-01-09 14:02:29.994 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 14:02:29.995 INFO {main} [main] Environment state - Position: long, Entry price: 1.03028
+2025-01-09 14:02:29.995 INFO {main} [main] Total profit: -31.0, Trades made: 7
+2025-01-09 14:03:30.017 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:03:30.177 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:03:00.000Z', 'brokerTime': '2025-01-09 15:03:00.000', 'open': 1.03031, 'close': 1.03023, 'high': 1.03034, 'low': 1.03021, 'tickVolume': 26, 'spread': 4.0000000000040004e-05}
+2025-01-09 14:03:30.177 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:03:30.178 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:03:30.178 DEBUG {main} [main] Latest prices: Close=1.03023, Open=1.03031
+2025-01-09 14:03:30.179 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:03:30.179 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:03:30.182 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-09 14:03:30.182 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 14:03:30.183 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:03:30.183 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0001, std=nan
+2025-01-09 14:03:30.184 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=22.7000, std=5.3344
+2025-01-09 14:03:30.184 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 14:03:30.185 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:03:30.185 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:03:30.198 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0  1.000000e+01  1.000000e+01
+mean  -1.665335e-17 -4.440892e-17         0.0    0.0  1.443290e-16  1.120484e-12
+std    9.427394e-01  6.664730e-01         0.0    0.0  1.000000e+00  9.999279e-01
+min   -1.704857e+00 -1.319658e+00         0.0    0.0 -1.443468e+00 -1.095746e+00
+25%   -4.323359e-01  0.000000e+00         0.0    0.0 -4.592853e-01 -8.794800e-01
+50%   -6.378078e-02  0.000000e+00         0.0    0.0 -1.312244e-01 -8.650623e-02
+75%    6.792868e-01  2.545363e-02         0.0    0.0  5.248975e-01  5.442684e-01
+max    1.235151e+00  1.443464e+00         0.0    0.0  1.743410e+00  2.076150e+00
+2025-01-09 14:03:30.198 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:03:30.199 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:03:30.199 DEBUG {main} [main] State values: min=-1.7048574686050415, max=2.0761497020721436, mean=-5.4637592228345966e-09
+2025-01-09 14:03:30.249 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9416, steps: 13
+2025-01-09 14:03:30.249 INFO {main} [main] Q-values: [-0.00884184 -0.02028728 -0.00788616 -0.01291967]
+2025-01-09 14:03:30.250 INFO {main} [main] Selected action: 1
+2025-01-09 14:03:30.250 INFO {main} [main] Random action: True
+2025-01-09 14:03:30.250 DEBUG {main} [main] Current price: 1.03023
+2025-01-09 14:03:30.410 INFO {main} [main] Current positions: [{'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -11, 'profit': -11, 'currentPrice': 1.03023, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}]
+2025-01-09 14:03:30.575 DEBUG {trading_env} [step] Current position check: {'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -11, 'profit': -11, 'currentPrice': 1.03023, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}
+2025-01-09 14:03:30.575 DEBUG {trading_env} [step] Step complete - Position: long, Trades: 7
+2025-01-09 14:03:30.576 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 14:03:30.576 INFO {main} [main] Environment state - Position: long, Entry price: 1.03028
+2025-01-09 14:03:30.576 INFO {main} [main] Total profit: -31.0, Trades made: 7
+2025-01-09 14:04:30.588 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:04:30.766 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:04:00.000Z', 'brokerTime': '2025-01-09 15:04:00.000', 'open': 1.0302, 'close': 1.03016, 'high': 1.0302, 'low': 1.03009, 'tickVolume': 27, 'spread': 4.0000000000040004e-05}
+2025-01-09 14:04:30.766 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:04:30.767 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:04:30.767 DEBUG {main} [main] Latest prices: Close=1.03016, Open=1.0302
+2025-01-09 14:04:30.768 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:04:30.768 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:04:30.772 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0001
+2025-01-09 14:04:30.772 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 14:04:30.773 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:04:30.774 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 14:04:30.774 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=23.9000, std=4.7246
+2025-01-09 14:04:30.775 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 14:04:30.775 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:04:30.775 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:04:30.788 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns   momentum  volatility  trend    tickVolume      close
+count  1.000000e+01  10.000000        10.0   10.0  1.000000e+01  10.000000
+mean   4.440892e-17   0.000000         0.0    0.0  2.775558e-16   0.000000
+std    9.427409e-01   0.666510         0.0    0.0  1.000000e+00   0.999924
+min   -1.613947e+00  -1.570893         0.0    0.0 -1.672085e+00  -1.220095
+25%   -5.264566e-01   0.000000         0.0    0.0 -6.138034e-01  -0.689619
+50%   -1.053240e-01   0.000000         0.0    0.0 -8.466254e-02  -0.121252
+75%    7.194033e-01   0.294567         0.0    0.0  6.032206e-01   0.503952
+max    1.263425e+00   0.849375         0.0    0.0  1.714416e+00   2.114326
+2025-01-09 14:04:30.788 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:04:30.788 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:04:30.788 DEBUG {main} [main] State values: min=-1.6720850467681885, max=2.114325761795044, mean=1.7881394143159923e-08
+2025-01-09 14:04:30.835 DEBUG {dql_model} [act] Random action: 0, epsilon: 0.9369, steps: 14
+2025-01-09 14:04:30.835 INFO {main} [main] Q-values: [-0.00739809 -0.01672105 -0.00665382 -0.010885  ]
+2025-01-09 14:04:30.835 INFO {main} [main] Selected action: 0
+2025-01-09 14:04:30.835 INFO {main} [main] Random action: True
+2025-01-09 14:04:30.836 DEBUG {main} [main] Current price: 1.03016
+2025-01-09 14:04:30.982 INFO {main} [main] Current positions: [{'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -18, 'profit': -18, 'currentPrice': 1.03016, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}]
+2025-01-09 14:04:31.132 DEBUG {trading_env} [step] Current position check: {'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': -18, 'profit': -18, 'currentPrice': 1.03016, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}
+2025-01-09 14:04:31.133 DEBUG {trading_env} [step] Step complete - Position: long, Trades: 7
+2025-01-09 14:04:31.133 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 14:04:31.133 INFO {main} [main] Environment state - Position: long, Entry price: 1.03028
+2025-01-09 14:04:31.133 INFO {main} [main] Total profit: -31.0, Trades made: 7
+2025-01-09 14:05:31.131 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:05:40.331 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 1/3
+2025-01-09 14:05:54.508 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 2/3
+2025-01-09 14:06:08.690 WARNING {data_fetcher} [get_current_candle] Candle not available, retry 3/3
+2025-01-09 14:07:13.701 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:07:13.866 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:07:00.000Z', 'brokerTime': '2025-01-09 15:07:00.000', 'open': 1.03047, 'close': 1.03046, 'high': 1.03047, 'low': 1.03045, 'tickVolume': 3, 'spread': 4.0000000000040004e-05}
+2025-01-09 14:07:13.866 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:07:13.867 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:07:13.867 DEBUG {main} [main] Latest prices: Close=1.03046, Open=1.03047
+2025-01-09 14:07:13.868 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:07:13.868 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:07:13.871 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0002
+2025-01-09 14:07:13.871 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0000
+2025-01-09 14:07:13.872 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:07:13.873 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 14:07:13.873 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=22.2000, std=8.1213
+2025-01-09 14:07:13.875 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0302, std=0.0001
+2025-01-09 14:07:13.875 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:07:13.875 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:07:13.887 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns   momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  10.000000        10.0   10.0  1.000000e+01  1.000000e+01
+mean  -2.220446e-17   0.000000         0.0    0.0  4.440892e-17  6.217471e-13
+std    9.427523e-01   0.666508         0.0    0.0  1.000000e+00  9.999300e-01
+min   -1.551691e+00  -1.576816         0.0    0.0 -2.364153e+00 -1.400182e+00
+25%   -6.461710e-01   0.000000         0.0    0.0 -1.477595e-01 -6.825888e-01
+50%    4.220164e-02   0.000000         0.0    0.0  1.600728e-01  7.772394e-13
+75%    7.563754e-01   0.304352         0.0    0.0  5.602550e-01  3.150410e-01
+max    1.487053e+00   0.820568         0.0    0.0  1.206703e+00  1.680218e+00
+2025-01-09 14:07:13.887 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:07:13.887 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:07:13.887 DEBUG {main} [main] State values: min=-2.364152669906616, max=1.6802184581756592, mean=1.9868215961338365e-09
+2025-01-09 14:07:13.934 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9322, steps: 15
+2025-01-09 14:07:13.934 INFO {main} [main] Q-values: [-0.01117147 -0.02027361 -0.01113567 -0.01603669]
+2025-01-09 14:07:13.934 INFO {main} [main] Selected action: 1
+2025-01-09 14:07:13.935 INFO {main} [main] Random action: True
+2025-01-09 14:07:13.935 DEBUG {main} [main] Current price: 1.03046
+2025-01-09 14:07:27.919 INFO {main} [main] Current positions: [{'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 12, 'profit': 12, 'currentPrice': 1.03046, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}]
+2025-01-09 14:07:33.343 DEBUG {trading_env} [step] Current position check: {'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 12, 'profit': 12, 'currentPrice': 1.03046, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}
+2025-01-09 14:07:33.343 DEBUG {trading_env} [step] Step complete - Position: long, Trades: 7
+2025-01-09 14:07:33.344 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 14:07:33.344 INFO {main} [main] Environment state - Position: long, Entry price: 1.03028
+2025-01-09 14:07:33.344 INFO {main} [main] Total profit: -31.0, Trades made: 7
+2025-01-09 14:08:33.370 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:08:33.553 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:08:00.000Z', 'brokerTime': '2025-01-09 15:08:00.000', 'open': 1.0305, 'close': 1.03056, 'high': 1.03057, 'low': 1.03035, 'tickVolume': 33, 'spread': 4.0000000000040004e-05}
+2025-01-09 14:08:33.553 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:08:33.554 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:08:33.554 DEBUG {main} [main] Latest prices: Close=1.03056, Open=1.0305
+2025-01-09 14:08:33.555 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:08:33.555 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:08:33.558 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0002
+2025-01-09 14:08:33.559 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0001
+2025-01-09 14:08:33.559 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:08:33.559 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 14:08:33.560 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=23.4000, std=8.7838
+2025-01-09 14:08:33.561 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0303, std=0.0002
+2025-01-09 14:08:33.561 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:08:33.562 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:08:33.575 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns   momentum  volatility  trend    tickVolume         close
+count  1.000000e+01  10.000000        10.0   10.0  1.000000e+01  1.000000e+01
+mean   3.330669e-17   0.000000         0.0    0.0  1.554312e-16 -1.008638e-12
+std    9.427526e-01   0.666545         0.0    0.0  1.000000e+00  9.999351e-01
+min   -1.569044e+00  -1.429195         0.0    0.0 -2.322451e+00 -1.239465e+00
+25%   -6.684601e-01   0.000000         0.0    0.0 -2.163067e-01 -8.014343e-01
+50%    1.452163e-01   0.000000         0.0    0.0  1.821530e-01 -1.687230e-01
+75%    7.264415e-01   0.254794         0.0    0.0  5.806128e-01  7.722322e-01
+max    1.453136e+00   1.188552         0.0    0.0  1.092918e+00  1.680741e+00
+2025-01-09 14:08:33.575 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:08:33.576 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:08:33.576 DEBUG {main} [main] State values: min=-2.322451114654541, max=1.6807407140731812, mean=-3.973643192267673e-09
+2025-01-09 14:08:33.629 DEBUG {dql_model} [act] Random action: 1, epsilon: 0.9276, steps: 16
+2025-01-09 14:08:33.629 INFO {main} [main] Q-values: [-0.00973046 -0.02070658 -0.01059379 -0.0151308 ]
+2025-01-09 14:08:33.629 INFO {main} [main] Selected action: 1
+2025-01-09 14:08:33.630 INFO {main} [main] Random action: True
+2025-01-09 14:08:33.630 DEBUG {main} [main] Current price: 1.03056
+2025-01-09 14:08:33.797 INFO {main} [main] Current positions: [{'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 22, 'profit': 22, 'currentPrice': 1.03056, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}]
+2025-01-09 14:08:33.985 DEBUG {trading_env} [step] Current position check: {'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 22, 'profit': 22, 'currentPrice': 1.03056, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}
+2025-01-09 14:08:33.985 DEBUG {trading_env} [step] Step complete - Position: long, Trades: 7
+2025-01-09 14:08:33.987 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 14:08:33.987 INFO {main} [main] Environment state - Position: long, Entry price: 1.03028
+2025-01-09 14:08:33.987 INFO {main} [main] Total profit: -31.0, Trades made: 7
+2025-01-09 14:09:34.001 DEBUG {main} [main] === New Trading Cycle ===
+2025-01-09 14:09:34.170 DEBUG {main} [main] New candle: {'symbol': 'EURUSD', 'timeframe': '1m', 'time': '2025-01-09T13:09:00.000Z', 'brokerTime': '2025-01-09 15:09:00.000', 'open': 1.0306, 'close': 1.03056, 'high': 1.03062, 'low': 1.03054, 'tickVolume': 27, 'spread': 5.0000000000105516e-05}
+2025-01-09 14:09:34.171 DEBUG {main} [main] Price history length: 11
+2025-01-09 14:09:34.171 DEBUG {main} [main] Data shape: (10, 10)
+2025-01-09 14:09:34.172 DEBUG {main} [main] Latest prices: Close=1.03056, Open=1.0306
+2025-01-09 14:09:34.172 DEBUG {trading_env} [get_state] Numeric data shape: (10, 5)
+2025-01-09 14:09:34.172 DEBUG {trading_env} [calculate_indicators] Starting indicator calculations...
+2025-01-09 14:09:34.176 DEBUG {trading_env} [calculate_indicators] Normalized returns: mean=0.0000, std=0.0002
+2025-01-09 14:09:34.177 DEBUG {trading_env} [calculate_indicators] Normalized momentum: mean=0.0000, std=0.0001
+2025-01-09 14:09:34.177 DEBUG {trading_env} [calculate_indicators] Normalized volatility: mean=nan, std=nan
+2025-01-09 14:09:34.177 DEBUG {trading_env} [calculate_indicators] Normalized trend: mean=0.0000, std=nan
+2025-01-09 14:09:34.179 DEBUG {trading_env} [calculate_indicators] Normalized tickVolume: mean=24.5000, std=8.4360
+2025-01-09 14:09:34.179 DEBUG {trading_env} [calculate_indicators] Normalized close: mean=1.0303, std=0.0002
+2025-01-09 14:09:34.179 DEBUG {trading_env} [calculate_indicators] Final feature shape: (10, 6)
+2025-01-09 14:09:34.180 DEBUG {trading_env} [get_state] Features calculated: ['returns', 'momentum', 'volatility', 'trend', 'tickVolume', 'close']
+2025-01-09 14:09:34.190 DEBUG {trading_env} [get_state] Feature statistics: 
+            returns      momentum  volatility  trend  tickVolume         close
+count  1.000000e+01  1.000000e+01        10.0   10.0   10.000000  1.000000e+01
+mean   3.053113e-17 -1.110223e-17         0.0    0.0    0.000000  1.266542e-12
+std    9.427499e-01  6.665506e-01         0.0    0.0    1.000000  9.999366e-01
+min   -1.515471e+00 -1.439251e+00         0.0    0.0   -2.548591 -1.242187e+00
+25%   -5.718324e-01  0.000000e+00         0.0    0.0   -0.148174 -6.717951e-01
+50%   -8.798834e-02  0.000000e+00         0.0    0.0    0.237078 -3.549106e-01
+75%    5.700783e-01  2.382096e-01         0.0    0.0    0.474156  8.650946e-01
+max    1.651191e+00  1.060860e+00         0.0    0.0    1.007582  1.356266e+00
+2025-01-09 14:09:34.192 DEBUG {trading_env} [get_state] Final state shape: (10, 6)
+2025-01-09 14:09:34.192 DEBUG {main} [main] State shape: (10, 6), dtype: float32
+2025-01-09 14:09:34.192 DEBUG {main} [main] State values: min=-2.548590898513794, max=1.6511911153793335, mean=0.0
+2025-01-09 14:09:34.284 DEBUG {dql_model} [act] Model action: 2, epsilon: 0.9229, steps: 17
+2025-01-09 14:09:34.284 INFO {main} [main] Q-values: [-0.01102307 -0.02171587 -0.00840584 -0.01501328]
+2025-01-09 14:09:34.284 INFO {main} [main] Selected action: 2
+2025-01-09 14:09:34.284 INFO {main} [main] Random action: False
+2025-01-09 14:09:34.284 DEBUG {main} [main] Current price: 1.03056
+2025-01-09 14:09:34.443 INFO {main} [main] Current positions: [{'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 22, 'profit': 22, 'currentPrice': 1.03056, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}]
+2025-01-09 14:09:34.580 DEBUG {trading_env} [step] Current position check: {'id': '1383772652', 'platform': 'mt4', 'type': 'POSITION_TYPE_BUY', 'symbol': 'EURUSD', 'magic': 0, 'time': '2025-01-09T13:02:30.000Z', 'brokerTime': '2025-01-09 15:02:30.000', 'updateTime': '2025-01-09T13:02:30.000Z', 'openPrice': 1.03034, 'volume': 1, 'swap': 0, 'realizedSwap': 0, 'unrealizedSwap': 0, 'commission': 0, 'realizedCommission': 0, 'unrealizedCommission': 0, 'realizedProfit': 0, 'reason': 'POSITION_REASON_UNKNOWN', 'accountCurrencyExchangeRate': 1, 'unrealizedProfit': 22, 'profit': 22, 'currentPrice': 1.03056, 'currentTickValue': 1, 'updateSequenceNumber': 1736427750000013}
+2025-01-09 14:09:34.580 DEBUG {trading_env} [step] Step complete - Position: long, Trades: 7
+2025-01-09 14:09:34.580 INFO {main} [main] Step result - Reward: 0, Done: False
+2025-01-09 14:09:34.580 INFO {main} [main] Environment state - Position: long, Entry price: 1.03028
+2025-01-09 14:09:34.581 INFO {main} [main] Total profit: -31.0, Trades made: 7
+2025-01-09 14:10:34.602 INFO {main} [<module>] Bot stopped by user
