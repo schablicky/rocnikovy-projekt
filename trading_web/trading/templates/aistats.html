@@ -4,79 +4,59 @@
 <div class="container mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold mb-8">AI Trading Statistics</h1>
 
-    <!-- Debug Info -->
-    <div id="debug-info" class="bg-red-100 p-4 mb-8 rounded-lg hidden">
-        <h2 class="font-bold">API Connection Error</h2>
-        <p id="debug-message"></p>
+    <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+        <span class="block sm:inline"></span>
     </div>
 
-    <!-- Stats Containers -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white shadow rounded-lg p-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
             <h2 class="text-xl font-bold mb-4">Model State</h2>
-            <div id="model-stats" class="space-y-2">Loading...</div>
+            <div id="model-stats">Loading...</div>
         </div>
-
-        <div class="bg-white shadow rounded-lg p-6">
+        
+        <div class="bg-white p-6 rounded-lg shadow">
             <h2 class="text-xl font-bold mb-4">Trading Stats</h2>
-            <div id="trading-stats" class="space-y-2">Loading...</div>
+            <div id="trading-stats">Loading...</div>
         </div>
 
-        <div class="bg-white shadow rounded-lg p-6">
+        <div class="bg-white p-6 rounded-lg shadow">
             <h2 class="text-xl font-bold mb-4">Indicators</h2>
-            <div id="indicators" class="space-y-2">Loading...</div>
+            <div id="indicators">Loading...</div>
         </div>
     </div>
 </div>
 
 <script>
-function showError(message) {
-    const debugInfo = document.getElementById('debug-info');
-    const debugMessage = document.getElementById('debug-message');
-    debugInfo.classList.remove('hidden');
-    debugMessage.textContent = message;
-}
-
-function updateDashboard() {
-    fetch('http://localhost:8001/state')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            document.getElementById('model-stats').innerHTML = `
-                <p>Epsilon: ${data.model_state.epsilon}</p>
-                <p>Total Steps: ${data.model_state.total_steps}</p>
-            `;
-
-            document.getElementById('trading-stats').innerHTML = `
-                <p>Total Profit: $${data.trading_stats.total_profit}</p>
-                <p>Trades Count: ${data.trading_stats.trades_count}</p>
-                <p>Current Position: ${JSON.stringify(data.trading_stats.current_position)}</p>
-            `;
-
-            document.getElementById('indicators').innerHTML = `
-                <p>RSI: ${data.indicators.rsi || 'N/A'}</p>
-                <p>MACD: ${data.indicators.macd || 'N/A'}</p>
-                <p>SMA: ${data.indicators.sma || 'N/A'}</p>
-                <p>ATR: ${data.indicators.atr || 'N/A'}</p>
-            `;
-
-            // Hide error if previously shown
-            document.getElementById('debug-info').classList.add('hidden');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showError(`Failed to connect to API: ${error.message}`);
-        });
-}
-
-// Update immediately and then every second
 document.addEventListener('DOMContentLoaded', () => {
-    updateDashboard();
-    setInterval(updateDashboard, 1000);
+    const ws = new WebSocket('ws://127.0.0.1:8001/ws');
+    
+    ws.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        
+        document.getElementById('model-stats').innerHTML = `
+            <p>Epsilon: ${data.model_state.epsilon}</p>
+            <p>Total Steps: ${data.model_state.total_steps}</p>
+        `;
+
+        document.getElementById('trading-stats').innerHTML = `
+            <p>Total Profit: $${data.trading_stats.total_profit}</p>
+            <p>Trades Count: ${data.trading_stats.trades_count}</p>
+            <p>Current Position: ${JSON.stringify(data.trading_stats.current_position)}</p>
+        `;
+
+        document.getElementById('indicators').innerHTML = `
+            <p>RSI: ${data.indicators.rsi || 'N/A'}</p>
+            <p>MACD: ${data.indicators.macd || 'N/A'}</p>
+            <p>SMA: ${data.indicators.sma || 'N/A'}</p>
+            <p>ATR: ${data.indicators.atr || 'N/A'}</p>
+        `;
+    };
+
+    ws.onerror = function(error) {
+        document.getElementById('error-message').classList.remove('hidden');
+        document.getElementById('error-message').querySelector('span').textContent = 
+            'Connection error. Please check if the API server is running.';
+    };
 });
 </script>
 {% endblock %}
