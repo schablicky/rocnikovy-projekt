@@ -4,19 +4,41 @@
 
 {% block content %}
 <div class="container mx-auto px-4 py-12">
-    <h2 class="text-2xl font-bold mb-4">Chat with {{ other_user.username }}</h2>
-    <div class="chat-box border border-gray-300 rounded-md p-4 mb-4">
-        {% for message in messages %}
-        <div class="{% if message.sender == request.user %}text-right{% else %}text-left{% endif %}">
-            <strong>{{ message.sender.username }}:</strong> {{ message.message }}<br>
-            <small>{{ message.timestamp }}</small>
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
+                        <span class="text-white font-medium">{{ other_user.username|make_list|first|upper }}</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ other_user.username }}</h2>
+                </div>
+                <a href="{% url 'trading:chat_list' %}" 
+                   class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                    Back to Chats
+                </a>
+            </div>
+
+            <div class="chat-box h-96 overflow-y-auto mb-6 space-y-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                {% for message in messages %}
+                <div class="{% if message.sender == request.user %}ml-auto bg-blue-500 text-white{% else %}mr-auto bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white{% endif %} max-w-[70%] rounded-lg p-3">
+                    <p class="text-sm">{{ message.message }}</p>
+                    <p class="text-xs opacity-75 mt-1">{{ message.timestamp|date:"H:i" }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    {{ form.message }}
+                </div>
+                <button type="submit" 
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Send Message
+                </button>
+            </form>
         </div>
-        {% endfor %}
     </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Send</button>
-    </form>
 </div>
 {% endblock %}

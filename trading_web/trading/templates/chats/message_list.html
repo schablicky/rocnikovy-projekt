@@ -4,26 +4,48 @@
 
 {% block content %}
 <div class="container mx-auto px-4 py-12">
-    <h2 class="text-2xl font-bold mb-4">Received Messages</h2>
-    <ul>
-        {% for message in received_messages %}
-        <li>
-            <strong>From:</strong> {{ message.sender.username }}<br>
-            <strong>Message:</strong> {{ message.message }}<br>
-            <strong>Time:</strong> {{ message.timestamp }}<br>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Received Messages</h2>
+                <div class="space-y-4">
+                    {% for message in received_messages %}
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
+                                    <span class="text-white font-medium">{{ message.sender.username|make_list|first|upper }}</span>
+                                </div>
+                                <span class="font-medium text-gray-900 dark:text-white">{{ message.sender.username }}</span>
+                            </div>
+                            <span class="text-sm text-gray-500 dark:text-gray-400">{{ message.timestamp|date:"M d, Y H:i" }}</span>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300">{{ message.message }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
 
-    <h2 class="text-2xl font-bold mt-8 mb-4">Sent Messages</h2>
-    <ul>
-        {% for message in sent_messages %}
-        <li>
-            <strong>To:</strong> {{ message.receiver.username }}<br>
-            <strong>Message:</strong> {{ message.message }}<br>
-            <strong>Time:</strong> {{ message.timestamp }}<br>
-        </li>
-        {% endfor %}
-    </ul>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Sent Messages</h2>
+                <div class="space-y-4">
+                    {% for message in sent_messages %}
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center">
+                                    <span class="text-white font-medium">{{ message.receiver.username|make_list|first|upper }}</span>
+                                </div>
+                                <span class="font-medium text-gray-900 dark:text-white">To: {{ message.receiver.username }}</span>
+                            </div>
+                            <span class="text-sm text-gray-500 dark:text-gray-400">{{ message.timestamp|date:"M d, Y H:i" }}</span>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300">{{ message.message }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
