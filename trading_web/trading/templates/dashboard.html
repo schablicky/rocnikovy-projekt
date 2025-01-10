@@ -226,14 +226,18 @@
                 switch(position) {
                     case "long":
                         element.style.color = "blue";
+                        element.style.background = "rgba(0, 0, 255, 0.1)";
                         element.innerText = "BUY";
                         break;
                     case "short":
                         element.style.color = "red";
+                        element.style.background = "rgba(255, 0, 0, 0.1)";
                         element.innerText = "SELL";
                         break;
                     default:
-                        element.innerText = position || "No position";
+                        element.style.color = "gray";
+                        element.style.background = "rgba(0, 0, 0, 0.1)";
+                        element.innerText = position || "Unsure";
                 }
             }
     

@@ -308,3 +308,4 @@ def aistats(request):
         'page_title': 'AI Trading Statistics'
     }
     return render(request, 'aistats.html', context)
+    
