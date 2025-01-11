@@ -1,0 +1,42 @@
+
+services:
+  web:
+    build: .
+    command: web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    environment:
+      - DJANGO_SETTINGS_MODULE=forex_trading_project.settings
+    volumes:
+      - .:/app
+
+  worker:
+    build: .
+    command: worker
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+
+  beat:
+    build: .
+    command: beat
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+
+  ai:
+    build: .
+    command: ai
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
