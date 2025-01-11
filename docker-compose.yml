@@ -35,6 +35,8 @@ services:
       - redis
     volumes:
       - .:/app
+    dns:
+      - 8.8.8.8
 
   redis:
     image: redis:latest

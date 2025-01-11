@@ -9,7 +9,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-class DataFetcher:
+'''class DataFetcher:
     def __init__(self):
         load_dotenv()
         self.api = MetaApi(os.getenv('META_API_TOKEN'))
@@ -50,7 +50,7 @@ class DataFetcher:
             return result
         except Exception as e:
             print(f"Position closing error: {e}")
-            return None
+            return None'''
 
 class RestDataFetcher:
     def __init__(self):
