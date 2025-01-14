@@ -1,4 +1,0 @@
-Soubory, kde se dávají tokeny
-settings.py
-trading_enviroment
-config.py

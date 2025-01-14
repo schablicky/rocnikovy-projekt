@@ -8,7 +8,6 @@ def execute_trade(user, symbol, trade_type, volume, take_profit=None):
     try:
         logger.info(f"Executing trade for user: {user.username}, API Key: {user.apikey}, MetaID: {user.metaid}")
         
-        # Verify metaid
         if not user.metaid:
             raise ValueError("MetaID is missing or invalid")
         
@@ -36,14 +35,13 @@ def execute_trade(user, symbol, trade_type, volume, take_profit=None):
             result = response.json()
             logger.info(f"Trade executed successfully: {result}")
             
-            # Save the trade in the Trade model
             Trade.objects.create(
                 user=user,
                 symbol=symbol,
                 trade_type=trade_type,
                 volume=volume,
-                price=result.get('price', 0),  # Assuming the API response contains the executed price
-                position_id=result.get('positionId')  # Set the position_id from the response
+                price=result.get('price', 0),
+                position_id=result.get('positionId')
             )
             
             return result
@@ -69,11 +67,9 @@ def close_trade(user, position_id):
     try:
         logger.info(f"Closing trade for user: {user.username}, API Key: {user.apikey}, MetaID: {user.metaid}")
         
-        # Verify metaid
         if not user.metaid:
             raise ValueError("MetaID is missing or invalid")
         
-        # Fetch the open position details
         position_url = f"https://mt-client-api-v1.london.agiliumtrade.ai/users/current/accounts/{user.metaid}/positions/{position_id}"
         headers = {
             "Accept": "application/json",
@@ -86,7 +82,6 @@ def close_trade(user, position_id):
             position_data = position_response.json()
             profit = position_data.get('profit', 0)
             
-            # Update the trade with the profit
             trade = Trade.objects.get(position_id=position_id)
             trade.price = profit
             trade.save()
@@ -95,7 +90,6 @@ def close_trade(user, position_id):
             logger.error(f"Error fetching position details: {error_message}")
             raise Exception(f"Error fetching position details: {error_message}")
         
-        # Close the trade
         url = f"https://mt-client-api-v1.london.agiliumtrade.ai/users/current/accounts/{user.metaid}/trade"
         logger.debug(f"Trade URL: {url}")
         

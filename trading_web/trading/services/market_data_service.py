@@ -26,17 +26,16 @@ async def fetch_historical_eurusd():
         end_time = datetime.now()
         start_time = end_time - timedelta(minutes=10000)
         total_candles = []
-        chunk_size = 50  # Smaller chunks
-        max_retries = 5  # More retries
+        chunk_size = 50
+        max_retries = 5
         
         logger.info(f"Fetching historical data from {start_time} to {end_time}")
         
         async def fetch_with_backoff(timestamp, retry=0):
             try:
-                # Add jitter to avoid thundering herd
                 await asyncio.sleep(random.uniform(0.1, 0.5) * (2 ** retry))
                 return await connection.get_candle(
-                    'EURUSD',  # Changed from EUR/USD
+                    'EURUSD',
                     '1m',
                     timestamp
                 )
@@ -68,7 +67,6 @@ async def fetch_historical_eurusd():
                 successful_candles.extend(chunk_candles)
                 logger.info(f"Successfully fetched {len(chunk_candles)} candles in chunk")
                 
-                # Save chunk to database
                 objects = [
                     MarketData(
                         symbol='EURUSD',
@@ -81,7 +79,6 @@ async def fetch_historical_eurusd():
                 ]
                 MarketData.objects.bulk_create(objects)
                 
-            # Add delay between chunks
             await asyncio.sleep(2)
         
         logger.info(f"Total successful candles: {len(successful_candles)}")
@@ -104,9 +101,9 @@ def update_market_data():
 
         timestamp = int(datetime.now().timestamp())
         candle = connection.get_candle(
-            'EURUSD',  # symbol
-            '1m',      # timeframe
-            timestamp  # time
+            'EURUSD',
+            '1m',
+            timestamp
         )
 
         if candle:

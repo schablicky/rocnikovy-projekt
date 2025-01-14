@@ -217,8 +217,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'dashboard'  # Redirects to home view after login
-LOGOUT_REDIRECT_URL = 'login'  # Redirects to login page after logout
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'login'
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'

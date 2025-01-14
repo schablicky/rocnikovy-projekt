@@ -3,7 +3,7 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 
-# set the default Django settings module for the 'celery' program.
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'forex_trading_project.settings')
 
 app = Celery('forex_trading_project')
@@ -14,7 +14,6 @@ app = Celery('forex_trading_project')
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
-# Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
@@ -24,5 +23,4 @@ app.conf.beat_schedule = {
     },
 }
 
-# Use solo pool for compatibility with Windows
 app.conf.worker_pool = 'solo'

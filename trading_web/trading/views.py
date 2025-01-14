@@ -77,7 +77,7 @@ def dashboard(request):
         market_data = MarketData.objects.all().order_by('-id')[:100]
         market_data_list = [{
             'time': m.time.isoformat(),
-            'close': float(m.close),  # Ensure numbers are serializable
+            'close': float(m.close),
             'symbol': m.symbol
         } for m in market_data]
         
@@ -93,7 +93,6 @@ def dashboard(request):
         last_100_minutes = now - timedelta(minutes=100)
         market_data = MarketData.objects.filter(time__gte=last_100_minutes).order_by('time')
         
-        # Convert datetime objects to strings
         '''market_data_list = list(market_data.values('time', 'close'))
         for data in market_data_list:
             data['time'] = data['time'].isoformat()'''
