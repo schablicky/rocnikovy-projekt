@@ -13,6 +13,10 @@ import math
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+"""
+Server pro získávání stavu modelu a indikátorů pro lepší debugování a vizualizaci
+"""
+
 app = FastAPI(title="AI Trading Bot API")
 
 origins = [
@@ -22,7 +26,6 @@ origins = [
     "http://localhost"
 ]
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -31,7 +34,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global state to store bot info
 bot_state = {
     "model_state": {
         "epsilon": 1.0,
@@ -128,14 +130,12 @@ async def websocket_endpoint(websocket: WebSocket):
     
     try:
         while True:
-            # Get trading stats
             stats = {
                 "SMA": float(bot_state["indicators"]["SMA"][-1] if bot_state["indicators"]["SMA"] else 0.0),
                 "RSI": float(bot_state["indicators"]["RSI"][-1] if bot_state["indicators"]["RSI"] else 0.0),
                 "MACD": float(bot_state["indicators"]["MACD"][-1] if bot_state["indicators"]["MACD"] else 0.0)
             }
             
-            # Send JSON with custom encoder
             await websocket.send_text(
                 json.dumps({"stats": stats}, cls=TradingJSONEncoder)
             )

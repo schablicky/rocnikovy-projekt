@@ -9,6 +9,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# Zakomentováno, protože se nepoužívá
 '''class DataFetcher:
     def __init__(self):
         load_dotenv()
@@ -52,12 +53,14 @@ logger = logging.getLogger(__name__)
             print(f"Position closing error: {e}")
             return None'''
 
+# Třída pro komunikaci s MetaApi
 class RestDataFetcher:
     def __init__(self):
         load_dotenv()
-        self.base_url = "https://mt-client-api-v1.london.agiliumtrade.ai"
-        self.auth_token = os.getenv('META_API_TOKEN')
-        self.account_id = os.getenv('ACCOUNT_ID')
+        self.base_url = "https://mt-client-api-v1.london.agiliumtrade.ai" # URL pro MetaApi
+        self.auth_token = os.getenv('META_API_TOKEN') # Token pro autentizaci
+        self.account_id = os.getenv('ACCOUNT_ID') # ID účtu (oboje z .env souboru)
+        # Hlavičky pro API requesty
         self.headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -65,6 +68,12 @@ class RestDataFetcher:
         }
         self.logger = logging.getLogger(__name__)
 
+    # Získání aktuální svíčky, symbol je defaultně EURUSD, max_retries je počet pokusů při neúspěchu
+    # Zde vzniká problém, že když se nepodaří získat svíčku ani po 3 pokusech, tak se vrátí None
+    # a AI se nerozjede, protože nemá data a tato skutečnost není nikde ošetřena,
+    # toto se stává pouze u incialiace, kdy se získává 10 svíček, při samotném běhu se AI
+    # akorát nerozhodne, a čeká na další svíčku, což může způsobit, že AI mine vhodný okamžik
+    # pro obchodování
     async def get_current_candle(self, symbol='EURUSD', max_retries=3):
         retry_count = 0
         while retry_count < max_retries:
@@ -72,12 +81,12 @@ class RestDataFetcher:
                 url = f"{self.base_url}/users/current/accounts/{self.account_id}/symbols/{symbol}/current-candles/1m"
                 async with aiohttp.ClientSession() as session:
                     async with session.get(url, headers=self.headers) as response:
-                        if response.status == 200:
+                        if response.status == 200: # Pokud je status 200, tak se vrátí data
                             data = await response.json()
                             return data
-                        elif response.status == 404:
+                        elif response.status == 404: # Pokud není dostupná svíčka, tak se počká 5 sekund a zkusí se to znovu
                             logger.warning(f"Candle not available, retry {retry_count + 1}/{max_retries}")
-                            await asyncio.sleep(5)  # Wait before retry
+                            await asyncio.sleep(5)
                             retry_count += 1
                         else:
                             logger.error(f"API Error: {response.status}")
@@ -88,18 +97,20 @@ class RestDataFetcher:
                 await asyncio.sleep(5)
         return None
 
+    # Získání aktuálních pozic
     async def get_positions(self):
         url = f"{self.base_url}/users/current/accounts/{self.account_id}/positions"
         async with aiohttp.ClientSession() as session:
             try:
                 async with session.get(url, headers=self.headers) as response:
-                    if response.status == 200:
+                    if response.status == 200: # Pokud je status 200, tak se vrátí data
                         return await response.json()
                     return None
             except Exception as e:
                 self.logger.error(f"Failed to get positions: {e}")
                 return None
 
+    # Provedení obchodu, action_type je typ obchodu (BUY/SELL), symbol je měnový pár, volume je objem obchodu
     async def execute_trade(self, action_type, symbol, volume=1):
         url = f"{self.base_url}/users/current/accounts/{self.account_id}/trade"
         payload = {
@@ -111,13 +122,14 @@ class RestDataFetcher:
         async with aiohttp.ClientSession() as session:
             try:
                 async with session.post(url, headers=self.headers, json=payload) as response:
-                    if response.status == 200:
+                    if response.status == 200: # Pokud je status 200, tak se vrátí data
                         return await response.json()
                     return None
             except Exception as e:
                 self.logger.error(f"Trade execution failed: {e}")
                 return None
 
+    # Uzavření pozice, position_id je ID pozice (získáno z get_positions)
     async def close_position(self, position_id):
         url = f"{self.base_url}/users/current/accounts/{self.account_id}/trade"
         payload = {
@@ -128,7 +140,7 @@ class RestDataFetcher:
         async with aiohttp.ClientSession() as session:
             try:
                 async with session.post(url, headers=self.headers, json=payload) as response:
-                    if response.status == 200:
+                    if response.status == 200: # Pokud je status 200, tak se vrátí data
                         return await response.json()
                     return None
             except Exception as e:

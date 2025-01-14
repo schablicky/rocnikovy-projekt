@@ -1,6 +1,13 @@
 import numpy as np
 import pandas as pd
 
+'''
+Funkce pro výpočet technických indikátorů. Zatím pouze SMA, RSI a MACD.
+SMA - Simple Moving Average
+RSI - Relative Strength Index
+MACD - Moving Average Convergence Divergence
+'''
+
 def calculate_sma(data, period=20):
     return data.rolling(window=period).mean()
 
