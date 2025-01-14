@@ -30,8 +30,8 @@ async def initialize_data(data_fetcher, symbol):
     logger.info("Loading initial candles...")
     price_history = []
     
-    # Získání 10 svíček (bohužel jsou identické :( )
-    for _ in range(10):
+    # Získání 10 svíček (bohužel jsou identické :( ) -> 100 svíček
+    for _ in range(100):
         candle = await data_fetcher.get_current_candle(symbol=symbol)
         if candle and 'time' in candle:
             candle['time'] = pd.to_datetime(candle['time'])
@@ -53,7 +53,7 @@ async def main():
     api_thread.start()
     logger.info("=== Trading Bot Starting ===")
     data_fetcher = RestDataFetcher()
-    env = TradingEnv(window_size=10) # Prostředí pro obchodování
+    env = TradingEnv(window_size=100) # Prostředí pro obchodování
     model = DQLModel(state_size=10, action_size=4, load_saved=True) # Model AI
     symbol = 'EURUSD' # Symbol měnového páru (kvůli jednoduchosti pevně nastaveno)
     
@@ -75,10 +75,10 @@ async def main():
                 price_history.append(candle) # přidání nové svíčky do historie
                 logger.debug(f"Price history length: {len(price_history)}")
                 
-                if len(price_history) >= 10: # Pokud je historie delší než 10 svíček, tak se první smaže, čili se zrak AI defakto posune o jednu minutu
+                if len(price_history) >= 100: # Pokud je historie delší než 10 svíček, tak se první smaže, čili se zrak AI defakto posune o jednu minutu -> 100 svíček
                     price_history.pop(0)
                 
-                if len(price_history) >= 2: # Toto má být 10, trošku jsem zapomněl změnit
+                if len(price_history) >= 100: # Toto má být 10, trošku jsem zapomněl změnit -> 100 svíček
                     data = pd.DataFrame(price_history)
                     logger.debug(f"Data shape: {data.shape}")
                     logger.debug(f"Latest prices: Close={data['close'].iloc[-1]}, Open={data['open'].iloc[-1]}")

@@ -48,7 +48,7 @@ class DQLModel:
         x1 = tf.keras.layers.Activation('relu')(x1)
         
         # LSTM vrstva, využití pro predikci na základě sekvencí dat
-        x2 = tf.keras.layers.LSTM(128, return_sequences=True)(inputs) # 128 neuronů
+        x2 = tf.keras.layers.LSTM(512, return_sequences=True)(inputs) # 128 neuronů -> (zmena na 512)
         x2 = tf.keras.layers.Dropout(0.2)(x2)
         
         # Spojení vrstev

@@ -74,7 +74,7 @@ class RestDataFetcher:
     # toto se stává pouze u incialiace, kdy se získává 10 svíček, při samotném běhu se AI
     # akorát nerozhodne, a čeká na další svíčku, což může způsobit, že AI mine vhodný okamžik
     # pro obchodování
-    async def get_current_candle(self, symbol='EURUSD', max_retries=3):
+    async def get_current_candle(self, symbol='EURUSD', max_retries=10):
         retry_count = 0
         while retry_count < max_retries:
             try:
