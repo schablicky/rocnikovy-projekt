@@ -84,7 +84,7 @@ def dashboard(request):
         recent_trades = Trade.objects.filter(user=request.user).select_related('user').order_by('-time')[:5]
         
         today = datetime.today().date()
-        dates = [today - timedelta(days=i) for i in range(6, -1, -1)]
+        
         trade_counts = Trade.objects.filter(time__date__gte=today - timedelta(days=6)).values('time__date').annotate(count=Count('id')).order_by('time__date')
         
         trade_dict = {trade['time__date']: trade['count'] for trade in trade_counts}

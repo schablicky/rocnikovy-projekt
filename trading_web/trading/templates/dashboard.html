@@ -3,17 +3,21 @@
 {% block title %}Forex Trading AI Dashboard{% endblock %}
 
 {% block content %}
+
 <div class="container mx-auto px-4 py-12">
     <div class="text-center mb-12">
         <h1 class="text-5xl font-extrabold text-gray-800 dark:text-white mb-4">Forex Trading AI Platform</h1>
         <p class="text-lg text-gray-500 dark:text-gray-400">Advanced trading with artificial intelligence</p>
     </div>
 
+    <!-- Pokud je uživatel přihlášený, zobrazíme mu jeho jméno a zůstatek na účtu -->
     <div class="flex justify-center mb-12">
         {% if user.is_authenticated %}
         <div class="bg-blue-100 dark:bg-blue-900 border border-blue-200 dark:border-blue-800 p-6 rounded-lg shadow-lg text-center">
             <h2 class="text-2xl font-semibold text-blue-800 dark:text-blue-200">Welcome, {{ user.username }}!</h2>
             <p class="text-gray-600 dark:text-gray-300 mt-2">Balance: <span class="font-bold">${{ user.balance|default:"0.00"|floatformat:2 }}</span></p>
+            
+            <!-- Aktualizace zůstatku -->
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     fetch("{% url 'update_balance' %}", {
@@ -27,7 +31,7 @@
                     .then(data => {
                         if (data.success) {
                             console.log("Balance updated successfully: " + data.balance);
-                            // Optionally, update the balance display on the page
+                           
                             document.getElementById('balance-display').innerText = data.balance;
                         } else {
                             console.error("Error updating balance: " + data.error);
@@ -37,7 +41,6 @@
                         console.error("Error:", error);
                     });
                 });
-            </script>
             </script>
             <form method="post" action="{% url 'logout' %}" class="mt-4">
                 {% csrf_token %}
@@ -54,7 +57,7 @@
         {% endif %}
     </div>
 
-    
+    <!-- Statistiky platformy -->
     <div class="grid md:grid-cols-3 gap-8 mb-12">
        
         <div class="bg-white p-6 dark:bg-gray-700 rounded-lg shadow hover:shadow-lg transition duration-300">
@@ -67,6 +70,7 @@
             </div>
         </div>
 
+        <!-- Nejnovější zprávy -->
         <div class="bg-white p-6 dark:bg-gray-700 rounded-lg shadow hover:shadow-lg transition duration-300 md:col-span-2">
             <h3 class="font-bold text-xl text-gray-500 dark:text-white mb-2">Latest News</h3>
             <ul class="space-y-2">
@@ -81,8 +85,9 @@
         </div>
     </div>
 
+    <!-- Graf s tržními daty -->
     <div class="container mx-auto px-4 py-12">
-        <!-- Chart container with fixed dimensions -->
+    
         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-bold dark:text-white">Market Data</h2>
@@ -174,6 +179,7 @@
         </script>
     </div>
 
+    <!-- Nejnovější obchodní aktivity -->
     <div class="bg-gray-50 p-6 dark:bg-gray-700 rounded-lg shadow-md mb-12">
         <h3 class="font-bold text-2xl text-gray-500 dark:text-white mb-4">Recent Trading Activity</h3>
         <div class="space-y-3">
@@ -193,6 +199,8 @@
         {% endfor %}
         </div>
     </div>
+
+    <!-- Aktuální pozice AI -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const API_URL = window.location.hostname === 'localhost' 
@@ -244,11 +252,11 @@
             updatePosition();
             const intervalId = setInterval(updatePosition, 1000);
     
-            // Cleanup on page unload
             window.addEventListener('unload', () => clearInterval(intervalId));
         });
     </script>
-    
+
+    <!-- Formulář pro provedení obchodu -->
     <div class="bg-white p-6 dark:bg-gray-700 rounded-lg shadow-md mb-12">
         <h3 class="font-bold text-2xl text-gray-500 mb-4">Current AI Opinion</h3>
         <pre id="current-position" class="text-gray-600 dark:text-gray-300">Loading...</pre>
@@ -307,7 +315,7 @@
         });
     </script>
 
-
+<!-- Otevřené obchody -->
     <div class="bg-white justify-center dark:bg-gray-700   rounded-lg shadow hover:shadow-lg transition duration-300 text-center flex-1">
         <h3 class="font-bold text-2xl dark:text-white text-gray-500 mb-6">Open Trades</h3>
         <table class="min-w-full dark:bg-gray-700">
@@ -370,7 +378,7 @@
  
  
 
-
+<!-- Copy Trading, zatím nefunkční a Leaderboard -->
 <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 mt-12">
     <div class="bg-white dark:bg-gray-800 dark:text-white justify-center rounded-lg shadow hover:shadow-lg transition duration-300 text-center flex-1 p-6">
         <h3 class="font-bold text-xl text-gray-700 dark:text-white mb-2">Copy Trading</h3>

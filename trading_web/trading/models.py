@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core.validators import MinValueValidator
 
-# User model
+# Custom user model, přidává role, apikey, metaid, balance a theme k django User modelu
 class CustomUser(AbstractUser):
     ROLE_CHOICES = [
         ('admin', 'Admin'),
@@ -26,7 +26,7 @@ class CustomUser(AbstractUser):
         return self.username
 
 
-# Messages model
+# Messages model, využíván pro zprávy mezi uživateli
 class Message(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='sent_messages', on_delete=models.CASCADE)
     receiver = models.ForeignKey(CustomUser, related_name='received_messages', on_delete=models.CASCADE)
@@ -37,7 +37,7 @@ class Message(models.Model):
         return f"Message from {self.sender.username} to {self.receiver.username} at {self.timestamp}"
 
 
-# News model
+# News model, využíván pro zobrazování novinek
 class News(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=5000)
@@ -53,7 +53,7 @@ class News(models.Model):
         return self.title
 
 
-# MarketData model
+# MarketData model, díky kterému se zobrazují grafy
 class MarketData(models.Model):
     symbol = models.CharField(max_length=10)
     timeframe = models.CharField(max_length=10)
@@ -73,7 +73,7 @@ class MarketData(models.Model):
         return f"{self.symbol}: ${self.price}"
 
 
-# Trade model
+# Trade model, využíván pro zaznamenávání obchodů
 class Trade(models.Model):
     TRADE_TYPE_CHOICES = [
         ('buy', 'Buy'),
@@ -95,7 +95,7 @@ class Trade(models.Model):
         return f"{self.trade_type.capitalize()} {self.symbol} by {self.user.username}"
 
 
-# CopyTrader model
+# CopyTrader model, dosud nevyužitý model, který by měl sloužit k kopírování obchodů
 class CopyTrader(models.Model):
     publisher = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="published_trades")
     subscriber = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="subscribed_trades")
