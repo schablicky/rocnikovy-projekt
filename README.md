@@ -3,7 +3,7 @@
 [![Developer](https://img.shields.io/badge/Developer-Matěj_Zimmer-pink)](https://github.com/matejzimmer)
 [![Framework](https://img.shields.io/badge/Framework-Django-green)](https://www.djangoproject.com)
 [![Framework](https://img.shields.io/badge/Framework-TensorFlow-orange)](https://www.tensorflow.org/)
-[![Database](https://img.shields.io/badge/Datab%C3%A1ze-X-blue)](https://www.postgresql.org)
+[![Database](https://img.shields.io/badge/Datab%C3%A1ze-SQLite-blue)](https://www.postgresql.org)
 [![Frontend](https://img.shields.io/badge/Frontend-Tailwind_CSS-purple)](https://tailwindcss.com/)
 ## Popis projektu
 
@@ -50,18 +50,44 @@ Hlavní rysy aplikace:
 - **Frontend**: Tailwind CSS
 - **Backend**: Python, Django
 - **AI Frameworky**: TensorFlow
-- **Databáze**: ?
+- **Databáze**: SQLite
 - **API**: Integrace s MetaAPI nebo jinými poskytovateli tržních dat.
 
 ## TO-DO list
 - [x] Možnost provést obchod
+ - [ ] Take profit/stop loss
 - [x] Vidět své otevřené obchody
 - [x] Uzavřít své otevřené obchody
 - [x] Zprávy
 - [x] Chat mezi uživateli
 - [ ] CopyTrading
 - [x] AI
+  - [ ] Indikátory
+    - [x] SMA
+    - [x] MACD
+    - [x] RSI
+    - [ ] Bollinger bands
+    - [ ] Fibonacci retracement
+    - [ ] Stochastic Oscillator
+    - [ ] Ichimoku Cloud
+    - [ ] Parabolic SAR
+    - [ ] ADX
+    - [ ] CCI
+    - [ ] EMA
+    - [ ] A/D line
+  - [ ] Trénování
+    - [ ] Více vrstvý model
+    - [ ] Generačně evoluční trénování
+  - [ ] API
+    - [x] Názor AI
+    - [ ] Akce AI
+    - [ ] Indikátory
+    - [ ] Tržní data
 - [x] Uživatelské nastavení
+  - [ ] Možnost automatického obchodování
 - [x] Graf s vývojem ceny
+  - [ ] Změna měnového páru
 - [ ] Social login
+  - [ ] Google
+  - [ ] Github
 - [x] Žebříček
