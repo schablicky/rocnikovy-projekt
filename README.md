@@ -55,7 +55,7 @@ Hlavní rysy aplikace:
 
 ## TO-DO list
 - [x] Možnost provést obchod
- - [ ] Take profit/stop loss
+  - [ ] Take profit/stop loss
 - [x] Vidět své otevřené obchody
 - [x] Uzavřít své otevřené obchody
 - [x] Zprávy
