@@ -13,7 +13,7 @@ Model obsahuje konvoluční a LSTM vrstvy, následně je použit mechanismus att
 """
 
 class DQLModel:
-    def __init__(self, state_size=10, action_size=4, load_saved=True):
+    def __init__(self, state_size=100, action_size=4, load_saved=True): # State size 10 -> 100
         self.state_size = state_size
         self.action_size = action_size # Počet akcí (kupovat/prodat/nezmenit/uzavřít)
         self.memory = []
@@ -43,7 +43,7 @@ class DQLModel:
         inputs = tf.keras.layers.Input(shape=(self.state_size, 6)) # Vstupní vrstva, 6 hodnot pro každý časový krok
         
         # CNN vrstva, extrakce "vzorů" z dat, normalně využívaná pro extrakci vzorů z obrázků
-        x1 = tf.keras.layers.Conv1D(128, 3, padding='same')(inputs)
+        x1 = tf.keras.layers.Conv1D(512, 3, padding='same')(inputs) # 128 neuronů -> (zmena na 512)
         x1 = tf.keras.layers.BatchNormalization()(x1)
         x1 = tf.keras.layers.Activation('relu')(x1)
         
@@ -58,7 +58,7 @@ class DQLModel:
         attention = tf.keras.layers.Dense(1)(x)
         attention = tf.keras.layers.Flatten()(attention)
         attention = tf.keras.layers.Activation('softmax')(attention)
-        attention = tf.keras.layers.RepeatVector(256)(attention)
+        attention = tf.keras.layers.RepeatVector(1024)(attention) # 256 -> 1024 (512 LSTM + 512 CNN)
         attention = tf.keras.layers.Permute([2, 1])(attention)
         
         # Násobení vrstev

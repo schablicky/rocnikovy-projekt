@@ -54,7 +54,7 @@ async def main():
     logger.info("=== Trading Bot Starting ===")
     data_fetcher = RestDataFetcher()
     env = TradingEnv(window_size=100) # Prostředí pro obchodování
-    model = DQLModel(state_size=10, action_size=4, load_saved=True) # Model AI
+    model = DQLModel(state_size=100, action_size=4, load_saved=True) # Model AI
     symbol = 'EURUSD' # Symbol měnového páru (kvůli jednoduchosti pevně nastaveno)
     
     logger.info(f"Model configuration: Window Size={env.window_size}, State Size={model.state_size}")
