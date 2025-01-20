@@ -5,6 +5,10 @@
 [![Framework](https://img.shields.io/badge/Framework-TensorFlow-orange)](https://www.tensorflow.org/)
 [![Database](https://img.shields.io/badge/Datab%C3%A1ze-SQLite-blue)](https://www.postgresql.org)
 [![Frontend](https://img.shields.io/badge/Frontend-Tailwind_CSS-purple)](https://tailwindcss.com/)
+## Video prezentace
+
+https://www.youtube.com/watch?v=hWknRaNyxvk
+
 ## Popis projektu
 
 Naše webová aplikace je určena k podpoře nebo plně automatizovanému obchodování na forexových trzích. Využíváme metody posilovaného učení (reinforcement learning), kde systém zlepšuje svá rozhodnutí na základě výsledků svých předchozích akcí.
